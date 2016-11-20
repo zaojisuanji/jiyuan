@@ -11,25 +11,19 @@
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd&quot; into library work</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">194</arg>. <arg fmt="%s" index="3">Syntax error near &quot;component&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">227</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">226</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">324</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">323</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">448</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">447</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">547</arg>. <arg fmt="%s" index="3">Syntax error near &quot;begin&quot;.</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">546</arg>. <arg fmt="%s" index="3">Syntax error near &quot;begin&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">989</arg>. <arg fmt="%s" index="3">Syntax error near &quot;is&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">991</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">990</arg>. <arg fmt="%s" index="3">Syntax error near &quot;is&quot;.</arg>
 </msg>
 
 <msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">992</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
@@ -77,13 +71,13 @@
 <msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1006</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1007</arg>. <arg fmt="%s" index="3">Syntax error near &quot;case&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1007</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1009</arg>. <arg fmt="%s" index="3">Syntax error near &quot;is&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1008</arg>. <arg fmt="%s" index="3">Syntax error near &quot;case&quot;.</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1011</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1010</arg>. <arg fmt="%s" index="3">Syntax error near &quot;is&quot;.</arg>
 </msg>
 
 <msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1012</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
@@ -131,7 +125,10 @@
 <msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1026</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1027</arg>. <arg fmt="%s" index="3">Syntax error near &quot;case&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1027</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; Line <arg fmt="%d" index="2">1028</arg>. <arg fmt="%s" index="3">Syntax error near &quot;case&quot;.</arg>
 </msg>
 
 </messages>
