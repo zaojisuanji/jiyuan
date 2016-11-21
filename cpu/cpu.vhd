@@ -196,34 +196,27 @@ architecture Behavioral of cpu is
 	port(
 		clk : in std_logic;
 		rst : in std_logic;
-		
-		readData1In : in std_logic_vector(15 downto 0);
-		readData2In : in std_logic_vector(15 downto 0);
+		--数据输入
 		rdIn : in std_logic_vector(3 downto 0);
 		PCIn : in std_logic_vector(15 downto 0);
 		ALUResultIn : in std_logic_vector(15 downto 0);
-		
 		readData2In : in std_logic_vector(15 downto 0); --供SW语句写内存
-		
+		--信号输入
 		regWriteIn : in std_logic;
 		memReadIn : in std_logic;
 		memWriteIn : in std_logic;
 		memToRegIn : in std_logic;
-		--dataSrcIn : in std_logic;
-		
-		--wbKeep : in std_logic;
 
+		--数据输出
 		rdOut : out std_logic_vector(3 downto 0);
 		PCOut : out std_logic_vector(15 downto 0);
 		ALUResultOut : out std_logic_vector(15 downto 0);
-		
 		readData2Out : out std_logic_vector(15 downto 0); --供SW语句写内存
-		
+		--信号输出
 		regWriteOut : out std_logic;
 		memReadOut : out std_logic;
 		memWriteOut : out std_logic;
-		memToRegOut : out std_logic;
-		--dataOut : out std_logic_vector(15 downto 0)
+		memToRegOut : out std_logic
 	);
 	end component;
 	
@@ -272,55 +265,39 @@ architecture Behavioral of cpu is
 		IdExFlush : in std_logic;		--LW数据冲突用
 		
 		PCIn : in std_logic_vector(15 downto 0);
-		rdIn : in std_logic_vector(3 downto 0);	
-		ReadReg1In : in std_logic_vector(3 downto 0);
-		ReadReg2In : in std_logic;
-		--ASrcIn : in std_logic_vector(2 downto 0);
-		--BSrcIn : in std_logic_vector(1 downto 0);
-		ALUSrcBIn : in std_logic;
+		rdIn : in std_logic_vector(3 downto 0);		--目的寄存器："0xxx"-R0~R7,"1000"-SP,"1001"-IH,"1010"-T,"1110"-没有目的寄存器
+		Reg1In : in std_logic_vector(3 downto 0);		--源寄存器1："0xxx"-R0~R7,"1000"-SP,"1001"-IH,"1010"-T,"1111"-没有源寄存器1
+		Reg2In : in std_logic_vector(3 downto 0);		--源寄存器2："0xxx"-R0~R7,"1111"-没有源寄存器2
+		ALUSrcBIn : in std_logic;							--控制信号ALUSrcB：'0'-Reg2,'1'-imme
+		ReadData1In : in std_logic_vector(15 downto 0);	--源寄存器1的值
+		ReadData2In : in std_logic_vector(15 downto 0);	--源寄存器2的值
+		immeIn : in std_logic_vector(15 downto 0);		--扩展后的立即数
 		
-		ReadData1In : in std_logic_vector(15 downto 0);
-		ReadData2In : in std_logic_vector(15 downto 0);			
-		--dataTIn : in std_logic_vector(15 downto 0);
-		--dataIHIn : in std_logic_vector(15 downto 0);
-		--dataSPIn : in std_logic_vector(15 downto 0);
-		immeIn : in std_logic_vector(15 downto 0);
-		
-		--WriteKeep : in std_logic;
 		MFPCIn : in std_logic;
-		
 		regWriteIn : in std_logic;
 		memWriteIn : in std_logic;
 		memReadIn : in std_logic;
 		memToRegIn : in std_logic;
 		jumpIn : in std_logic;
-		ALUOpIn : in std_logic_vector(3 downto 0);
-		--dataSrcIn : in std_logic;
+		ALUOpIn : in std_logic_vector(3 downto 0);		--Controller生成的控制信号
+		
 	
 		PCOut : out std_logic_vector(15 downto 0);
 		rdOut : out std_logic_vector(3 downto 0);
-		ReadReg1Out : out std_logic_vector(3 downto 0);
-		ReadReg2Out : out std_logic;
-		--ASrcOut : out std_logic_vector(2 downto 0);
-		--BSrcOut : out std_logic_vector(1 downto 0);
+		Reg1Out : out std_logic_vector(3 downto 0);
+		Reg2Out : out std_logic_vector(3 downto 0);
 		ALUSrcBOut : out std_logic;
-		
 		ReadData1Out : out std_logic_vector(15 downto 0);
 		ReadData2Out : out std_logic_vector(15 downto 0);			
-		--dataTOut : out std_logic_vector(15 downto 0);
-		--dataIHOut : out std_logic_vector(15 downto 0);
-		--dataSPOut : out std_logic_vector(15 downto 0);
 		immeOut : out std_logic_vector(15 downto 0);
 		
 		MFPCOut : out std_logic;
-		
 		regWriteOut : out std_logic;
 		memWriteOut : out std_logic;
 		memReadOut : out std_logic;
 		memToRegOut : out std_logic;
 		jumpOut : out std_logic;
-		ALUOpOut : out std_logic_vector(3 downto 0);
-		--dataSrcOut : out std_logic
+		ALUOpOut : out std_logic_vector(3 downto 0)
 	);
 	end component;
 	
@@ -358,17 +335,17 @@ architecture Behavioral of cpu is
 		port(
 			clk : in std_logic;
 			rst : in std_logic;
+			--数据
+			readMemDataIn : in std_logic_vector(15 downto 0);	--DataMemory读出的数据
+			ALUResultIn : in std_logic_vector(15 downto 0);		--ALU的计算结果
+			rdIn : in std_logic_vector(3 downto 0);				--目的寄存器
+			--控制信号
+			regWriteIn : in std_logic;		--是否要写回
+			memToRegIn : in std_logic;		--写回时选择readMemDataIn（'1'）还是ALUResultIn（'0'）
 			
-			readMemDataIn : in std_logic_vector(15 downto 0);
-			ALUResultIn : in std_logic_vector(15 downto 0);
-			rdIn : in std_logic_vector(3 downto 0);
-			
-			regWriteIn : in std_logic;
-			memToReg : in std_logic;
-			
-			rdOut : out std_logic_vector(3 downto 0);
-			regWriteOut : out std_logic;
-			dataToWB : out std_logic_vector(15 downto 0)
+			dataToWB : out std_logic_vector(15 downto 0);		--写回的数据
+			rdOut : out std_logic_vector(3 downto 0);				--目的寄存器："0xxx"-R0~R7,"1000"-SP,"1001"-IH,"1010"-T,"1110"-没有目的寄存器
+			regWriteOut : out std_logic								--是否要写回
 		);
 	end component;
 	
@@ -440,10 +417,10 @@ architecture Behavioral of cpu is
 			WriteData : in std_logic_vector(15 downto 0);  --由WB阶段传回：写目的寄存器的值
 			RegWrite : in std_logic;							  --由WB阶段传回：RegWrite（写目的寄存器）控制信号
 			
-			--r0Out, r1Out, r2Out,r3Out,r4Out,r5Out,r6Out,r7Out : out std_logic_vector(15 downto 0);
+			r0Out, r1Out, r2Out,r3Out,r4Out,r5Out,r6Out,r7Out : out std_logic_vector(15 downto 0);	--8个普通寄存器
 			
 			ReadData1 : out std_logic_vector(15 downto 0); --读出的寄存器1的值
-			ReadData2 : out std_logic_vector(15 downto 0); --读出的寄存器2的值
+			ReadData2 : out std_logic_vector(15 downto 0) --读出的寄存器2的值
 
 		);
 	end component;
@@ -854,34 +831,6 @@ begin
 			PCNext => PCMuxOut
 		);
 	
---	u18 : IO
---	port map(
-	--	rst => rst,
-	--	clk 			=> clkIn,
-	--	MemWrite		=> ExMemWrite,
-	--	MemRead		=> ExMemRead,
-	--	ram_data		=> ExMemData,
-		--ram_data => "0000000001001111",
-	--	ram_addr		=> ExMemAns,
-	--	ins_addr 	=> PcOut,
-	--	data_out		=> ioData,
-	--	ins_out 		=> ioCommand,
-	--	tbre			=> tbre,
-	--	tsre			=> tsre,
-	--	rdn 			=> rdn,
-	--	wrn			=> wrn,
-	--	ram1_en 		=> ram1En,
-	--	ram1_oe		=> ram1Oe,
-	--	ram1_we		=> ram1We,
-	--	ram1_addr	=> ram1Addr,
-	--	ram1_data	=> ram1Data,
-	--	ram2_en	   => ram2En,
-	--	ram2_oe		=> ram2Oe,
-	--	ram2_we		=> ram2We,
-	--	ram2_addr	=> ram2Addr,
-	--	ram2_data	=> ram2Data,
-	--	data_ready	=> dataReady
-	--);
 	u18 : MEMU
 	    Port map( 
 			clk 		 => clkIn,
@@ -982,7 +931,12 @@ begin
 		addra => fontRomAddr,
 		douta => fontRomData
 		);
+	
+	u24 : MFPCMux
+	port map(
 		
+	);
+	
 	led <=wbdata;
 	--jing <= PCOut;
 	process(PCOut)
