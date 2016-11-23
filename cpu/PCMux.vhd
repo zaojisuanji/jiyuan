@@ -36,8 +36,11 @@ entity PCMux is
 		IdEximme : in std_logic_vector(15 downto 0); --用于计算Branch跳转的PC值=IdEXEimme+PC+1
 		AsrcOut : in std_logic_vector(15 downto 0);	 --对于JR指令，跳转地址为ASrcOut
 		
+		
 		jump : in std_logic;					--jump是由总控制器Controller产生的信号
 		BranchJudge : in std_logic;		--是由ALU产生的控制信号，表示B型跳转成功
+		PCRollback : in std_logic;			--SW数据冲突时，PC需要回退到SW下一条指令①的地址，
+													--而当前的PC+1是③的地址，所以此时PCOut = PCAddOne - 2;
 		
 		PCOut : out std_logic_vector(15 downto 0)
 	);
@@ -53,7 +56,11 @@ begin
 		elsif (jump = '1' and BranchJudge = '0') then
 			PCOut <= AsrcOut;
 		elsif (jump = '0' and BranchJudge = '0') then
-			PCOut <= PCAddOne;
+			if (PCRollback = '1') then
+				PCOut <= PCAddOne - "0000000000000010";	--PCOut = PCAddOne - 2;
+			elsif (PCRollback = '0') then
+				PCOut <= PCAddOne;
+			end if;
 		end if;
 	
 	end process;

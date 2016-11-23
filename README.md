@@ -1,1 +1,3 @@
 造计算机
+
+flush信号需要区分，两个IfIdFlush需要是不同的signal，然后在IfIdRegisters里面or一下
