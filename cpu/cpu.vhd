@@ -67,34 +67,45 @@ entity cpu is
 end cpu;
 
 architecture Behavioral of cpu is
-	--？？？？？？？？？？
-	component MEMu
-	    port ( clk 			:	in 	STD_LOGIC;
-           rst 			: 	in  STD_LOGIC;
-           MEMdata_i	:	in 	STD_LOGIC_VECTOR(15 downto 0);
-           MEMaddr 		:	in 	STD_LOGIC_VECTOR(15 downto 0);
-           MEMwe 		:	in 	STD_LOGIC;
-           MEMre		:	in 	STD_LOGIC;
-           --IFce			:	in 	STD_LOGIC;
-           IFaddr		:	in 	STD_LOGIC_VECTOR(15 downto 0);
-			  data_ready :	in STD_LOGIC;
-			  tbre		:	in STD_LOGIC;
-			  tsre 		:	in STD_LOGIC;
-
-           Ramoe		:	out STD_LOGIC;
-           Ramwe		:	out STD_LOGIC;
-           Ramen		:	out STD_LOGIC;
-           Ramaddr		:	out STD_LOGIC_VECTOR(17 downto 0);
-           IFdata_o		:	out STD_LOGIC_VECTOR(15 downto 0);
-           MEMdata_o 	:	out STD_LOGIC_VECTOR(15 downto 0);
-			  ram1oe			:	out STD_LOGIC;
-			  ram1we			:	out STD_LOGIC;
-			  ram1en 		:	out STD_LOGIC;
-			  ram1data		:	inout STD_LOGIC_VECTOR(7 downto 0);
-			  wrn 			:	out STD_LOGIC;
-			  rdn 			:	out STD_LOGIC;
-           Ramdata		:	inout STD_LOGIC_VECTOR(15 downto 0)
-        );
+	
+	component MemotyUnit
+	port(
+		--时钟
+		clk : in std_logic;
+		rst : in std_logic;
+		
+		--串口
+		data_ready : in std_logic;		--数据准备信号，='1'表示串口的数据已准备好（读串口成功，可显示读到的data）
+		tbre : in std_logic;				--发送数据标志
+		tsre : in std_logic;				--数据发送完毕标志，tsre and tbre = '1'时写串口完毕
+		wrn : out std_logic;				--写串口，初始化为'1'，先置为'0'并把RAM1data赋好，再置为'1'写串口
+		rdn : out std_logic;				--读串口，初始化为'1'并将RAM1data赋为"ZZ..Z"，
+												--若data_ready='1'，则把rdn置为'0'即可读串口（读出数据在RAM1data上）
+		
+		--RAM1（DM）和RAM2（IM）
+		MemRead : in std_logic;			--控制读DM的信号，='1'代表需要读
+		MemWrite : in std_logic;		--控制写DM的信号，='1'代表需要写
+		
+		dataIn : in std_logic_vector(15 downto 0);		--写内存时，要写入DM或IM的数据
+		
+		ramAddr : in std_logic_vector(15 downto 0);		--读DM/写DM/写IM时，地址输入
+		PC : in std_logic_vector(15 downto 0);				--读IM时，地址输入
+		dataOut : out std_logic_vector(15 downto 0);		--读DM时，读出来的数据/读出的串口状态
+		insOut : out std_logic_vector(15 downto 0);		--读IM时，出来的指令
+		
+		ram1_addr : out std_logic_vector(17 downto 0); 	--RAM1地址总线
+		ram2_addr : out std_logic_vector(17 downto 0); 	--RAM2地址总线
+		ram1_data : inout std_logic_vector(15 downto 0);--RAM1数据总线
+		ram2_data : inout std_logic_vector(15 downto 0);--RAM2数据总线
+		
+		ram1_en : out std_logic;		--RAM1使能，='1'禁止
+		ram1_oe : out std_logic;		--RAM1读使能，='1'禁止；
+		ram1_we : out std_logic;		--RAM1写使能，='1'禁止
+		ram2_en : out std_logic;		--RAM2使能，='1'禁止
+		ram2_oe : out std_logic;		--RAM2读使能，='1'禁止
+		ram2_we : out std_logic			--RAM2写使能，='1'禁止
+		
+	);
 	end component;
 	
 

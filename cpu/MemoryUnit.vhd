@@ -43,7 +43,6 @@ entity MemoryUnit is
 		rdn : out std_logic;				--读串口，初始化为'1'并将RAM1data赋为"ZZ..Z"，
 												--若data_ready='1'，则把rdn置为'0'即可读串口（读出数据在RAM1data上）
 		
-		
 		--RAM1（DM）和RAM2（IM）
 		MemRead : in std_logic;			--控制读DM的信号，='1'代表需要读
 		MemWrite : in std_logic;		--控制写DM的信号，='1'代表需要写
@@ -91,6 +90,13 @@ begin
 			wrn <= '1';
 			rdn <= '1';
 			
+			ram1_addr <= (others => '0');
+			ram2_addr <= (others => '0');
+			dataOut <= (others => '0');
+			insOut <= (others => '0');
+			
+			state <= "00";
+			
 		elsif clk'event and clk = '1' then 
 			ram1_en <= '0';
 			ram2_en <= '0';
@@ -131,20 +137,68 @@ begin
 							ram2_we <= '1';--禁止--
 							ram2_oe <= '1';--禁止--
 						elsif (ramAddr <= x"BF01") then	--读串口状态
-							dataOut(15 downto 2) <= (others <= '0');
+							dataOut(15 downto 2) <= (others => '0');
 							dataOut(1) <= data_ready;
 							dataOut(0) <= tsre and tbre;
 						else										--读数据内存
-							
+							ram1_data <= (others => 'Z');
+							ram1_addr <= ramAddr;
+							ram1_oe <= '0';
+							ram1_we <= '1';--禁止--
+							wrn <= '1';		--禁止--
+							rdn <= '1';		--禁止--
 						end if;
 					end if;
 					state <= "01";
 				when "01" =>
-					
-				when "10" =>
-				
-				when "11" =>
-				
+					if (MemWrite = '1') then --写内存或串口
+						if (ramAddr <= x"7FFF" and ramAddr >= x"4000") then	--写指令内存
+							ram2_we <= '1';			--第二步，拉高RAM2写信号
+							ram2_oe <= '1';--禁止--
+							wrn <= '1';		--禁止--
+							rdn <= '1';		--禁止--
+						elsif (ramAddr = x"BF00") then	--写串口数据
+							wrn <= '1';					--第二步，拉高写串口信号
+							rdn <= '1';		--禁止--
+							ram1_we <= '1';--禁止--
+							ram1_oe <= '1';--禁止--
+							ram2_we <= '1';--禁止--
+							ram2_oe <= '1';--禁止--
+						else										--写数据内存
+							ram1_we <= '1';			--第二步，拉高RAM1写信号
+							ram1_oe <= '1';--禁止--
+							wrn <= '1';		--禁止--
+							rdn <= '1';		--禁止--
+						end if;
+					elsif (MemRead = '1') then --读数据内存或串口
+						if (ramAddr <= x"BF00") then		--读串口数据
+							if (data_ready = '1') then
+								rdn <= '0';
+								dataOut(7 downto 0) <= ram1_data(7 downto 0);		--------写在一个状态里？？
+							end if;
+							wrn <= '1';		--禁止--
+							ram1_we <= '1';--禁止--
+							ram1_oe <= '1';--禁止--
+							ram2_we <= '1';--禁止--
+							ram2_oe <= '1';--禁止--
+						elsif (ramAddr <= x"BF01") then	--读串口状态
+							null;
+						else										--读数据内存
+							dataOut <= ram1_data;							-------这里可以直接得到数据吗？
+							ram1_we <= '1';--禁止--
+							wrn <= '1';		--禁止--
+							rdn <= '1';		--禁止--
+						end if;
+					end if;
+					state <= "10";
+				when "10" =>		--读指令内存
+					ram2_data <= (others => 'Z');
+					ram2_addr <= PC;
+					ram2_oe <= '0';
+					ram2_we <= '1';		--禁止--
+				when "11" =>		--读指令内存，第二阶段
+					insOut <= ram2_data;							-------这里可以直接得到数据吗？
+					ram2_we <= '1';--禁止--
 				when others =>
 				
 			end case;
