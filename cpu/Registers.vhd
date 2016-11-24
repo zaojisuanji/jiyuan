@@ -98,7 +98,7 @@ begin
 		end if;
 	end process;
 	
-	process
+	process(ReadReg1In)
 	begin 
 		case ReadReg1In is 
 			when "0000" => ReadData1 <= r0;
@@ -116,7 +116,7 @@ begin
 		end case;
 	end process;
 	
-	process
+	process(ReadReg2In)
 	begin 
 		case ReadReg2In is
 			when "0000" => ReadData2 <= r0;

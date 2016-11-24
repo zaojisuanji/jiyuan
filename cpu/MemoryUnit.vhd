@@ -198,11 +198,17 @@ begin
 					ram2_addr(15 downto 0) <= PC;
 					ram2_oe <= '0';
 					ram2_we <= '1';		--禁止--
+					
+					state <= "11";
 				when "11" =>		--读指令内存，第二阶段
 					insOut <= ram2_data;							-------这里可以直接得到数据吗？
-					ram2_we <= '1';--禁止--
+					ram2_we <= '1';		--禁止--
+					
+					state <= "00";
+					
 				when others =>
-				
+					state <= "00";
+					
 			end case;
 		end if;
 	end process;

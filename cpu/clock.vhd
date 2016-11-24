@@ -46,10 +46,10 @@ begin
 	process (clk,rst)
 		begin
 			clkout <= clk;
-			if(rst = '1') then
-			clkout <= '0';
-			clk1 <= '0';
-			count <= 0;
+			if (rst = '0') then
+				clkout <= '0';
+				clk1 <= '0';
+				count <= 0;
 			elsif (clk'event and clk='1') then			
 				case count is
 					when 0 =>

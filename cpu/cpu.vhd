@@ -58,10 +58,10 @@ entity cpu is
 			--debug  digit1、digit2显示PC值，led显示当前指令的编码
 			digit1 : out std_logic_vector(6 downto 0);	--7位数码管1
 			digit2 : out std_logic_vector(6 downto 0);	--7位数码管2
-			led : out std_logic_vector(15 downto 0);
+			led : out std_logic_vector(15 downto 0)
 			
-			hs,vs : out std_logic;
-			redOut, greenOut, blueOut : out std_logic_vector(2 downto 0)
+			--hs,vs : out std_logic;
+			--redOut, greenOut, blueOut : out std_logic_vector(2 downto 0)
 	);
 			
 end cpu;
@@ -893,7 +893,7 @@ begin
 
 	);
 	
-	--led <=wbdata;
+	led <= dataToWB;
 	--jing <= PCOut;
 	process(PCOut)
 		begin
