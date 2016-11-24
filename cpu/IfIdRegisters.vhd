@@ -37,7 +37,8 @@ entity IfIdRegisters is
 		commandIn : in std_logic_vector(15 downto 0);
 		PCIn : in std_logic_vector(15 downto 0); 
 		IfIdKeep : in std_logic;		--LW数据冲突用
-		IfIdFlush : in std_logic;		--跳转时用
+		Branch_IfIdFlush : in std_logic;		--跳转时用
+		SW_IfIdFlush : in std_logic;			--SW结构冲突用
 		
 		rx : out std_logic_vector(2 downto 0);		--Command[10:8]
 		ry : out std_logic_vector(2 downto 0);		--Command[7:5]
@@ -80,7 +81,7 @@ begin
 				tmpImme 		<= commandIn(10 downto 0);
 				tmpCommand	<= commandIn;
 				tmpPC 		<= PCIn;
-			elsif (IfIdFlush <= '1') then --IfIdFlush该不该放在时钟上升沿？？该不该放在IfIdKeep之后？？
+			elsif (SW_IfIdFlush or Branch_IfIdFlush = '1') then --IfIdFlush该不该放在时钟上升沿？？该不该放在IfIdKeep之后？？
 				tmpRx 		<= (others => '0');
 				tmpRy 		<= (others => '0');
 				tmpRz 		<= (others => '0');

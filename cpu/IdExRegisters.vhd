@@ -35,7 +35,9 @@ entity IdExRegisters is
 		clk : in std_logic;
 		rst : in std_logic;
 		
-		IdExFlush : in std_logic;		--LW数据冲突用
+		LW_IdExFlush : in std_logic;		--LW数据冲突用
+		Branch_IdExFlush : in std_logic;	--跳转时用
+		SW_IdExFlush : in std_logic;		--SW结构冲突用
 		
 		PCIn : in std_logic_vector(15 downto 0);
 		rdIn : in std_logic_vector(3 downto 0);		--目的寄存器："0xxx"-R0~R7,"1000"-SP,"1001"-IH,"1010"-T,"1110"-没有目的寄存器
@@ -98,24 +100,8 @@ begin
 			ALUOpOut <= "0000";
 			
 		elsif (clk'event and clk = '1') then
-			if (IdExFlush = '0') then
-				PCOut <= PCIn;
-				rdOut <= rdIn;
-				Reg1Out <= Reg1In;
-				Reg2Out <= Reg2In;
-				ALUSrcBOut <= ALUSrcBIn;
-				ReadData1Out <= ReadData1In;
-				ReadData2Out <= ReadData2In;
-				immeOut <= immeIn;
+			if (LW_IdExFlush or Branch_IdExFlush or SW_IdExFlush = '1') then
 				
-				MFPCOut <= MFPCIn;
-				regWriteOut <= regWriteIn;
-				memWriteOut <= memWriteIn;
-				memReadOut <= memReadIn;
-				memToRegOut <= memToRegIn;
-				jumpOut <= jumpIn;
-				ALUOpOut <= ALUOpIn;
-			elsif (IdExFlush = '1') then
 				PCOut <= (others => '0');
 				rdOut <= (others => '0');
 				Reg1Out <= (others => '0');
@@ -132,6 +118,25 @@ begin
 				memToRegOut <= '0';
 				jumpOut <= '0';
 				ALUOpOut <= "0000";
+				
+			else
+				
+				PCOut <= PCIn;
+				rdOut <= rdIn;
+				Reg1Out <= Reg1In;
+				Reg2Out <= Reg2In;
+				ALUSrcBOut <= ALUSrcBIn;
+				ReadData1Out <= ReadData1In;
+				ReadData2Out <= ReadData2In;
+				immeOut <= immeIn;
+				
+				MFPCOut <= MFPCIn;
+				regWriteOut <= regWriteIn;
+				memWriteOut <= memWriteIn;
+				memReadOut <= memReadIn;
+				memToRegOut <= memToRegIn;
+				jumpOut <= jumpIn;
+				ALUOpOut <= ALUOpIn;
 			end if;
 		end if;
 	end process;

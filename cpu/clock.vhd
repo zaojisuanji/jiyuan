@@ -33,10 +33,11 @@ entity clock is
     Port ( 
 			rst : in STD_LOGIC;
 			clk : in  STD_LOGIC;
-		   clkout :out STD_LOGIC;
-           clk1 : out  STD_LOGIC;
-           clk2 : out  STD_LOGIC;
-           clk3 : out  STD_LOGIC;
+		   
+			clkout :out STD_LOGIC;
+         clk1 : out  STD_LOGIC;
+         clk2 : out  STD_LOGIC;
+         clk3 : out  STD_LOGIC;
 		   clk4: out  STD_LOGIC
 			 );
 end clock;

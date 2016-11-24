@@ -5,3 +5,5 @@ flushĞÅºÅĞèÒªÇø·Ö£¬Á½¸öIfIdFlushĞèÒªÊÇ²»Í¬µÄsignal£¬È»ºóÔÚIfIdRegistersÀïÃæorÒ»Ï
 ¶ÁBF00Ê±£¬Èç¹û´®¿ÚÃ»×¼±¸ºÃÊı¾İ£¨data_ready = '0'£©£¬Ó¦¸ÃÈçºÎ´¦Àí£¿
 
 ram1_en = '1'ÊÇ½ûÖ¹Âğ£¿£¿
+
+signal PCOut  std...(15 downto 0);ÊÇÄ¬ÈÏÈ«'0'Âğ£¿

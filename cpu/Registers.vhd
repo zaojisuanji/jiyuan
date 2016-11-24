@@ -34,17 +34,17 @@ entity Registers is
 			clk : in std_logic;
 			rst : in std_logic;
 			
-			ReadReg1In : in std_logic_vector(3 downto 0);  --"0XXX"ä»£è¡¨R0~R7ï¼Œ"1000"=SP,"1001"=IH, "1010"=T
-			ReadReg2In : in std_logic_vector(3 downto 0);  --"0XXX"ä»£è¡¨R0~R7
+			ReadReg1In : in std_logic_vector(3 downto 0);  --"0XXX"´ú±íR0~R7£¬"1000"=SP,"1001"=IH, "1010"=T
+			ReadReg2In : in std_logic_vector(3 downto 0);  --"0XXX"´ú±íR0~R7
 			
-			WriteReg : in std_logic_vector(3 downto 0);	  --ç”±WBé˜¶æ®µä¼ å›ï¼šç›®çš„å¯„å­˜å™¨
-			WriteData : in std_logic_vector(15 downto 0);  --ç”±WBé˜¶æ®µä¼ å›ï¼šå†™ç›®çš„å¯„å­˜å™¨çš„å€¼
-			RegWrite : in std_logic;					--ç”±WBé˜¶æ®µä¼ å›ï¼šRegWriteï¼ˆå†™ç›®çš„å¯„å­˜å™¨ï¼‰æ§åˆ¶ä¿¡å·
+			WriteReg : in std_logic_vector(3 downto 0);	  --ÓÉWB½×¶Î´«»Ø£ºÄ¿µÄ¼Ä´æÆ÷
+			WriteData : in std_logic_vector(15 downto 0);  --ÓÉWB½×¶Î´«»Ø£ºĞ´Ä¿µÄ¼Ä´æÆ÷µÄÖµ
+			RegWrite : in std_logic;					--ÓÉWB½×¶Î´«»Ø£ºRegWrite£¨Ğ´Ä¿µÄ¼Ä´æÆ÷£©¿ØÖÆĞÅºÅ
 			
 			r0Out, r1Out, r2Out,r3Out,r4Out,r5Out,r6Out,r7Out : out std_logic_vector(15 downto 0);
 			
-			ReadData1 : out std_logic_vector(15 downto 0); --è¯»å‡ºçš„å¯„å­˜å™¨1çš„å€¼
-			ReadData2 : out std_logic_vector(15 downto 0); --è¯»å‡ºçš„å¯„å­˜å™¨2çš„å€¼
+			ReadData1 : out std_logic_vector(15 downto 0); --¶Á³öµÄ¼Ä´æÆ÷1µÄÖµ
+			ReadData2 : out std_logic_vector(15 downto 0) --¶Á³öµÄ¼Ä´æÆ÷2µÄÖµ
 			--dataT : out std_logic_vector(15 downto 0);
 			--dataSP : out std_logic_vector(15 downto 0);
 			--dataIH : out std_logic_vector(15 downto 0)
@@ -64,8 +64,8 @@ architecture Behavioral of Registers is
 	signal T : std_logic_vector(15 downto 0);
 	signal IH : std_logic_vector(15 downto 0);
 	signal SP : std_logic_vector(15 downto 0);
+
 begin
-	
 	process(clk, rst)
 	begin
 		if (rst = '0') then

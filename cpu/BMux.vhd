@@ -31,16 +31,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity BMux is
 	port(
-		--鎺у埗淇″彿
+		--控制信号
 		ForwardB : in std_logic_vector(1 downto 0);
 		ALUSrcB  : in std_logic;
-		--渚涢�夋嫨鏁版嵁
+		--供选择数据
 		ReadData2 : in std_logic_vector(15 downto 0);
 		imme 	    : in std_logic_vector(15 downto 0);
-		ExMemALUResult : in std_logic_vector(15 downto 0);	--涓婃潯鎸囦护鐨凙LU缁撴灉
-		MemWbResult : in std_logic_vector(15 downto 0);	--涓婁笂鏉℃寚浠ょ殑ALU缁撴灉
-		--MemWbMemResult : in std_logic_vector(15 downto 0);	--涓婁笂鏉℃寚浠ょ殑璇籇M缁撴灉
-		--閫夋嫨缁撴灉杈撳嚭
+		ExMemALUResult : in std_logic_vector(15 downto 0);	--上条指令的ALU结果
+		MemWbResult : in std_logic_vector(15 downto 0);	--上上条指令的ALU结果
+		--MemWbMemResult : in std_logic_vector(15 downto 0);	--上上条指令的读DM结果
+		--选择结果输出
 		BsrcOut : out std_logic_vector(15 downto 0)
 	);	
 end BMux;

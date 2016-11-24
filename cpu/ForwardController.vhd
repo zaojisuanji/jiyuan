@@ -35,12 +35,12 @@ entity ForwardController is
 		MemWbRd : in std_logic_vector(3 downto 0);   --
 		
 		--ExMemRegWrite : in std_logic;
-		--MemWbRegWrite : in std_logic;    --ç”±"1111"åˆ¤æ–­æ²¡æœ‰æºå¯„å­˜å™¨
+		--MemWbRegWrite : in std_logic;    --ÓÉ"1111"ÅĞ¶ÏÃ»ÓĞÔ´¼Ä´æÆ÷
 		
 		IdExALUsrcB : in std_logic;
 		
-		IdExReg1 : in std_logic_vector(3 downto 0);  --æœ¬æ¡æŒ‡ä»¤çš„æºå¯„å­˜å™¨1
-		IdExReg2 : in std_logic_vector(3 downto 0);  --æœ¬æ¡æŒ‡ä»¤çš„æºå¯„å­˜å™¨2
+		IdExReg1 : in std_logic_vector(3 downto 0);  --±¾ÌõÖ¸ÁîµÄÔ´¼Ä´æÆ÷1
+		IdExReg2 : in std_logic_vector(3 downto 0);  --±¾ÌõÖ¸ÁîµÄÔ´¼Ä´æÆ÷2
 		
 		ForwardA : out std_logic_vector(1 downto 0);
 		ForwardB : out std_logic_vector(1 downto 0)
