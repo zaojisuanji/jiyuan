@@ -37,6 +37,7 @@ entity IdExRegisters is
 		
 		LW_IdExFlush : in std_logic;		--LW数据冲突用
 		Branch_IdExFlush : in std_logic;	--跳转时用
+		Jump_IdExFlush : in std_logic;	--JR跳转时用
 		SW_IdExFlush : in std_logic;		--SW结构冲突用
 		
 		PCIn : in std_logic_vector(15 downto 0);
@@ -79,7 +80,7 @@ end IdExRegisters;
 architecture Behavioral of IdExRegisters is
 
 begin
-	process(clk, rst, IdExFlush)
+	process(clk, rst) ---敏感信号要不要4个Flush信号？？？？？
 	begin		
 		if (rst = '0') then
 			PCOut <= (others => '0');
@@ -100,7 +101,7 @@ begin
 			ALUOpOut <= "0000";
 			
 		elsif (clk'event and clk = '1') then
-			if (LW_IdExFlush or Branch_IdExFlush or SW_IdExFlush = '1') then
+			if (LW_IdExFlush = '1' or Branch_IdExFlush = '1' or Jump_IdExFlush = '1' or SW_IdExFlush = '1') then
 				
 				PCOut <= (others => '0');
 				rdOut <= (others => '0');

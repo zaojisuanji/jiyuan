@@ -38,6 +38,7 @@ entity IfIdRegisters is
 		PCIn : in std_logic_vector(15 downto 0); 
 		IfIdKeep : in std_logic;		--LW数据冲突用
 		Branch_IfIdFlush : in std_logic;		--跳转时用
+		Jump_IfIdFlush : in std_logic;		--JR跳转时用
 		SW_IfIdFlush : in std_logic;			--SW结构冲突用
 		
 		rx : out std_logic_vector(2 downto 0);		--Command[10:8]
@@ -64,7 +65,7 @@ begin
 	imme_10_0 <= tmpImme;
 	commandOut <= tmpCommand;
 	PCOut <= tmpPC;
-	process(rst, clk, commandIn, PCIn)
+	process(rst, clk)
 	begin 
 		if (rst = '0') then	--遇到重置信号，直接清零
 			tmpRx 		<= (others => '0');
@@ -81,7 +82,7 @@ begin
 				tmpImme 		<= commandIn(10 downto 0);
 				tmpCommand	<= commandIn;
 				tmpPC 		<= PCIn;
-			elsif (SW_IfIdFlush or Branch_IfIdFlush = '1') then --IfIdFlush该不该放在时钟上升沿？？该不该放在IfIdKeep之后？？
+			elsif (SW_IfIdFlush = '1' or Branch_IfIdFlush = '1' or Jump_IfIdFlush = '1') then --IfIdFlush该不该放在时钟上升沿？？该不该放在IfIdKeep之后？？
 				tmpRx 		<= (others => '0');
 				tmpRy 		<= (others => '0');
 				tmpRz 		<= (others => '0');

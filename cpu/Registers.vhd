@@ -53,17 +53,17 @@ end Registers;
 
 architecture Behavioral of Registers is
 
-	signal r0 : std_logic_vector(15 downto 0);
-	signal r1 : std_logic_vector(15 downto 0);
-	signal r2 : std_logic_vector(15 downto 0);
-	signal r3 : std_logic_vector(15 downto 0);
-	signal r4 : std_logic_vector(15 downto 0);
-	signal r5 : std_logic_vector(15 downto 0);
-	signal r6 : std_logic_vector(15 downto 0);
-	signal r7 : std_logic_vector(15 downto 0);
-	signal T : std_logic_vector(15 downto 0);
-	signal IH : std_logic_vector(15 downto 0);
-	signal SP : std_logic_vector(15 downto 0);
+	signal r0 : std_logic_vector(15 downto 0) := (others => '0');
+	signal r1 : std_logic_vector(15 downto 0) := (others => '0');
+	signal r2 : std_logic_vector(15 downto 0) := (others => '0');
+	signal r3 : std_logic_vector(15 downto 0) := (others => '0');
+	signal r4 : std_logic_vector(15 downto 0) := (others => '0');
+	signal r5 : std_logic_vector(15 downto 0) := (others => '0');
+	signal r6 : std_logic_vector(15 downto 0) := (others => '0');
+	signal r7 : std_logic_vector(15 downto 0) := (others => '0');
+	signal T : std_logic_vector(15 downto 0) := (others => '0');
+	signal IH : std_logic_vector(15 downto 0) := (others => '0');
+	signal SP : std_logic_vector(15 downto 0) := (others => '0');
 
 begin
 	process(clk, rst)
@@ -101,17 +101,17 @@ begin
 	process
 	begin 
 		case ReadReg1In is 
-			when "0000" => dataA <= r0;
-			when "0001" => dataA <= r1;
-			when "0010" => dataA <= r2;
-			when "0011" => dataA <= r3;
-			when "0100" => dataA <= r4;
-			when "0101" => dataA <= r5;
-			when "0110" => dataA <= r6;
-			when "0111" => dataA <= r7;
-			when "1000" => dataA <= SP;
-			when "1001" => dataA <= IH;
-			when "1010" => dataA <= T;
+			when "0000" => ReadData1 <= r0;
+			when "0001" => ReadData1 <= r1;
+			when "0010" => ReadData1 <= r2;
+			when "0011" => ReadData1 <= r3;
+			when "0100" => ReadData1 <= r4;
+			when "0101" => ReadData1 <= r5;
+			when "0110" => ReadData1 <= r6;
+			when "0111" => ReadData1 <= r7;
+			when "1000" => ReadData1 <= SP;
+			when "1001" => ReadData1 <= IH;
+			when "1010" => ReadData1 <= T;
 			when others =>
 		end case;
 	end process;
@@ -119,14 +119,14 @@ begin
 	process
 	begin 
 		case ReadReg2In is
-			when "0000" => dataB <= r0;
-			when "0001" => dataB <= r1;
-			when "0010" => dataB <= r2;
-			when "0011" => dataB <= r3;
-			when "0100" => dataB <= r4;
-			when "0101" => dataB <= r5;
-			when "0110" => dataB <= r6;
-			when "0111" => dataB <= r7;
+			when "0000" => ReadData2 <= r0;
+			when "0001" => ReadData2 <= r1;
+			when "0010" => ReadData2 <= r2;
+			when "0011" => ReadData2 <= r3;
+			when "0100" => ReadData2 <= r4;
+			when "0101" => ReadData2 <= r5;
+			when "0110" => ReadData2 <= r6;
+			when "0111" => ReadData2 <= r7;
 			when others =>
 		end case;
 	end process;

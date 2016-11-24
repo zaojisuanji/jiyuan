@@ -35,7 +35,7 @@ entity ReadReg2Mux is
 		rx : in std_logic_vector(2 downto 0);
 		ry : in std_logic_vector(2 downto 0);			--R0~R7中的一个
 		
-		ReadReg2 : in std_logic_vector;					--由总控制器Controller生成的控制信号
+		ReadReg2 : in std_logic;							--由总控制器Controller生成的控制信号
 		
 		ReadReg2Out : out std_logic_vector(3 downto 0)  --"0XXX"代表R0~R7, "1111"=没有
 	);

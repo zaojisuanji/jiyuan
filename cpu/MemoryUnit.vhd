@@ -100,6 +100,7 @@ begin
 		elsif clk'event and clk = '1' then 
 			ram1_en <= '0';
 			ram2_en <= '0';
+			
 			case state is 
 				when "00" =>
 					if (MemWrite = '1') then --写内存或串口
@@ -142,7 +143,7 @@ begin
 							dataOut(0) <= tsre and tbre;
 						else										--读数据内存
 							ram1_data <= (others => 'Z');
-							ram1_addr <= ramAddr;
+							ram1_addr(15 downto 0) <= ramAddr;
 							ram1_oe <= '0';
 							ram1_we <= '1';--禁止--
 							wrn <= '1';		--禁止--
@@ -174,7 +175,8 @@ begin
 						if (ramAddr <= x"BF00") then		--读串口数据
 							if (data_ready = '1') then
 								rdn <= '0';
-								dataOut(7 downto 0) <= ram1_data(7 downto 0);		--------写在一个状态里？？
+								dataOut(7 downto 0) <= ram1_data(7 downto 0);	--------写在一个状态里？？
+								dataOut(15 downto 8) <= "00000000";		--输出数据的高八位清零
 							end if;
 							wrn <= '1';		--禁止--
 							ram1_we <= '1';--禁止--
@@ -193,7 +195,7 @@ begin
 					state <= "10";
 				when "10" =>		--读指令内存
 					ram2_data <= (others => 'Z');
-					ram2_addr <= PC;
+					ram2_addr(15 downto 0) <= PC;
 					ram2_oe <= '0';
 					ram2_we <= '1';		--禁止--
 				when "11" =>		--读指令内存，第二阶段

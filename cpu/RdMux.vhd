@@ -33,11 +33,11 @@ entity RdMux is
 	port(
 		rx : in std_logic_vector(2 downto 0);
 		ry : in std_logic_vector(2 downto 0);
-		rz : in std_logic_vector(2 downto 0);		--R0~R7中的一个
+		rz : in std_logic_vector(2 downto 0);		--R0~R7中的一�
 			
-		RegDst : in std_logic_vector(2 downto 0);	--由总控制器Controller生成的控制信号
+		RegDst : in std_logic_vector(2 downto 0);	--由总控制器Controller生成的控制信�
 			
-		rdOut : out std_logic_vector(3 downto 0)	--"0XXX"代表R0~R7，"1000"=SP,"1001"=IH, "1010"=T, "1110"=没有
+		rdOut : out std_logic_vector(3 downto 0)	--"0XXX"代表R0~R7�1000"=SP,"1001"=IH, "1010"=T, "1110"=没有
 	);
 end RdMux;
 
@@ -45,9 +45,9 @@ architecture Behavioral of RdMux is
 
 begin
 
-	process(rx, ry, rz, rdChoose)
+	process(rx, ry, rz, RegDst)
 	begin
-		case rdChoose is
+		case RegDst is
 			when "001" =>--rx
 				rdOut <= '0' & rx;
 			when "010" =>--ry

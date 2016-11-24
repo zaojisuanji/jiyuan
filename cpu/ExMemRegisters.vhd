@@ -36,8 +36,7 @@ entity ExMemRegisters is
 		rst : in std_logic;
 		--数据输入
 		rdIn : in std_logic_vector(3 downto 0);
-		PCIn : in std_logic_vector(15 downto 0);
-		ALUResultIn : in std_logic_vector(15 downto 0);
+		MFPCMuxIn : in std_logic_vector(15 downto 0);
 		readData2In : in std_logic_vector(15 downto 0); --供SW语句写内存
 		--信号输入
 		regWriteIn : in std_logic;
@@ -47,7 +46,6 @@ entity ExMemRegisters is
 
 		--数据输出
 		rdOut : out std_logic_vector(3 downto 0);
-		PCOut : out std_logic_vector(15 downto 0);
 		ALUResultOut : out std_logic_vector(15 downto 0);
 		readData2Out : out std_logic_vector(15 downto 0); --供SW语句写内存
 		--信号输出
@@ -65,7 +63,6 @@ begin
 	begin
 		if (rst = '0') then
 			rdOut <= (others => '0');
-			PCOut <= (others => '0');
 			ALUResultOut <= (others => '0');
 			readData2Out <= (others => '0');
 			
@@ -76,8 +73,7 @@ begin
 
 		elsif (clk'event and clk = '1') then
 			rdOut <= rdIn;
-			PCOut <= PCIn;
-			ALUResultOut <= ALUResultIn;
+			ALUResultOut <= MFPCMuxIn;
 			readData2Out <= readData2In;
 			
 			regWriteOut <= regWriteIn;

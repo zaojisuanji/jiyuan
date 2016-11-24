@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <ImplementationReportsDirectory>D:/Junior/ComputerOrganization/CPU/jiyuan/cpu</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>D:/Junior/ComputerOrganization/CPU/jiyuan/cpu\</ImplementationReportsDirectory>
   <ModuleName>cpu</ModuleName>
-  <DateModified>2016-11-24T09:07:25</DateModified>
+  <DateModified>2016-11-24T17:32:26</DateModified>
   <SavedFilePath>D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/iseconfig/cpu.xreport</SavedFilePath>
   <DateInitialized>2016-11-24T09:07:25</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>

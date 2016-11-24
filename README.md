@@ -7,3 +7,5 @@ flushÐÅºÅÐèÒªÇø·Ö£¬Á½¸öIfIdFlushÐèÒªÊÇ²»Í¬µÄsignal£¬È»ºóÔÚIfIdRegistersÀïÃæorÒ»Ï
 ram1_en = '1'ÊÇ½ûÖ¹Âð£¿£¿
 
 signal PCOut  std...(15 downto 0);ÊÇÄ¬ÈÏÈ«'0'Âð£¿
+
+IfIdFlush¸Ã²»¸Ã·ÅÔÚÊ±ÖÓÉÏÉýÑØ£¿£¿¸Ã²»¸Ã·ÅÔÚIfIdKeepÖ®ºó£¿£¿

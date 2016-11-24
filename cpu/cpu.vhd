@@ -68,7 +68,7 @@ end cpu;
 
 architecture Behavioral of cpu is
 	
-	component MemotyUnit
+	component MemoryUnit
 	port(
 		--时钟
 		clk : in std_logic;
@@ -116,10 +116,7 @@ architecture Behavioral of cpu is
 		clk : in  STD_LOGIC;
 		
 		clkout :out STD_LOGIC;
-		clk1 : out  STD_LOGIC;
-		clk2 : out  STD_LOGIC;
-		clk3 : out  STD_LOGIC;
-		clk4: out  STD_LOGIC
+		clk1 : out  STD_LOGIC
 	);
 	end component;
 	
@@ -188,6 +185,8 @@ architecture Behavioral of cpu is
 		
 		jump : in std_logic;					--jump是由总控制器Controller产生的信号
 		BranchJudge : in std_logic;		--是由ALU产生的控制信号，表示B型跳转成功
+		PCRollback : in std_logic;			--SW数据冲突时，PC需要回退到SW下一条指令①的地址，
+													--而当前的PC+1是③的地址，所以此时PCOut = PCAddOne - 2;
 		
 		PCOut : out std_logic_vector(15 downto 0)
 	);
@@ -212,8 +211,7 @@ architecture Behavioral of cpu is
 		rst : in std_logic;
 		--数据输入
 		rdIn : in std_logic_vector(3 downto 0);
-		PCIn : in std_logic_vector(15 downto 0);
-		ALUResultIn : in std_logic_vector(15 downto 0);
+		MFPCMuxIn : in std_logic_vector(15 downto 0);
 		readData2In : in std_logic_vector(15 downto 0); --供SW语句写内存
 		--信号输入
 		regWriteIn : in std_logic;
@@ -223,7 +221,6 @@ architecture Behavioral of cpu is
 
 		--数据输出
 		rdOut : out std_logic_vector(3 downto 0);
-		PCOut : out std_logic_vector(15 downto 0);
 		ALUResultOut : out std_logic_vector(15 downto 0);
 		readData2Out : out std_logic_vector(15 downto 0); --供SW语句写内存
 		--信号输出
@@ -278,6 +275,7 @@ architecture Behavioral of cpu is
 		
 		LW_IdExFlush : in std_logic;		--LW数据冲突用
 		Branch_IdExFlush : in std_logic;	--跳转时用
+		Jump_IdExFlush : in std_logic;	--JR跳转时用
 		SW_IdExFlush : in std_logic;		--SW结构冲突用
 		
 		PCIn : in std_logic_vector(15 downto 0);
@@ -324,8 +322,10 @@ architecture Behavioral of cpu is
 		clk : in std_logic;
 		commandIn : in std_logic_vector(15 downto 0);
 		PCIn : in std_logic_vector(15 downto 0); 
-		IfIdKeep : in std_logic;		--LW数据冲突用
-		IfIdFlush : in std_logic;		--跳转时用
+		IfIdKeep : in std_logic;				--LW数据冲突用
+		Branch_IfIdFlush : in std_logic;		--跳转时用
+		Jump_IfIdFlush : in std_logic;		--JR跳转时用
+		SW_IfIdFlush : in std_logic;			--SW结构冲突用
 		
 		rx : out std_logic_vector(2 downto 0);		--Command[10:8]
 		ry : out std_logic_vector(2 downto 0);		--Command[7:5]
@@ -401,7 +401,7 @@ architecture Behavioral of cpu is
 			rx : in std_logic_vector(2 downto 0);
 			ry : in std_logic_vector(2 downto 0);			--R0~R7中的一个
 			
-			ReadReg2 : in std_logic_vector;					--由总控制器Controller生成的控制信号
+			ReadReg2 : in std_logic;					--由总控制器Controller生成的控制信号
 			
 			ReadReg2Out : out std_logic_vector(3 downto 0)  --"0XXX"代表R0~R7, "1111"=没有
 		);
@@ -497,9 +497,8 @@ architecture Behavioral of cpu is
 	--ExMemRegisters
 	
 	signal ExMemRd : std_logic_vector(3 downto 0);
-	signal ExMemPC : std_logic_vector(15 downto 0);
 	signal ExMemReadData2 : std_logic_vector(15 downto 0);
-	signal ExMemALUResult : std_logic_vector(15 downto 0);
+	signal ExMemALUResult : std_logic_vector(15 downto 0);	--这是MFPCMux选择后的结果
 	
 	signal ExMemRegWrite : std_logic;
 	signal ExMemRead, ExMemWrite, ExMemToReg: std_logic;
@@ -520,7 +519,7 @@ architecture Behavioral of cpu is
 	
 	--ALU
 	signal ALUResult : std_logic_vector(15 downto 0);
-	signal ALUBranchJudge : std_logic;
+	signal BranchJudge : std_logic;
 	
 	--PCMux
 	signal PCMuxOut : std_logic_vector(15 downto 0);
@@ -554,11 +553,14 @@ architecture Behavioral of cpu is
 	signal ReadReg1MuxOut : std_logic_vector(3 downto 0);
 	signal ReadReg2MuxOut : std_logic_vector(3 downto 0);
 	
+	--MFPCMux 
+	signal MFPCMuxOut : std_logic_vector(15 downto 0);
+	
 begin
 	u1 : PCRegister
 	port map(	
 			rst => rst,
-			clk => clk,
+			clk => clk_4,
 			PCKeep => PCKeep,
 			PCIn => PCMuxOut,
 			PCOut => PCOut
@@ -573,11 +575,12 @@ begin
 	u3 : 	IfIdRegisters
 	port map(
 			rst => rst,
-			clk => clk,
+			clk => clk_4,
 			commandIn => IMInsOut,
 			PCIn => PCAddOne,
 			IfIdKeep => IfIdKeep,
 			Branch_IfIdFlush => BranchJudge, --对吗？？
+			Jump_IfIdFlush => IdExJump,
 			SW_IfIdFlush => SW_IfIdFlush,
 			
 			rx => rx,
@@ -610,7 +613,7 @@ begin
 		
 	u6 : Registers
 	port map(
-			clk => clk,
+			clk => clk_4,
 			rst => rst,
 			
 			ReadReg1In => ReadReg1MuxOut,
@@ -644,12 +647,13 @@ begin
 		
 	u8 : IdExRegisters
 	port map(
-			clk => clk,
+			clk => clk_4,
 			rst => rst,
 			
 			LW_IdExFlush => LW_IdExFlush,
 			Branch_IdExFlush => BranchJudge,
-			SW_IdExFlust => SW_IdExFlush,
+			Jump_IdExFlush => IdExJump,
+			SW_IdExFlush => SW_IdExFlush,
 			
 			PCIn => IfIdPC,
 			rdIn => rdMuxOut,
@@ -730,219 +734,166 @@ begin
 	
 	u12 : ALU
 	port map(
-		Asrc      	=> AMuxOut,
-		Bsrc        => BMuxOut,
-		ALUop		  	=> IdExALUOP,
-		ALUresult  	=> ALUAns,
-		branchJudge => ALUBJ
+			Asrc      	=> AMuxOut,
+			Bsrc        => BMuxOut,
+			ALUop		  	=> IdExALUOP,
+			
+			ALUresult  	=> ALUResult,
+			branchJudge => BranchJudge
 	);
 	
-	u13 : ExAdderAndBranchMux
+	u13 : ExMemRegisters
 	port map(
-			PCIn => IdExPC,
-			imm => imm2,
-			dataA => DataA2,
-			--dataA => stageA,
-			
-			jump => IdExJump,
-			
-			PCOut => BranchPC
-		);
-	
-	u14 : ExMemRegisters
-	port map(
-			clk => clk,
+			clk => clk_4,
 			rst => rst,
 			
-			--dataAIn => DataA2,
-			--dataBIn => DataB2,
-			dataAIn => stageA,
-			dataBIn => stageB,
-			
 			rdIn => IdExRd,
-			PCIn => BranchPC,
-			ansIn => ALUAns,
-			branchIn => IdExBranch,
-			branchJudgeIn => ALUBJ,
+			MFPCMuxIn => MFPCMuxOut,
+			readData2In => IdExReadData2,
 			
-			WBIn => IdExWb,
+			regWriteIn => IdExRegWrite,
 			memReadIn => IdExMemRead,
 			memWriteIn => IdExMemWrite,
 			memToRegIn => IdExMemToReg,
-			dataSrcIn => IdExDataSrc,
-			
-			wbKeep => ExMemFlush,
-			
+						
 			rdOut => ExMemRd,
-			PCOut => ExMemPC,
-			ansOut => ExMemAns,
-			branchOut => ExMemBranch,
-			branchJudgeOut => ExMemBJ,
+			ALUResultOut => ExMemALUResult,
+			readData2Out => ExMemReadData2,
 			
-			WBOut => ExMemRegWrite,
+			regWriteOut => ExMemRegWrite,
 			memReadOut => ExMemRead,
 			memWriteOut => ExMemWrite,
-			memToRegOut => ExMemToReg,
-			dataOut => ExMemData
+			memToRegOut => ExMemToReg
 		);
 	
-	u15 : MemWbRegisters
+	u14 : MemWbRegisters
 	port map(
-			clk => clk,
+			clk => clk_4,
 			rst => rst,
 			
-			dataIn => ioData,
-			ansIn => ExMemAns,
+			readMemDataIn => DMDataOut,
+			ALUResultIn => ExMemALUResult,
 			rdIn => ExMemRd,
 			
-			WBIn => ExMemRegWrite,
-			memToReg => ExMemToReg,
+			regWriteIn => ExMemRegWrite,
+			memToRegIn => ExMemToReg,
 			
-			rdOut => WbRd,
-			WBOut => WB,
-			dataToWB => WbData
+			dataToWB => dataToWB,
+			rdOut => rdToWB,
+			regWriteOut => MemWbRegWrite
 		);
-	 u16 : ConflictController
-	 port map(
-			rst => rst,
-			clk => clk,
-			branch => ExMemBranch,
-			branchJudge => ExMemBj,
+	
+	u15 : HazardDetectionUnit
+	port map(
+			ExMemRd => ExMemRd,
+			ExMemMemRead => ExMemRead,
 			
-			IdExMemRead => IdExMemRead,
-			IdExRd => IdExRd,
-			
-			IfIdRx => rx1,
-			IfIdRy => ry1,
-			IfIdASrc => controllerOut(14 downto 12),
-			IfIdBSrc => controllerOut(11 downto 10),
-			IfIdMemWrite => controllerOut(4),
+			IdExeReg1 => IdExReg1,
+			IdExeReg2 => IdExReg2,
 			
 			PCKeep => PCKeep,
 			IfIdKeep => IfIdKeep,
-			IfIdFlush => IfIdFlush,
-			IdExFlush => IdExFlush,
-			WriteKeep => WriteKeep,
-			ExMemFlush => ExMemFlush
+			IdExFlush => LW_IdExFlush
 		);
 		
-	u17 : PCMux
+	u16 : PCMux
 	port map( 
-			branch => ExMemBranch,
-			branchJudge => ExMemBJ,
-			PCAdd => AddedPC,
-			PCJump => ExMemPC,
+			PCAddOne => PCAddOne,
+			IdEximme => IdExImme,
+			AsrcOut => AMuxOut,
 			
-			PCNext => PCMuxOut
+			jump => IdExJump,
+			BranchJudge => BranchJudge,
+			PCRollback => PCRollback,
+			
+			PCOut => PCMuxOut
 		);
 	
-	u18 : MEMU
-	    Port map( 
-			clk 		 => clkIn,
-           rst   	 => rst,
-           MEMdata_i	=>ExMemData,
-           MEMaddr 	=> ExMemAns,
-           MEMwe 		=> ExMemWrite,
-           MEMre		=> ExMemRead,
-           --IFce			:	in 	STD_LOGIC;
-           IFaddr		=> PcOut,
-			  data_ready => dataReady,
-			  tbre		=> tbre,
-			  tsre 		=> tsre,
+	u17 : MemoryUnit
+		port map( 
+			clk => clk,
+         rst => rst,
+			
+			data_ready => dataReady,
+			tbre => tbre,
+			tsre => tsre,
+         wrn => wrn,
+			rdn => rdn,
+			  
+			MemRead => ExMemRead,
+			MemWrite => ExMemWrite,
+			
+			dataIn => ExMemReadData2,
+			
+			ramAddr => ExMemALUResult,
+			PC => PCOut,
+			dataOut => DMDataOut,
+			insOut => IMInsOut,
+			
+			ram1_addr => ram1Addr,
+			ram2_addr => ram2Addr,
+			ram1_data => ram1Data,
+			ram2_data => ram2Data,
+			
+			ram1_en => ram1En,
+			ram1_oe => ram1Oe,
+			ram1_we => ram1We,
+			ram2_en => ram2En,
+			ram2_oe => ram2Oe,
+			ram2_we => ram2We
+		);
 
-           Ramoe		=> ram2Oe,
-           Ramwe		=> ram2We,
-           Ramen		=> ram2En,
-           Ramaddr	=> ram2Addr,
-           IFdata_o	=> ioCommand,
-           MEMdata_o => ioData,
-			  ram1oe		=> ram1Oe,
-			  ram1we		=> ram1We,
-			  ram1en 	=> ram1En,
-			  ram1data	=> ram1Data( 7 downto 0),
-			  wrn 		=> wrn,
-			  rdn 		=> rdn,
-           Ramdata	=> ram2Data
-        );
-
-	u19 : Clock
+	u18 : Clock
 	port map(
 		rst => rst,
-		clkIn => clkIn,
+		clk => clkIn,
 		
-		clk_8 => clk_8,
-		clk_15 => clk
+		clkout => clk,
+		clk1 => clk_4
 	);
 	
 	
-	u20 : StageDataUnit
+	u19 : StructConflictUnit
 	port map(
-			dataAIn => dataA2,
-			dataBIn => dataB2,
+			IdExMemWrite => IdExMemWrite,
+			ALUResultAsAddr => ALUResult, ----还是给MFPCMuxOut？？
 			
-			forwardA => ForwardX,
-			forwardB => ForwardY,
-			
-			dataEx => ExMemAns,
-			dataMem => WbData,
-			
-			dataAOut => stageA,
-			dataBOut => stageB
+			IfIdFlush => SW_IfIdflush,
+			IdExFlush => SW_IdExFlush,
+			PCRollback => PCRollback
 	);
 
-	u21 : VGA_Controller
-	port map(
-	--VGA Side
-		hs => hs,
-		vs => vs,
-		oRed => redOut,
-		oGreen => greenOut,
-		oBlue	=> blueOut,
-	--RAM side
---		R,G,B	: in  std_logic_vector (9 downto 0);
---		addr	: out std_logic_vector (18 downto 0);
-	-- data
-		r0 => r0,
-		r1 => r1,
-		r2 => r2,
-		r3 => r3,
-		r4 => r4,
-		r5 => r5,
-		r6 => r6,
-		r7 => r7,
-	--font rom
-		romAddr => fontRomAddr,
-		romData => fontRomdata,
-	--pc
-		pc => PCOut,
-		cm => ioCommand,
-		tdata => dataT1(3 downto 0),
-	--Control Signals
-		reset	=> rst,
-		CLK_in => clkIn
-	);		
-	--r0 <= "0110101010010111";
-	--r1 <= "1011100010100110";
-	u22 : digit
-	port map(
-			clkA => clkIn,
-			addra => digitRomAddr,
-			douta => digitRomData
-	);
 	
-	u23 : fontRom
-	port map(
-		clka => clkIn,
-		addra => fontRomAddr,
-		douta => fontRomData
-		);
 	
-	u24 : MFPCMux
+	u20 : MFPCMux
 	port map(
+			PCAddOne => IdExPC,
+			ALUResult => ALUResult,
+			MFPC => IdExMFPC,
 		
+			MFPCMuxOut => MFPCMuxOut
 	);
 	
-	led <=wbdata;
+	u21 : ReadReg1Mux
+	port map(
+			rx => rx,
+			ry => ry,
+			ReadReg1 => controllerOut(16 downto 14),
+			
+			ReadReg1Out => ReadReg1MuxOut
+	);
+	
+	u22 : ReadReg2Mux
+	port map(
+			rx => rx,
+			ry => ry,
+			ReadReg2 => controllerOut(13),
+			
+			ReadReg2Out => ReadReg2MuxOut
+
+	);
+	
+	--led <=wbdata;
 	--jing <= PCOut;
 	process(PCOut)
 		begin
@@ -986,6 +937,6 @@ begin
 			when others => digit2 <= "0000000";
 		end case;
 	end process;
-	ram1Addr <= (others => '0');
+	--ram1Addr <= (others => '0');
 end Behavioral;
 

@@ -57,6 +57,7 @@ begin
 						BsrcOut <= ReadData2;
 					when '1' =>
 						BsrcOut <= imme;
+					when others =>
 				end case;
 				
 			when "01" =>
