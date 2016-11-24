@@ -43,7 +43,8 @@ begin
 	process(clk,rst)
 	begin
 		if (rst = '0') then 
-			PCOut <= "0000000000000000";
+		 --PCOut <= "0000000000000000";
+			PCOut <= "1111111111111111";
 			--PCOut <= "0000000001011101";
 		elsif clk'event and clk = '1'then
 				if PCKeep = '0' then

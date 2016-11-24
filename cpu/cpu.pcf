@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Thu Nov 24 20:56:42 2016
+// Written by: Map P.20131013 on Thu Nov 24 22:39:12 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -97,7 +97,7 @@ COMP "led<12>" LOCATE = SITE "B13" LEVEL 1;
 COMP "led<13>" LOCATE = SITE "D13" LEVEL 1;
 COMP "led<14>" LOCATE = SITE "E13" LEVEL 1;
 COMP "led<15>" LOCATE = SITE "A14" LEVEL 1;
-COMP "clkIn" LOCATE = SITE "B9" LEVEL 1;
+COMP "clkIn" LOCATE = SITE "U9" LEVEL 1;
 COMP "led<0>" LOCATE = SITE "D10" LEVEL 1;
 COMP "led<1>" LOCATE = SITE "E10" LEVEL 1;
 COMP "led<2>" LOCATE = SITE "A11" LEVEL 1;

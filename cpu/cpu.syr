@@ -137,8 +137,7 @@ Architecture behavioral of Entity hazarddetectionunit is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd" in Library work.
 Architecture behavioral of Entity pcmux is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemoryUnit.vhd" in Library work.
-Entity <memoryunit> compiled.
-Entity <memoryunit> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity memoryunit is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/clock.vhd" in Library work.
 Architecture behavioral of Entity clock is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/StructConflictUnit.vhd" in Library work.
@@ -150,7 +149,8 @@ Architecture behavioral of Entity readreg1mux is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg2Mux.vhd" in Library work.
 Architecture behavioral of Entity readreg2mux is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" in Library work.
-Architecture behavioral of Entity cpu is up to date.
+Entity <cpu> compiled.
+Entity <cpu> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -206,8 +206,8 @@ Analyzing hierarchy for entity <ReadReg2Mux> in library <work> (architecture <be
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <cpu> in library <work> (Architecture <behavioral>).
-INFO:Xst:1561 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 916: Mux is complete : default of case is discarded
-INFO:Xst:1561 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 936: Mux is complete : default of case is discarded
+INFO:Xst:1561 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 920: Mux is complete : default of case is discarded
+INFO:Xst:1561 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 940: Mux is complete : default of case is discarded
 Entity <cpu> analyzed. Unit <cpu> generated.
 
 Analyzing Entity <PCRegister> in library <work> (Architecture <behavioral>).
@@ -260,8 +260,8 @@ Analyzing Entity <HazardDetectionUnit> in library <work> (Architecture <behavior
 Entity <HazardDetectionUnit> analyzed. Unit <HazardDetectionUnit> generated.
 
 Analyzing Entity <PCMux> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd" line 55: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <PCRollback>
+WARNING:Xst:819 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd" line 56: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <IdExPC>, <PCRollback>
 Entity <PCMux> analyzed. Unit <PCMux> generated.
 
 Analyzing Entity <MemoryUnit> in library <work> (Architecture <behavioral>).
@@ -478,8 +478,8 @@ Unit <HazardDetectionUnit> synthesized.
 Synthesizing Unit <PCMux>.
     Related source file is "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd".
 WARNING:Xst:737 - Found 16-bit latch for signal <PCOut>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-    Found 16-bit adder for signal <mux0000$addsub0000> created at line 58.
-    Found 16-bit subtractor for signal <PCOut$addsub0000> created at line 63.
+    Found 16-bit adder for signal <mux0000$addsub0000> created at line 59.
+    Found 16-bit subtractor for signal <PCOut$addsub0000> created at line 64.
     Summary:
 	inferred   2 Adder/Subtractor(s).
 Unit <PCMux> synthesized.
@@ -607,7 +607,6 @@ WARNING:Xst:646 - Signal <r4> is assigned but never used. This unconnected signa
 WARNING:Xst:646 - Signal <r3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <r2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <r1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <r0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 16x7-bit ROM for signal <digit1>.
     Found 16x7-bit ROM for signal <digit2>.
     Summary:
@@ -893,10 +892,11 @@ Cell Usage :
 #      XORCY                       : 63
 # FlipFlops/Latches                : 594
 #      FDC                         : 176
-#      FDCE                        : 80
+#      FDCE                        : 64
 #      FDCE_1                      : 176
 #      FDE                         : 49
 #      FDP                         : 12
+#      FDPE                        : 16
 #      LD                          : 65
 #      LD_1                        : 20
 #      LDCPE_1                     : 16
@@ -1193,7 +1193,7 @@ Offset:              5.982ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             9   0.591   0.995  u1/PCOut_6 (u1/PCOut_6)
+     FDPE:C->Q             9   0.591   0.995  u1/PCOut_6 (u1/PCOut_6)
      LUT4:I0->O            1   0.704   0.420  Mrom_digit141 (digit1_4_OBUF)
      OBUF:I->O                 3.272          digit1_4_OBUF (digit1<4>)
     ----------------------------------------
@@ -1204,13 +1204,13 @@ Offset:              5.982ns (Levels of Logic = 2)
 
 
 Total REAL time to Xst completion: 14.00 secs
-Total CPU time to Xst completion: 13.95 secs
+Total CPU time to Xst completion: 14.10 secs
  
 --> 
 
-Total memory usage is 300232 kilobytes
+Total memory usage is 300872 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   92 (   0 filtered)
+Number of warnings :   91 (   0 filtered)
 Number of infos    :   45 (   0 filtered)
 

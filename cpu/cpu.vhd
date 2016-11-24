@@ -180,7 +180,8 @@ architecture Behavioral of cpu is
 	component PCMux
 	port(
 		PCAddOne : in std_logic_vector(15 downto 0);	 --PC+1
-		IdEximme : in std_logic_vector(15 downto 0); --用于计算Branch跳转的PC值=IdEXEimme+PC+1
+		IdEximme : in std_logic_vector(15 downto 0);  --用于计算Branch跳转的PC值=IdEXEimme+IdExPC
+		IdExPC : in std_logic_vector(15 downto 0);	 --用于计算Branch跳转的PC值=IdEXEimme+IdExPC
 		AsrcOut : in std_logic_vector(15 downto 0);	 --对于JR指令，跳转地址为ASrcOut
 		
 		jump : in std_logic;					--jump是由总控制器Controller产生的信号
@@ -537,8 +538,6 @@ architecture Behavioral of cpu is
 	signal IfIdKeep : std_logic;
 	signal LW_IdExFlush : std_logic;
 	
-	--jumpFlush ???
-		--哪个阶段的jump？？
 		
 	--MemoryUnit （有一大部分都已在cpu的port里体现）
 	signal DMDataOut : std_logic_vector(15 downto 0);
@@ -799,6 +798,7 @@ begin
 	u16 : PCMux
 	port map( 
 			PCAddOne => PCAddOne,
+			IdExPC => IdExPC,
 			IdEximme => IdExImme,
 			AsrcOut => AMuxOut,
 			
@@ -893,7 +893,11 @@ begin
 
 	);
 	
-	led <= dataToWB;
+	process(r0)
+	begin
+		led <= r0;
+	end process;
+	
 	--jing <= PCOut;
 	process(PCOut)
 		begin

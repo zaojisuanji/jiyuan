@@ -1,0 +1,68 @@
+
+****** PlanAhead v14.7 (64-bit)
+  **** Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+    ** Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
+
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/pa.fromNetlist.tcl
+# create_project -name cpu -dir "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/planAhead_run_3" -part xc3s1200efg320-4
+# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
+# set_property edif_top_file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {D:/Junior/ComputerOrganization/CPU/jiyuan/cpu} }
+# set_param project.pinAheadLayout  yes
+# set_property target_constrs_file "cpu.ucf" [current_fileset -constrset]
+Adding file 'D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.ucf' to fileset 'constrs_1'
+# add_files [list {cpu.ucf}] -fileset [get_property constrset [current_run]]
+# link_design
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+Design is defaulting to project part: xc3s1200efg320-4
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design cpu.ngc ...
+WARNING:NetListWriters:298 - No output is written to cpu.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus u3/tmpCommand<15 : 0> on block cpu is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u5/controllerOut<20 : 0> on block cpu is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u5/controllerOut_mux0013<20 : 0> on
+   block cpu is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u8/immeOut<15 : 0> on block cpu is not
+   reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file cpu.edif ...
+ngc2edif: Total memory usage is 85528 kilobytes
+
+Parsing EDIF File [./planAhead_run_3/cpu.data/cache/cpu_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_3/cpu.data/cache/cpu_ngc_zx.edif]
+INFO: [Designutils 20-910] Reading macro library D:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3e/spartan3e/hd_int_macros.edn
+Parsing EDIF File [D:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3e/spartan3e/hd_int_macros.edn]
+Finished Parsing EDIF File [D:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3e/spartan3e/hd_int_macros.edn]
+WARNING: [Netlist 29-43] Netlist 'cpu' is not ideal for floorplanning, since the cellview 'cpu' defined in file 'cpu.ngc' contains large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+Loading clock regions from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3e/spartan3e/xc3s1200e/ClockRegion.xml
+Loading clock buffers from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3e/spartan3e/xc3s1200e/ClockBuffers.xml
+Loading package from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3e/spartan3e/xc3s1200e/fg320/Package.xml
+Loading io standards from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3e/IOStandards.xml
+INFO: [Device 21-19] Loading pkg sso from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3e/spartan3e/xc3s1200e/fg320/SSORules.xml
+Loading list of drcs for the architecture : D:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3e/spartan3e/drc.xml
+INFO: [Timing 38-77] Reading timing library D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3e/spartan3e/spartan3e-4.lib.
+INFO: [Timing 38-34] Done reading timing library D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3e/spartan3e/spartan3e-4.lib.
+Parsing UCF File [D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.ucf]
+Finished Parsing UCF File [D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.ucf]
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Phase 0 | Netlist Checksum: d08c77c6
+link_design: Time (s): elapsed = 00:00:09 . Memory (MB): peak = 548.777 ; gain = 122.742
+startgroup
+set_property package_pin U9 [get_ports clkIn]
+endgroup
+save_constraints

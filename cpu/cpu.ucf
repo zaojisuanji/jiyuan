@@ -1,5 +1,4 @@
 
-# PlanAhead Generated physical constraints 
 
 NET "digit1[6]" LOC = F8;
 NET "digit1[5]" LOC = E8;
@@ -99,7 +98,7 @@ NET "ram2Data[3]" LOC = T14;
 NET "ram2Data[2]" LOC = T15;
 NET "ram2Data[1]" LOC = T16;
 NET "ram2Data[0]" LOC = U13;
-NET "clkIn" LOC = B9;
+NET "clkIn" LOC = U9;
 NET "dataReady" LOC = A16;
 NET "ram1En" LOC = M15;
 NET "ram1Oe" LOC = M16;

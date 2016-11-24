@@ -35,7 +35,8 @@ entity PCMux is
 	--选择新PC的单元
 	port(
 		PCAddOne : in std_logic_vector(15 downto 0);	 --PC+1
-		IdEximme : in std_logic_vector(15 downto 0); --用于计算Branch跳转的PC值=IdEXEimme+PC+1
+		IdEximme : in std_logic_vector(15 downto 0);  --用于计算Branch跳转的PC值=IdEXEimme+IdExPC
+		IdExPC : in std_logic_vector(15 downto 0);	 --用于计算Branch跳转的PC值=IdEXEimme+IdExPC
 		AsrcOut : in std_logic_vector(15 downto 0);	 --对于JR指令，跳转地址为ASrcOut
 		
 		
@@ -55,7 +56,7 @@ begin
 	process(PCAddOne, IdEximme, AsrcOut, jump, BranchJudge)
 	begin
 		if (BranchJudge = '1' and jump = '0') then
-			PCOut <= IdEximme + PCAddOne;
+			PCOut <= IdEximme + IdExPC;
 		elsif (jump = '1' and BranchJudge = '0') then
 			PCOut <= AsrcOut;
 		elsif (jump = '0' and BranchJudge = '0') then
