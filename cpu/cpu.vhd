@@ -33,6 +33,7 @@ entity cpu is
 	port(
 			rst : in std_logic; --reset
 			clkIn : in std_logic; --时钟源  默认为50M  可以通过修改绑定管教来改变
+			clk_50 : in std_logic;
 			
 			--串口
 			dataReady : in std_logic;   
@@ -58,15 +59,56 @@ entity cpu is
 			--debug  digit1、digit2显示PC值，led显示当前指令的编码
 			digit1 : out std_logic_vector(6 downto 0);	--7位数码管1
 			digit2 : out std_logic_vector(6 downto 0);	--7位数码管2
-			led : out std_logic_vector(15 downto 0)
+			led : out std_logic_vector(15 downto 0);
 			
-			--hs,vs : out std_logic;
-			--redOut, greenOut, blueOut : out std_logic_vector(2 downto 0)
+			hs,vs : out std_logic;
+			redOut, greenOut, blueOut : out std_logic_vector(2 downto 0)
 	);
 			
 end cpu;
 
 architecture Behavioral of cpu is
+	
+	component fontRom
+		port (
+				clka : in std_logic;
+				addra : in std_logic_vector(10 downto 0);
+				douta : out std_logic_vector(7 downto 0)
+		);
+	end component;
+	
+	component digit
+		port (
+				clka : in std_logic;
+				addra : in std_logic_vector(14 downto 0);
+				douta : out std_logic_vector(23 downto 0)
+			);
+	end component;
+	
+	component VGA_Controller
+		port (
+	--VGA Side
+		hs,vs	: out std_logic;		--行同步、场同步信号
+		oRed	: out std_logic_vector (2 downto 0);
+		oGreen	: out std_logic_vector (2 downto 0);
+		oBlue	: out std_logic_vector (2 downto 0);
+	--RAM side
+--		R,G,B	: in  std_logic_vector (9 downto 0);
+--		addr	: out std_logic_vector (18 downto 0);
+	-- data
+		r0, r1, r2, r3, r4,r5,r6,r7 : in std_logic_vector(15 downto 0);
+	-- font rom
+		romAddr : out std_logic_vector(10 downto 0);
+		romData : in std_logic_vector(7 downto 0);
+	-- pc
+		pc : in std_logic_vector(15 downto 0);
+		cm : in std_logic_vector(15 downto 0);
+		tdata : in std_logic_vector(3 downto 0);
+	--Control Signals
+		reset	: in  std_logic;
+		CLK_in	: in  std_logic			--100M时钟输入
+	);		
+	end component;
 	
 	component MemoryUnit
 	port(
@@ -437,8 +479,8 @@ architecture Behavioral of cpu is
 			r0Out, r1Out, r2Out,r3Out,r4Out,r5Out,r6Out,r7Out : out std_logic_vector(15 downto 0);	--8个普通寄存器
 			
 			ReadData1 : out std_logic_vector(15 downto 0); --读出的寄存器1的值
-			ReadData2 : out std_logic_vector(15 downto 0) --读出的寄存器2的值
-
+			ReadData2 : out std_logic_vector(15 downto 0); --读出的寄存器2的值
+			dataT : out std_logic_vector(15 downto 0)
 		);
 	end component;
 	
@@ -480,7 +522,7 @@ architecture Behavioral of cpu is
 	
 	--Registers
 	signal ReadData1, ReadData2 : std_logic_vector(15 downto 0);
-	signal r0,r1,r2,r3,r4,r5,r6,r7 : std_logic_vector(15 downto 0);
+	signal r0,r1,r2,r3,r4,r5,r6,r7,dataT1 : std_logic_vector(15 downto 0);
 	
 	--ImmExtend
 	signal extendedImme : std_logic_vector(15 downto 0);
@@ -525,13 +567,6 @@ architecture Behavioral of cpu is
 	--PCMux
 	signal PCMuxOut : std_logic_vector(15 downto 0);
 	
-	--digit rom
-	--signal digitRomAddr : std_logic_vector(14 downto 0);
-	--signal digitRomData : std_logic_vector(23 downto 0);
-	
-	--font rom
-	--signal fontRomAddr : std_logic_vector(10 downto 0);
-	--signal fontRomData : std_logic_vector(7 downto 0);
 	
 	--HazardDetectionUnit
 	signal PCKeep : std_logic;
@@ -554,6 +589,14 @@ architecture Behavioral of cpu is
 	
 	--MFPCMux 
 	signal MFPCMuxOut : std_logic_vector(15 downto 0);
+	
+	--digit rom
+	signal digitRomAddr : std_logic_vector(14 downto 0);
+	signal digitRomData : std_logic_vector(23 downto 0);
+	
+	--font rom
+	signal fontRomAddr : std_logic_vector(10 downto 0);
+	signal fontRomData : std_logic_vector(7 downto 0);
 	
 begin
 	u1 : PCRegister
@@ -631,6 +674,7 @@ begin
 			r5Out => r5,
 			r6Out => r6,
 			r7Out => r7,
+			dataT => dataT1,
 			
 			ReadData1 => ReadData1,
 			ReadData2 => ReadData2
@@ -893,9 +937,57 @@ begin
 
 	);
 	
-	process(r0)
+	u23 : VGA_Controller
+	port map(
+	--VGA Side
+		hs => hs,
+		vs => vs,
+		oRed => redOut,
+		oGreen => greenOut,
+		oBlue	=> blueOut,
+	--RAM side
+--		R,G,B	: in  std_logic_vector (9 downto 0);
+--		addr	: out std_logic_vector (18 downto 0);
+	-- data
+		r0 => r0,
+		r1 => r1,
+		r2 => r2,
+		r3 => r3,
+		r4 => r4,
+		r5 => r5,
+		r6 => r6,
+		r7 => r7,
+	--font rom
+		romAddr => fontRomAddr,
+		romData => fontRomdata,
+	--pc
+		pc => PCOut,
+		cm => IMInsOut,
+		tdata => dataT1(3 downto 0),
+	--Control Signals
+		reset	=> rst,
+		CLK_in => clk_50
+	);		
+	--r0 <= "0110101010010111";
+	--r1 <= "1011100010100110";
+	u24 : digit
+	port map(
+			clkA => clk_50,
+			addra => digitRomAddr,
+			douta => digitRomData
+	);
+	
+	u25 : fontRom
+	port map(
+		clka => clk_50,
+		addra => fontRomAddr,
+		douta => fontRomData
+		);
+	
+	
+	process(dataToWB)
 	begin
-		led <= r0;
+		led <= dataToWB;
 	end process;
 	
 	--jing <= PCOut;

@@ -9,19 +9,25 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Thu Nov 24 22:39:10 2016
+Mapped Date    : Fri Nov 25 16:41:39 2016
 
 Mapping design into LUTs...
 Running directed packing...
+WARNING:Pack:266 - The function generator u9/Mmux_AsrcOut_mux000014 failed to
+   merge with F5 multiplexer u12/ALUresult_mux0003<13>107_f5.  There is a
+   conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator u23/romAddr_mux0042<3>341 failed to
+   merge with F5 multiplexer u23/romAddr_mux0042<3>38116_f5.  There is a
+   conflict for the FXMUX.  The design will exhibit suboptimal timing.
 Running delay-based LUT packing...
 Running related packing...
 Updating timing models...
-WARNING:PhysDesignRules:372 - Gated clock. Clock net u12/ALUresult_not0001 is
-   sourced by a combinatorial pin. This is not good design practice. Use the CE
-   pin to control the loading of data into the flip-flop.
 WARNING:PhysDesignRules:372 - Gated clock. Clock net u7/sign_or0000 is sourced
    by a combinatorial pin. This is not good design practice. Use the CE pin to
    control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net u12/ALUresult_not0001 is
+   sourced by a combinatorial pin. This is not good design practice. Use the CE
+   pin to control the loading of data into the flip-flop.
 WARNING:PhysDesignRules:372 - Gated clock. Clock net u6/ReadData1_or0000 is
    sourced by a combinatorial pin. This is not good design practice. Use the CE
    pin to control the loading of data into the flip-flop.
@@ -31,33 +37,34 @@ Design Summary
 
 Design Summary:
 Number of errors:      0
-Number of warnings:    3
+Number of warnings:    5
 Logic Utilization:
-  Total Number Slice Registers:         556 out of  17,344    3%
-    Number used as Flip Flops:          475
+  Total Number Slice Registers:         594 out of  17,344    3%
+    Number used as Flip Flops:          513
     Number used as Latches:              81
-  Number of 4 input LUTs:             1,087 out of  17,344    6%
+  Number of 4 input LUTs:             2,363 out of  17,344   13%
 Logic Distribution:
-  Number of occupied Slices:            723 out of   8,672    8%
-    Number of Slices containing only related logic:     723 out of     723 100%
-    Number of Slices containing unrelated logic:          0 out of     723   0%
+  Number of occupied Slices:          1,415 out of   8,672   16%
+    Number of Slices containing only related logic:   1,415 out of   1,415 100%
+    Number of Slices containing unrelated logic:          0 out of   1,415   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       1,122 out of  17,344    6%
-    Number used as logic:             1,087
-    Number used as a route-thru:         35
+  Total Number of 4 input LUTs:       2,420 out of  17,344   13%
+    Number used as logic:             2,363
+    Number used as a route-thru:         57
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
 
-  Number of bonded IOBs:                111 out of     250   44%
+  Number of bonded IOBs:                123 out of     250   49%
     IOB Flip Flops:                      18
-  Number of BUFGMUXs:                     4 out of      24   16%
+  Number of RAMB16s:                      1 out of      28    3%
+  Number of BUFGMUXs:                     6 out of      24   25%
 
-Average Fanout of Non-Clock Nets:                3.84
+Average Fanout of Non-Clock Nets:                4.03
 
-Peak Memory Usage:  279 MB
-Total REAL time to MAP completion:  2 secs 
-Total CPU time to MAP completion:   2 secs 
+Peak Memory Usage:  288 MB
+Total REAL time to MAP completion:  3 secs 
+Total CPU time to MAP completion:   3 secs 
 
 NOTES:
 

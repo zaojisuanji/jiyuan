@@ -44,8 +44,8 @@ entity Registers is
 			r0Out, r1Out, r2Out,r3Out,r4Out,r5Out,r6Out,r7Out : out std_logic_vector(15 downto 0);
 			
 			ReadData1 : out std_logic_vector(15 downto 0); --读出的寄存器1的值
-			ReadData2 : out std_logic_vector(15 downto 0) --读出的寄存器2的值
-			--dataT : out std_logic_vector(15 downto 0);
+			ReadData2 : out std_logic_vector(15 downto 0); --读出的寄存器2的值
+			dataT : out std_logic_vector(15 downto 0)
 			--dataSP : out std_logic_vector(15 downto 0);
 			--dataIH : out std_logic_vector(15 downto 0)
 	);
@@ -80,7 +80,7 @@ begin
 			T <= (others => '0');
 			IH <= (others => '0');			
 			SP <= (others => '0');
-		elsif (clk'event and clk = '0' and RegWrite = '1') then
+		elsif (clk'event and clk = '1' and RegWrite = '1') then
 			case WriteReg is 
 				when "0000" => r0 <= WriteData;
 				when "0001" => r1 <= WriteData;
@@ -133,7 +133,7 @@ begin
 	
 	--dataSP <= SP;
 	--dataIH <= IH;
-	--dataT <= T;
+	dataT <= T;
 	
 	r0Out <= r0;
 	r1Out <= r1;

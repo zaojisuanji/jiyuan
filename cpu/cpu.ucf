@@ -98,7 +98,9 @@ NET "ram2Data[3]" LOC = T14;
 NET "ram2Data[2]" LOC = T15;
 NET "ram2Data[1]" LOC = T16;
 NET "ram2Data[0]" LOC = U13;
+
 NET "clkIn" LOC = U9;
+NET "clk_50" LOC = B9;
 NET "dataReady" LOC = A16;
 NET "ram1En" LOC = M15;
 NET "ram1Oe" LOC = M16;
@@ -111,3 +113,15 @@ NET "rst" LOC = U10;
 NET "tbre" LOC = D14;
 NET "tsre" LOC = N9;
 NET "wrn" LOC = U5;
+
+NET "blueOut[0]" LOC = D5;
+NET "blueOut[1]" LOC = A6;
+NET "blueOut[2]" LOC = B6;
+NET "greenOut[0]" LOC = B4;
+NET "greenOut[1]" LOC = C4;
+NET "greenOut[2]" LOC = C5;
+NET "hs" LOC = D6;
+NET "redOut[0]" LOC = A7;
+NET "redOut[1]" LOC = C3;
+NET "redOut[2]" LOC = A4;
+NET "vs" LOC = E6;
