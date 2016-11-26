@@ -78,7 +78,7 @@ begin
 				when "01101" =>		--LI
 					controllerOut <= "100100001001111100000";
 				when "01110" =>		--CMPI
-					controllerOut <= "101000101011100000000";
+					controllerOut <= "110000101011100000000";
 				when "01111" =>		--MOVE
 					controllerOut <= "100101000000111000000";
 				when "10010" =>		--LW_SP
@@ -101,7 +101,7 @@ begin
 					elsif (commandIn(4 downto 0) = "01101") then --OR
 						controllerOut <= "100100110000010000000";
 					elsif (commandIn(4 downto 0) = "01010") then --CMP
-						controllerOut <= "101000110000100000000";
+						controllerOut <= "110000110000100000000";
 					elsif (commandIn(4 downto 0) = "00100") then --SLLV
 						controllerOut <= "101001000000110000000";
 					elsif (commandIn(4 downto 0) = "00111") then --SRAV

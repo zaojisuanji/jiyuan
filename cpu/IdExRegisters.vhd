@@ -84,9 +84,9 @@ begin
 	begin		
 		if (rst = '0') then
 			PCOut <= (others => '0');
-			rdOut <= (others => '0');
-			Reg1Out <= (others => '0');
-			Reg2Out <= (others => '0');
+			rdOut <= "1110";
+			Reg1Out <= "1111";
+			Reg2Out <= "1111";
 			ALUSrcBOut <= '0';
 			ReadData1Out <= (others => '0');
 			ReadData2Out <= (others => '0');
@@ -104,9 +104,9 @@ begin
 			if (LW_IdExFlush = '1' or Branch_IdExFlush = '1' or Jump_IdExFlush = '1' or SW_IdExFlush = '1') then
 				
 				PCOut <= (others => '0');
-				rdOut <= (others => '0');
-				Reg1Out <= (others => '0');
-				Reg2Out <= (others => '0');
+				rdOut <= "1110";
+				Reg1Out <= "1111";
+				Reg2Out <= "1111";
 				ALUSrcBOut <= '0';
 				ReadData1Out <= (others => '0');
 				ReadData2Out <= (others => '0');

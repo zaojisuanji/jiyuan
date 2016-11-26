@@ -32,7 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity cpu is
 	port(
 			rst : in std_logic; --reset
-			clkIn : in std_logic; --时钟源  默认为50M  可以通过修改绑定管教来改变
+			clkIn : in std_logic; --时钟源  默认为50M  可以通过修改绑定管脚来改变
 			clk_50 : in std_logic;
 			
 			--串口
@@ -145,8 +145,9 @@ architecture Behavioral of cpu is
 		ram1_we : out std_logic;		--RAM1写使能，='1'禁止
 		ram2_en : out std_logic;		--RAM2使能，='1'禁止
 		ram2_oe : out std_logic;		--RAM2读使能，='1'禁止
-		ram2_we : out std_logic			--RAM2写使能，='1'禁止
+		ram2_we : out std_logic;		--RAM2写使能，='1'禁止
 		
+		MemoryState : out std_logic_vector(1 downto 0)
 	);
 	end component;
 	
@@ -158,7 +159,8 @@ architecture Behavioral of cpu is
 		clk : in  STD_LOGIC;
 		
 		clkout :out STD_LOGIC;
-		clk1 : out  STD_LOGIC
+		clk1 : out  STD_LOGIC;
+		clk2 : out STD_LOGIC
 	);
 	end component;
 	
@@ -297,11 +299,11 @@ architecture Behavioral of cpu is
 	--LW数据冲突控制单元
 	component HazardDetectionUnit
 	port(
-		ExMemRd : in std_logic_vector(3 downto 0);
-		ExMemMemRead : in std_logic;
+		IdExRd : in std_logic_vector(3 downto 0);
+		IdExMemRead : in std_logic;
 		
-		IdExeReg1 : in std_logic_vector(3 downto 0);
-		IdExeReg2 : in std_logic_vector(3 downto 0);
+		ReadReg1 : in std_logic_vector(3 downto 0);
+		ReadReg2 : in std_logic_vector(3 downto 0);
 		
 		PCKeep : out std_logic;
 		IfIdKeep : out std_logic;
@@ -480,7 +482,9 @@ architecture Behavioral of cpu is
 			
 			ReadData1 : out std_logic_vector(15 downto 0); --读出的寄存器1的值
 			ReadData2 : out std_logic_vector(15 downto 0); --读出的寄存器2的值
-			dataT : out std_logic_vector(15 downto 0)
+			dataT : out std_logic_vector(15 downto 0);
+			
+			RegisterState : out std_logic_vector(1 downto 0)
 		);
 	end component;
 	
@@ -502,6 +506,7 @@ architecture Behavioral of cpu is
 	--clock
 	signal clk : std_logic;
 	signal clk_4 : std_logic;
+	signal clk_registers : std_logic;
 	
 	--PCRegister
 	signal PCOut : std_logic_vector(15 downto 0); 
@@ -523,6 +528,7 @@ architecture Behavioral of cpu is
 	--Registers
 	signal ReadData1, ReadData2 : std_logic_vector(15 downto 0);
 	signal r0,r1,r2,r3,r4,r5,r6,r7,dataT1 : std_logic_vector(15 downto 0);
+	signal RegisterState : std_logic_vector(1 downto 0);
 	
 	--ImmExtend
 	signal extendedImme : std_logic_vector(15 downto 0);
@@ -577,6 +583,7 @@ architecture Behavioral of cpu is
 	--MemoryUnit （有一大部分都已在cpu的port里体现）
 	signal DMDataOut : std_logic_vector(15 downto 0);
 	signal IMInsOut : std_logic_vector(15 downto 0);
+	signal MemoryState : std_logic_vector(1 downto 0);
 		
 	--SW写指令内存（结构冲突）
 	signal SW_IfIdflush : std_logic;
@@ -655,7 +662,7 @@ begin
 		
 	u6 : Registers
 	port map(
-			clk => clk_4,
+			clk => clk,
 			rst => rst,
 			
 			ReadReg1In => ReadReg1MuxOut,
@@ -675,6 +682,7 @@ begin
 			r6Out => r6,
 			r7Out => r7,
 			dataT => dataT1,
+			RegisterState => RegisterState,
 			
 			ReadData1 => ReadData1,
 			ReadData2 => ReadData2
@@ -828,11 +836,11 @@ begin
 	
 	u15 : HazardDetectionUnit
 	port map(
-			ExMemRd => ExMemRd,
-			ExMemMemRead => ExMemRead,
+			IdExRd => IdExRd,
+			IdExMemRead => IdExMemRead,
 			
-			IdExeReg1 => IdExReg1,
-			IdExeReg2 => IdExReg2,
+			ReadReg1 => ReadReg1MuxOut,
+			ReadReg2 => ReadReg2MuxOut,
 			
 			PCKeep => PCKeep,
 			IfIdKeep => IfIdKeep,
@@ -874,6 +882,8 @@ begin
 			dataOut => DMDataOut,
 			insOut => IMInsOut,
 			
+			MemoryState => MemoryState,
+			
 			ram1_addr => ram1Addr,
 			ram2_addr => ram2Addr,
 			ram1_data => ram1Data,
@@ -893,7 +903,8 @@ begin
 		clk => clkIn,
 		
 		clkout => clk,
-		clk1 => clk_4
+		clk1 => clk_4,
+		clk2 => clk_registers
 	);
 	
 	
@@ -953,14 +964,10 @@ begin
 		r1 => r1,
 		r2 => r2,
 		r3 => r3,
-		r4(15 downto 4) => "000000000000",
-		r4(3 downto 0) => ReadReg2MuxOut,
-		r5(15 downto 3) => "0000000000000",
-		r5(2 downto 0) => rx,
-		r6(15 downto 3) => "0000000000000",
-		r6(2 downto 0) => ry,
-		r7(15 downto 1) => "000000000000000",
-		r7(0) => ControllerOut(13),
+		r4 => ReadData1,
+		r5 => ReadData2,
+		r6 => AMuxOut,
+		r7 => BMuxOut,
 	--font rom
 		romAddr => fontRomAddr,
 		romData => fontRomdata,
@@ -989,20 +996,21 @@ begin
 		);
 	
 	
-	--process(dataToWB, ForwardA, ForwardB, rdToWB)
-	process(dataToWB, rdToWB, ExMemReadData2)
+	process(dataToWB, ForwardA, ForwardB, rdToWB)
+	--process(dataToWB, rdToWB, MemoryState, RegisterState)
 	begin
-		--led(15 downto 14) <= ForwardA;
-		--led(13 downto 12) <= ForwardB;
-		led(15 downto 12) <= ExMemReadData2(3 downto 0);
+		--led(15 downto 14) <= RegisterState;
+		--led(13 downto 12) <= MemoryState;
+		led(15 downto 14) <= ForwardA;
+		led(13 downto 12) <= ForwardB;
 		led(11 downto 8) <= rdToWB;
 		led(7 downto 0) <= dataToWB(7 downto 0);
 	end process;
 	
 	--jing <= PCOut;
-	process(ReadData2, IdExReadData2)
+	process(ReadReg1MuxOut, ReadReg2MuxOut)
 		begin
-		case ReadData2(3 downto 0) is
+		case ReadReg1MuxOut is
 			when "0000" => digit1 <= "0111111";--0
 			when "0001" => digit1 <= "0000110";--1
 			when "0010" => digit1 <= "1011011";--2
@@ -1022,7 +1030,7 @@ begin
 			when others => digit1 <= "0000000";
 		end case;
 		
-		case IdExReadData2(3 downto 0) is
+		case ReadReg2MuxOut is
 			when "0000" => digit2 <= "0111111";--0
 			when "0001" => digit2 <= "0000110";--1
 			when "0010" => digit2 <= "1011011";--2

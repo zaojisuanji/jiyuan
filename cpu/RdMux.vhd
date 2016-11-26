@@ -54,12 +54,13 @@ begin
 				rdOut <= '0' & ry;
 			when "011" =>--rz
 				rdOut <= '0' & rz;
-			when "100" =>--SP
-				rdOut <= "1000";
-			when "101" =>--IH
-				rdOut <= "1001";
-			when "110" =>--T
+			when "100" =>--T
 				rdOut <= "1010";
+			when "101" =>--SP
+				rdOut <= "1000";
+			when "110" =>--IH
+				rdOut <= "1001";
+			
 			when others =>
 				rdOut <= "1110";
 		end case;

@@ -58,13 +58,13 @@ begin
 			rdOut <= "1110";
 			regWriteOut <= '0';
 		elsif (clk'event and clk = '1') then
+			rdOut <= rdIn;
+			regWriteOut <= regWriteIn;
 			if (memToRegIn = '0') then
 				dataToWB <= ALUResultIn;
 			elsif (memToRegIn = '1') then
 				dataToWB <= readMemDataIn;
 			end if;
-			rdOut <= rdIn;
-			regWriteOut <= regWriteIn;
 		end if;
 	end process;
 end Behavioral;

@@ -31,11 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity HazardDetectionUnit is
 	port(
-		ExMemRd : in std_logic_vector(3 downto 0);
-		ExMemMemRead : in std_logic;
+		IdExRd : in std_logic_vector(3 downto 0);
+		IdExMemRead : in std_logic;
 		
-		IdExeReg1 : in std_logic_vector(3 downto 0);
-		IdExeReg2 : in std_logic_vector(3 downto 0);
+		ReadReg1 : in std_logic_vector(3 downto 0);
+		ReadReg2 : in std_logic_vector(3 downto 0);
 		
 		PCKeep : out std_logic;
 		IfIdKeep : out std_logic;
@@ -46,17 +46,17 @@ end HazardDetectionUnit;
 architecture Behavioral of HazardDetectionUnit is
 	
 begin
-	process(ExMemRd, ExMemMemRead, IdExeReg1, IdExeReg2)
+	process(IdExRd, IdExMemRead, ReadReg1, ReadReg2)
 	begin 
-		if (ExMemMemRead = '0') then
+		if (IdExMemRead = '0') then
 			PCKeep <= '0';
 			IfIdKeep <= '0';
 			IdExFlush <= '0';
-		elsif (IdExeReg1 = "1111" and IdExeReg2 = "1111") then
+		elsif (ReadReg1 = "1111" and ReadReg2 = "1111") then
 			PCKeep <= '0';
 			IfIdKeep <= '0';
 			IdExFlush <= '0';
-		elsif (IdExeReg1 = ExMemRd or IdExeReg2 = ExMemRd) then
+		elsif (ReadReg1 = IdExRd or ReadReg2 = IdExRd) then
 			PCKeep <= '1';
 			IfIdKeep <= '1';
 			IdExFlush <= '1';

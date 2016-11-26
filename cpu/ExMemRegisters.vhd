@@ -62,7 +62,7 @@ begin
 	process(rst, clk)
 	begin
 		if (rst = '0') then
-			rdOut <= (others => '0');
+			rdOut <= "1110";
 			ALUResultOut <= (others => '0');
 			readData2Out <= (others => '0');
 			
