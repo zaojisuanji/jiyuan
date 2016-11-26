@@ -9,7 +9,7 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sat Nov 26 20:53:47 2016
+Mapped Date    : Sat Nov 26 21:13:37 2016
 
 Design Summary
 --------------
@@ -21,9 +21,9 @@ Logic Utilization:
     Number used as Latches:              66
   Number of 4 input LUTs:             2,451 out of  17,344   14%
 Logic Distribution:
-  Number of occupied Slices:          1,450 out of   8,672   16%
-    Number of Slices containing only related logic:   1,450 out of   1,450 100%
-    Number of Slices containing unrelated logic:          0 out of   1,450   0%
+  Number of occupied Slices:          1,451 out of   8,672   16%
+    Number of Slices containing only related logic:   1,451 out of   1,451 100%
+    Number of Slices containing unrelated logic:          0 out of   1,451   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
   Total Number of 4 input LUTs:       2,511 out of  17,344   14%
     Number used as logic:             2,451
@@ -32,15 +32,15 @@ Logic Distribution:
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
 
-  Number of bonded IOBs:                115 out of     250   46%
+  Number of bonded IOBs:                114 out of     250   45%
   Number of RAMB16s:                      1 out of      28    3%
-  Number of BUFGMUXs:                     6 out of      24   25%
+  Number of BUFGMUXs:                     5 out of      24   20%
 
 Average Fanout of Non-Clock Nets:                4.03
 
-Peak Memory Usage:  287 MB
+Peak Memory Usage:  288 MB
 Total REAL time to MAP completion:  4 secs 
-Total CPU time to MAP completion:   4 secs 
+Total CPU time to MAP completion:   3 secs 
 
 NOTES:
 
@@ -1698,7 +1698,6 @@ Section 6 - IOB Properties
 | blueOut<1>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | blueOut<2>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | clkIn                              | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
-| clk_50                             | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 | dataReady                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 | digit1<0>                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | digit1<1>                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |

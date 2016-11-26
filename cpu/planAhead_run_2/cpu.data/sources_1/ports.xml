@@ -37,6 +37,11 @@
 			<Port Id="1" Dir="INOUT"/>
 			<Port Id="0" Dir="INOUT"/>
 		</Bus>
+		<Bus Id="redOut">
+			<Port Id="2" Dir="OUT"/>
+			<Port Id="1" Dir="OUT"/>
+			<Port Id="0" Dir="OUT"/>
+		</Bus>
 		<Bus Id="ram2Addr">
 			<Port Id="17" Dir="OUT"/>
 			<Port Id="16" Dir="OUT"/>
@@ -75,6 +80,11 @@
 			<Port Id="1" Dir="OUT"/>
 			<Port Id="0" Dir="OUT"/>
 		</Bus>
+		<Bus Id="blueOut">
+			<Port Id="2" Dir="OUT"/>
+			<Port Id="1" Dir="OUT"/>
+			<Port Id="0" Dir="OUT"/>
+		</Bus>
 		<Bus Id="ram1Addr">
 			<Port Id="17" Dir="OUT"/>
 			<Port Id="16" Dir="OUT"/>
@@ -91,6 +101,11 @@
 			<Port Id="5" Dir="OUT"/>
 			<Port Id="4" Dir="OUT"/>
 			<Port Id="3" Dir="OUT"/>
+			<Port Id="2" Dir="OUT"/>
+			<Port Id="1" Dir="OUT"/>
+			<Port Id="0" Dir="OUT"/>
+		</Bus>
+		<Bus Id="greenOut">
 			<Port Id="2" Dir="OUT"/>
 			<Port Id="1" Dir="OUT"/>
 			<Port Id="0" Dir="OUT"/>
@@ -119,9 +134,11 @@
 		<Port Id="ram2We" Dir="OUT"/>
 		<Port Id="clkIn" Dir="IN"/>
 		<Port Id="rst" Dir="IN"/>
+		<Port Id="hs" Dir="OUT"/>
 		<Port Id="tbre" Dir="IN"/>
 		<Port Id="ram1En" Dir="OUT"/>
 		<Port Id="tsre" Dir="IN"/>
+		<Port Id="vs" Dir="OUT"/>
 		<Port Id="ram2En" Dir="OUT"/>
 		<Port Id="ram1Oe" Dir="OUT"/>
 		<Port Id="dataReady" Dir="IN"/>

@@ -33,7 +33,7 @@ entity cpu is
 	port(
 			rst : in std_logic; --reset
 			clkIn : in std_logic; --时钟源  默认为50M  可以通过修改绑定管脚来改变
-			clk_50 : in std_logic;
+			--clk_50 : in std_logic;
 			
 			--串口
 			dataReady : in std_logic;   
@@ -999,20 +999,20 @@ begin
 		tdata => dataT1(3 downto 0),
 	--Control Signals
 		reset	=> rst,
-		CLK_in => clk_50
+		CLK_in => clkIn
 	);		
 	--r0 <= "0110101010010111";
 	--r1 <= "1011100010100110";
 	u24 : digit
 	port map(
-			clkA => clk_50,
+			clkA => clkIn,
 			addra => digitRomAddr,
 			douta => digitRomData
 	);
 	
 	u25 : fontRom
 	port map(
-		clka => clk_50,
+		clka => clkIn,
 		addra => fontRomAddr,
 		douta => fontRomData
 		);
