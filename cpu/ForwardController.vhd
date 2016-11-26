@@ -59,12 +59,16 @@ begin
 			ForwardA <= "00";
 		end if;
 		
-		if (IdExReg2 = ExMemRd) then
-			ForwardB <= "01";
-		elsif (IdExReg2 = MemWbRd) then
-			ForwardB <= "10";
-		else
+		if (IdExALUsrcB = '1') then		--SrcB是一个立即数，则不会产生冲突
 			ForwardB <= "00";
+		elsif (IdExALUsrcB = '0') then	--SrcB是一个寄存器值，则可能产生冲突
+			if (IdExReg2 = ExMemRd) then
+				ForwardB <= "01";
+			elsif (IdExReg2 = MemWbRd) then
+				ForwardB <= "10";
+			else									--无冲突
+				ForwardB <= "00";
+			end if;
 		end if;
 		
 	end process;

@@ -108,7 +108,11 @@ begin
 				else 
 					branchJudge <= '1';
 				end if;
-			
+			when "1110" => --Asrc
+				ALUresult <= Asrc;
+			when "1111" => --Bsrc
+				ALUresult <= Bsrc;
+				
 			when others => ALUresult <= "0000000000000000";
 				branchJudge <= '0';
 		end case;

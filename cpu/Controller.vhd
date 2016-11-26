@@ -73,14 +73,14 @@ begin
 					elsif (commandIn(10 downto 8) = "000") then--BTEQZ
 						controllerOut <= "000001101010100100000";
 					elsif (commandIn(10 downto 8) = "100") then--MTSP
-						controllerOut <= "110101000000000000000";
+						controllerOut <= "110101000000111000000";
 					end if;
 				when "01101" =>		--LI
-					controllerOut <= "100100001001000000000";
+					controllerOut <= "100100001001111100000";
 				when "01110" =>		--CMPI
 					controllerOut <= "101000101011100000000";
 				when "01111" =>		--MOVE
-					controllerOut <= "100101000000000000000";
+					controllerOut <= "100101000000111000000";
 				when "10010" =>		--LW_SP
 					controllerOut <= "100110001011000110100";
 				when "10011" =>		--LW
@@ -115,9 +115,9 @@ begin
 					end if;
 				when "11110" =>
 					if (commandIn(7 downto 0) = "00000000") then 	--MFIH
-						controllerOut <= "100110100000000000000";
+						controllerOut <= "100110100000111000000";
 					elsif (commandIn(7 downto 0) = "00000001") then --MTIH
-						controllerOut <= "111000100000000000000";
+						controllerOut <= "111000100000111000000";
 					end if;
 				when others =>			--Error
 					controllerOut <= "000000000000000000000";

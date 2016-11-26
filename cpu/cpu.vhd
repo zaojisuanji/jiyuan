@@ -953,10 +953,14 @@ begin
 		r1 => r1,
 		r2 => r2,
 		r3 => r3,
-		r4 => r4,
-		r5 => r5,
-		r6 => r6,
-		r7 => r7,
+		r4(15 downto 4) => "000000000000",
+		r4(3 downto 0) => ReadReg2MuxOut,
+		r5(15 downto 3) => "0000000000000",
+		r5(2 downto 0) => rx,
+		r6(15 downto 3) => "0000000000000",
+		r6(2 downto 0) => ry,
+		r7(15 downto 1) => "000000000000000",
+		r7(0) => ControllerOut(13),
 	--font rom
 		romAddr => fontRomAddr,
 		romData => fontRomdata,
@@ -985,15 +989,20 @@ begin
 		);
 	
 	
-	process(dataToWB)
+	--process(dataToWB, ForwardA, ForwardB, rdToWB)
+	process(dataToWB, rdToWB, ExMemReadData2)
 	begin
-		led <= dataToWB;
+		--led(15 downto 14) <= ForwardA;
+		--led(13 downto 12) <= ForwardB;
+		led(15 downto 12) <= ExMemReadData2(3 downto 0);
+		led(11 downto 8) <= rdToWB;
+		led(7 downto 0) <= dataToWB(7 downto 0);
 	end process;
 	
 	--jing <= PCOut;
-	process(PCOut)
+	process(ReadData2, IdExReadData2)
 		begin
-		case PCOut(7 downto 4) is
+		case ReadData2(3 downto 0) is
 			when "0000" => digit1 <= "0111111";--0
 			when "0001" => digit1 <= "0000110";--1
 			when "0010" => digit1 <= "1011011";--2
@@ -1013,7 +1022,7 @@ begin
 			when others => digit1 <= "0000000";
 		end case;
 		
-		case PCOut(3 downto 0) is
+		case IdExReadData2(3 downto 0) is
 			when "0000" => digit2 <= "0111111";--0
 			when "0001" => digit2 <= "0000110";--1
 			when "0010" => digit2 <= "1011011";--2
