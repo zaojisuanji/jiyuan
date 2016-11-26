@@ -1,180 +1,187 @@
-V3 103
+V3 107
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ALU.vhd 2016/11/26.19:12:40 P.20131013
-EN work/ALU 1480158814 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ALU.vhd \
+EN work/ALU 1480164800 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ALU.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
       PB ieee/std_logic_arith 1381692177
-AR work/ALU/Behavioral 1480158815 \
-      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ALU.vhd EN work/ALU 1480158814
+AR work/ALU/Behavioral 1480164801 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ALU.vhd EN work/ALU 1480164800
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/AMux.vhd 2016/11/23.22:43:50 P.20131013
-EN work/AMux 1480158808 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/AMux.vhd \
+EN work/AMux 1480164794 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/AMux.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/AMux/Behavioral 1480158809 \
-      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/AMux.vhd EN work/AMux 1480158808
+AR work/AMux/Behavioral 1480164795 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/AMux.vhd EN work/AMux 1480164794
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/BMux.vhd 2016/11/24.16:56:55 P.20131013
-EN work/BMux 1480158810 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/BMux.vhd \
+EN work/BMux 1480164796 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/BMux.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/BMux/Behavioral 1480158811 \
-      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/BMux.vhd EN work/BMux 1480158810
+AR work/BMux/Behavioral 1480164797 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/BMux.vhd EN work/BMux 1480164796
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/clock.vhd 2016/11/26.14:50:53 P.20131013
-EN work/clock 1480158826 \
+EN work/clock 1480164812 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/clock.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/clock/Behavioral 1480158827 \
-      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/clock.vhd EN work/clock 1480158826
+AR work/clock/Behavioral 1480164813 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/clock.vhd EN work/clock 1480164812
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/Controller.vhd 2016/11/26.10:54:08 P.20131013
-EN work/Controller 1480158800 \
+EN work/Controller 1480164786 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/Controller.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/Controller/Behavioral 1480158801 \
+AR work/Controller/Behavioral 1480164787 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/Controller.vhd \
-      EN work/Controller 1480158800
-FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd 2016/11/26.18:36:16 P.20131013
-EN work/cpu 1480158842 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd \
+      EN work/Controller 1480164786
+FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd 2016/11/26.20:52:17 P.20131013
+EN work/cpu 1480164830 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/cpu/Behavioral 1480158843 \
-      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd EN work/cpu 1480158842 \
+AR work/cpu/Behavioral 1480164831 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd EN work/cpu 1480164830 \
       CP PCRegister CP PCAdder CP IfIdRegisters CP RdMux CP Controller CP Registers \
       CP ImmeExtendUnit CP IdExRegisters CP AMux CP BMux CP ForwardController CP ALU \
       CP ExMemRegisters CP MemWbRegisters CP HazardDetectionUnit CP PCMux \
       CP MemoryUnit CP Clock CP StructConflictUnit CP MFPCMux CP ReadReg1Mux \
-      CP ReadReg2Mux CP VGA_Controller CP digit CP fontRom
+      CP ReadReg2Mux CP VGA_Controller CP digit CP fontRom CP WriteDataMux
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ExMemRegisters.vhd 2016/11/26.18:50:14 P.20131013
-EN work/ExMemRegisters 1480158816 \
+EN work/ExMemRegisters 1480164802 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ExMemRegisters.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/ExMemRegisters/Behavioral 1480158817 \
+AR work/ExMemRegisters/Behavioral 1480164803 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ExMemRegisters.vhd \
-      EN work/ExMemRegisters 1480158816
-FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ForwardController.vhd 2016/11/25.20:49:14 P.20131013
-EN work/ForwardController 1480158812 \
+      EN work/ExMemRegisters 1480164802
+FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ForwardController.vhd 2016/11/26.20:52:54 P.20131013
+EN work/ForwardController 1480164798 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ForwardController.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/ForwardController/Behavioral 1480158813 \
+AR work/ForwardController/Behavioral 1480164799 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ForwardController.vhd \
-      EN work/ForwardController 1480158812
+      EN work/ForwardController 1480164798
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/HazardDetectionUnit.vhd 2016/11/26.18:24:38 P.20131013
-EN work/HazardDetectionUnit 1480158820 \
+EN work/HazardDetectionUnit 1480164806 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/HazardDetectionUnit.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/HazardDetectionUnit/Behavioral 1480158821 \
+AR work/HazardDetectionUnit/Behavioral 1480164807 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/HazardDetectionUnit.vhd \
-      EN work/HazardDetectionUnit 1480158820
+      EN work/HazardDetectionUnit 1480164806
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/IdExRegisters.vhd 2016/11/26.18:49:39 P.20131013
-EN work/IdExRegisters 1480158806 \
+EN work/IdExRegisters 1480164792 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/IdExRegisters.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/IdExRegisters/Behavioral 1480158807 \
+AR work/IdExRegisters/Behavioral 1480164793 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/IdExRegisters.vhd \
-      EN work/IdExRegisters 1480158806
+      EN work/IdExRegisters 1480164792
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/IfIdRegisters.vhd 2016/11/26.10:26:06 P.20131013
-EN work/IfIdRegisters 1480158796 \
+EN work/IfIdRegisters 1480164782 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/IfIdRegisters.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/IfIdRegisters/Behavioral 1480158797 \
+AR work/IfIdRegisters/Behavioral 1480164783 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/IfIdRegisters.vhd \
-      EN work/IfIdRegisters 1480158796
+      EN work/IfIdRegisters 1480164782
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ImmeExtendUnit.vhd 2016/11/24.16:53:02 P.20131013
-EN work/ImmeExtendUnit 1480158804 \
+EN work/ImmeExtendUnit 1480164790 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ImmeExtendUnit.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/ImmeExtendUnit/Behavioral 1480158805 \
+AR work/ImmeExtendUnit/Behavioral 1480164791 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ImmeExtendUnit.vhd \
-      EN work/ImmeExtendUnit 1480158804
+      EN work/ImmeExtendUnit 1480164790
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/digit.vhd 2015/12/01.11:57:10 P.20131013
-EN work/digit 1480158838 \
+EN work/digit 1480164824 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/digit.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/digit/digit_a 1480158839 \
+AR work/digit/digit_a 1480164825 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/digit.vhd \
-      EN work/digit 1480158838
+      EN work/digit 1480164824
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/fontRom.vhd 2015/12/01.14:03:20 P.20131013
-EN work/fontRom 1480158840 \
+EN work/fontRom 1480164826 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/fontRom.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/fontRom/fontRom_a 1480158841 \
+AR work/fontRom/fontRom_a 1480164827 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/fontRom.vhd \
-      EN work/fontRom 1480158840
+      EN work/fontRom 1480164826
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemoryUnit.vhd 2016/11/26.17:10:39 P.20131013
-EN work/MemoryUnit 1480158824 \
+EN work/MemoryUnit 1480164810 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemoryUnit.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/MemoryUnit/Behavioral 1480158825 \
+AR work/MemoryUnit/Behavioral 1480164811 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemoryUnit.vhd \
-      EN work/MemoryUnit 1480158824
+      EN work/MemoryUnit 1480164810
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemWbRegisters.vhd 2016/11/26.15:08:35 P.20131013
-EN work/MemWbRegisters 1480158818 \
+EN work/MemWbRegisters 1480164804 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemWbRegisters.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/MemWbRegisters/Behavioral 1480158819 \
+AR work/MemWbRegisters/Behavioral 1480164805 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemWbRegisters.vhd \
-      EN work/MemWbRegisters 1480158818
+      EN work/MemWbRegisters 1480164804
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MFPCMux.vhd 2016/11/23.18:44:45 P.20131013
-EN work/MFPCMux 1480158830 \
+EN work/MFPCMux 1480164816 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MFPCMux.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/MFPCMux/Behavioral 1480158831 \
+AR work/MFPCMux/Behavioral 1480164817 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MFPCMux.vhd \
-      EN work/MFPCMux 1480158830
+      EN work/MFPCMux 1480164816
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCAdder.vhd 2016/11/23.18:44:28 P.20131013
-EN work/PCAdder 1480158794 \
+EN work/PCAdder 1480164780 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCAdder.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/PCAdder/Behavioral 1480158795 \
+AR work/PCAdder/Behavioral 1480164781 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCAdder.vhd \
-      EN work/PCAdder 1480158794
+      EN work/PCAdder 1480164780
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd 2016/11/24.21:47:20 P.20131013
-EN work/PCMux 1480158822 \
+EN work/PCMux 1480164808 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/PCMux/Behavioral 1480158823 \
-      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd EN work/PCMux 1480158822
+AR work/PCMux/Behavioral 1480164809 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd EN work/PCMux 1480164808
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCRegister.vhd 2016/11/24.21:42:41 P.20131013
-EN work/PCRegister 1480158792 \
+EN work/PCRegister 1480164778 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCRegister.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/PCRegister/Behavioral 1480158793 \
+AR work/PCRegister/Behavioral 1480164779 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCRegister.vhd \
-      EN work/PCRegister 1480158792
+      EN work/PCRegister 1480164778
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/RdMux.vhd 2016/11/26.11:05:04 P.20131013
-EN work/RdMux 1480158798 \
+EN work/RdMux 1480164784 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/RdMux.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/RdMux/Behavioral 1480158799 \
-      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/RdMux.vhd EN work/RdMux 1480158798
+AR work/RdMux/Behavioral 1480164785 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/RdMux.vhd EN work/RdMux 1480164784
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg1Mux.vhd 2016/11/23.18:44:45 P.20131013
-EN work/ReadReg1Mux 1480158832 \
+EN work/ReadReg1Mux 1480164818 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg1Mux.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/ReadReg1Mux/Behavioral 1480158833 \
+AR work/ReadReg1Mux/Behavioral 1480164819 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg1Mux.vhd \
-      EN work/ReadReg1Mux 1480158832
+      EN work/ReadReg1Mux 1480164818
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg2Mux.vhd 2016/11/24.17:07:29 P.20131013
-EN work/ReadReg2Mux 1480158834 \
+EN work/ReadReg2Mux 1480164820 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg2Mux.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/ReadReg2Mux/Behavioral 1480158835 \
+AR work/ReadReg2Mux/Behavioral 1480164821 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg2Mux.vhd \
-      EN work/ReadReg2Mux 1480158834
+      EN work/ReadReg2Mux 1480164820
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/Registers.vhd 2016/11/26.17:17:46 P.20131013
-EN work/Registers 1480158802 \
+EN work/Registers 1480164788 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/Registers.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/Registers/Behavioral 1480158803 \
+AR work/Registers/Behavioral 1480164789 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/Registers.vhd \
-      EN work/Registers 1480158802
+      EN work/Registers 1480164788
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/StructConflictUnit.vhd 2016/11/23.18:44:45 P.20131013
-EN work/StructConflictUnit 1480158828 \
+EN work/StructConflictUnit 1480164814 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/StructConflictUnit.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/StructConflictUnit/Behavioral 1480158829 \
+AR work/StructConflictUnit/Behavioral 1480164815 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/StructConflictUnit.vhd \
-      EN work/StructConflictUnit 1480158828
+      EN work/StructConflictUnit 1480164814
 FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/VGA_Controller.vhd 2015/12/01.20:43:14 P.20131013
-EN work/VGA_Controller 1480158836 \
+EN work/VGA_Controller 1480164822 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/VGA_Controller.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
       PB ieee/std_logic_arith 1381692177
-AR work/VGA_Controller/behave 1480158837 \
+AR work/VGA_Controller/behave 1480164823 \
       FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/VGA_Controller.vhd \
-      EN work/VGA_Controller 1480158836
+      EN work/VGA_Controller 1480164822
+FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/WriteDataMux.vhd 2016/11/26.20:19:14 P.20131013
+EN work/WriteDataMux 1480164828 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/WriteDataMux.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/WriteDataMux/Behavioral 1480164829 \
+      FL D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/WriteDataMux.vhd \
+      EN work/WriteDataMux 1480164828

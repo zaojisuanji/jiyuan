@@ -286,12 +286,14 @@ architecture Behavioral of cpu is
 		--MemWbRegWrite : in std_logic;    --由"1111"判断没有源寄存器
 		
 		IdExALUsrcB : in std_logic;
+		IdExMemWrite : in std_logic;
 		
 		IdExReg1 : in std_logic_vector(3 downto 0);  --本条指令的源寄存器1
 		IdExReg2 : in std_logic_vector(3 downto 0);  --本条指令的源寄存器2
 		
 		ForwardA : out std_logic_vector(1 downto 0);
-		ForwardB : out std_logic_vector(1 downto 0)
+		ForwardB : out std_logic_vector(1 downto 0);
+		ForwardSW : out std_logic_vector(1 downto 0)
 
 	);
 	end component;
@@ -500,6 +502,21 @@ architecture Behavioral of cpu is
 	);
 	end component;
 	
+	component WriteDataMux
+	port(
+		--控制信号
+		ForwardSW : in std_logic_vector(1 downto 0);
+		--供选择数据
+		ReadData2 : in std_logic_vector(15 downto 0);
+		ExMemALUResult : in std_logic_vector(15 downto 0);	--上条指令的ALU结果
+		MemWbResult : in std_logic_vector(15 downto 0);	--上上条指令的结果
+		--选择结果输出
+		WriteDataOut : out std_logic_vector(15 downto 0)
+	);
+	end component;
+
+	
+	
 	--以下的signal都是“全局变量”，来自所有component的out
 	
 	
@@ -553,7 +570,7 @@ architecture Behavioral of cpu is
 	signal ExMemRead, ExMemWrite, ExMemToReg: std_logic;
 	
 	--ForwardController
-	signal ForwardA, ForwardB : std_logic_vector(1 downto 0);
+	signal ForwardA, ForwardB, ForwardSW : std_logic_vector(1 downto 0);
 	
 	--MemWbRegisters
 	signal rdToWB : std_logic_vector(3 downto 0);
@@ -604,6 +621,9 @@ architecture Behavioral of cpu is
 	--font rom
 	signal fontRomAddr : std_logic_vector(10 downto 0);
 	signal fontRomData : std_logic_vector(7 downto 0);
+	
+	--WriteDataMux
+	signal WriteDataOut : std_logic_vector(15 downto 0);
 	
 begin
 	u1 : PCRegister
@@ -774,12 +794,14 @@ begin
 			--MemWbRegWrite => WB,
 			
 			IdExALUsrcB => IdExALUSrcB,
+			IdExMemWrite => IdExMemWrite,
 			
 			IdExReg1 => IdExReg1,
 			IdExReg2 => IdExReg2,
 			
 			ForwardA => ForwardA,
-			ForwardB => ForWardB
+			ForwardB => ForWardB,
+			ForwardSW => ForWardSW
 			
 		);
 	
@@ -800,7 +822,7 @@ begin
 			
 			rdIn => IdExRd,
 			MFPCMuxIn => MFPCMuxOut,
-			readData2In => IdExReadData2,
+			readData2In => WriteDataOut,
 			
 			regWriteIn => IdExRegWrite,
 			memReadIn => IdExMemRead,
@@ -964,10 +986,10 @@ begin
 		r1 => r1,
 		r2 => r2,
 		r3 => r3,
-		r4 => ReadData1,
-		r5 => ReadData2,
-		r6 => AMuxOut,
-		r7 => BMuxOut,
+		r4 => r4,
+		r5 => r5,
+		r6 => r6,
+		r7 => r7,
 	--font rom
 		romAddr => fontRomAddr,
 		romData => fontRomdata,
@@ -995,14 +1017,26 @@ begin
 		douta => fontRomData
 		);
 	
+	u26 : WriteDataMux 
+	port map(
+			ForwardSW => ForwardSW,
+			
+			ReadData2 => IdExReadData2,
+			ExMemALUResult => ExMemALUResult,
+			MemWbResult => dataToWB,
+			
+			WriteDataOut => WriteDataOut
+		);
+
 	
-	process(dataToWB, ForwardA, ForwardB, rdToWB)
+	
+	process(dataToWB, ForwardA, ForwardSW, rdToWB)
 	--process(dataToWB, rdToWB, MemoryState, RegisterState)
 	begin
 		--led(15 downto 14) <= RegisterState;
 		--led(13 downto 12) <= MemoryState;
 		led(15 downto 14) <= ForwardA;
-		led(13 downto 12) <= ForwardB;
+		led(13 downto 12) <= ForwardSW;
 		led(11 downto 8) <= rdToWB;
 		led(7 downto 0) <= dataToWB(7 downto 0);
 	end process;

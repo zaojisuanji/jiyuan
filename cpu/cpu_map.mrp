@@ -9,25 +9,25 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sat Nov 26 19:14:02 2016
+Mapped Date    : Sat Nov 26 20:53:47 2016
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:   17
+Number of warnings:   16
 Logic Utilization:
-  Total Number Slice Registers:         613 out of  17,344    3%
-    Number used as Flip Flops:          531
-    Number used as Latches:              82
-  Number of 4 input LUTs:             2,449 out of  17,344   14%
+  Total Number Slice Registers:         598 out of  17,344    3%
+    Number used as Flip Flops:          532
+    Number used as Latches:              66
+  Number of 4 input LUTs:             2,451 out of  17,344   14%
 Logic Distribution:
-  Number of occupied Slices:          1,444 out of   8,672   16%
-    Number of Slices containing only related logic:   1,444 out of   1,444 100%
-    Number of Slices containing unrelated logic:          0 out of   1,444   0%
+  Number of occupied Slices:          1,450 out of   8,672   16%
+    Number of Slices containing only related logic:   1,450 out of   1,450 100%
+    Number of Slices containing unrelated logic:          0 out of   1,450   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       2,493 out of  17,344   14%
-    Number used as logic:             2,449
-    Number used as a route-thru:         44
+  Total Number of 4 input LUTs:       2,511 out of  17,344   14%
+    Number used as logic:             2,451
+    Number used as a route-thru:         60
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
@@ -36,11 +36,11 @@ Logic Distribution:
   Number of RAMB16s:                      1 out of      28    3%
   Number of BUFGMUXs:                     6 out of      24   25%
 
-Average Fanout of Non-Clock Nets:                4.02
+Average Fanout of Non-Clock Nets:                4.03
 
-Peak Memory Usage:  288 MB
-Total REAL time to MAP completion:  3 secs 
-Total CPU time to MAP completion:   3 secs 
+Peak Memory Usage:  287 MB
+Total REAL time to MAP completion:  4 secs 
+Total CPU time to MAP completion:   4 secs 
 
 NOTES:
 
@@ -121,9 +121,6 @@ WARNING:PhysDesignRules:372 - Gated clock. Clock net u12/ALUresult_not0001 is
 WARNING:PhysDesignRules:372 - Gated clock. Clock net u7/sign_or0000 is sourced
    by a combinatorial pin. This is not good design practice. Use the CE pin to
    control the loading of data into the flip-flop.
-WARNING:PhysDesignRules:372 - Gated clock. Clock net u10/BsrcOut_cmp_eq0000 is
-   sourced by a combinatorial pin. This is not good design practice. Use the CE
-   pin to control the loading of data into the flip-flop.
 
 Section 3 - Informational
 -------------------------

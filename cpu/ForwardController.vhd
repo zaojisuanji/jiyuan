@@ -38,18 +38,20 @@ entity ForwardController is
 		--MemWbRegWrite : in std_logic;    --由"1111"判断没有源寄存器
 		
 		IdExALUsrcB : in std_logic;
+		IdExMemWrite : in std_logic;
 		
 		IdExReg1 : in std_logic_vector(3 downto 0);  --本条指令的源寄存器1
 		IdExReg2 : in std_logic_vector(3 downto 0);  --本条指令的源寄存器2
 		
 		ForwardA : out std_logic_vector(1 downto 0);
-		ForwardB : out std_logic_vector(1 downto 0)
+		ForwardB : out std_logic_vector(1 downto 0);
+		ForwardSW : out std_logic_vector(1 downto 0)	--选择SW/SW_SP的WriteData
 	);
 end ForwardController;
 
 architecture Behavioral of ForwardController is
 begin
-	process(ExMemRd, MemWbRd, IdExALUsrcB, IdExReg1, IdExReg2)
+	process(ExMemRd, MemWbRd, IdExALUsrcB, IdExReg1, IdExReg2, IdExMemWrite)
 	begin
 		if (IdExReg1 = ExMemRd) then
 			ForwardA <= "01";
@@ -69,6 +71,18 @@ begin
 			else									--无冲突
 				ForwardB <= "00";
 			end if;
+		end if;
+		
+		if (IdExMemWrite = '1') then
+			if (IdExReg2 = ExMemRd) then
+				ForwardSW <= "01";
+			elsif (IdExReg2 = MemWbRd) then
+				ForwardSW <= "10";
+			else									--无冲突
+				ForwardSW <= "00";
+			end if;
+		else
+			ForwardSW <= "00";
 		end if;
 		
 	end process;
