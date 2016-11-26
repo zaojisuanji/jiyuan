@@ -94,7 +94,7 @@ begin
 				branchJudge <= '0';
 			when "1001" => --BEQZ, BTEQZ
 				--ALUresult  <= Asrc - Bsrc; 
-				if (Asrc = Bsrc) then
+				if (Asrc = zero) then
 					branchJudge <= '1';
 				else 
 					branchJudge <= '0';
@@ -103,7 +103,7 @@ begin
 				branchJudge <= '1';
 			when "1011" => --BNEZ
 				--ALUresult  <= Asrc - Bsrc; 
-				if (Asrc = Bsrc) then
+				if (Asrc = zero) then
 					branchJudge <= '0';
 				else 
 					branchJudge <= '1';

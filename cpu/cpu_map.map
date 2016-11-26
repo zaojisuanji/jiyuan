@@ -9,7 +9,7 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sat Nov 26 18:52:48 2016
+Mapped Date    : Sat Nov 26 19:14:02 2016
 
 Mapping design into LUTs...
 WARNING:MapLib:701 - Signal ram1Data<15> connected to top level port
@@ -70,14 +70,14 @@ Logic Utilization:
   Total Number Slice Registers:         613 out of  17,344    3%
     Number used as Flip Flops:          531
     Number used as Latches:              82
-  Number of 4 input LUTs:             2,444 out of  17,344   14%
+  Number of 4 input LUTs:             2,449 out of  17,344   14%
 Logic Distribution:
-  Number of occupied Slices:          1,442 out of   8,672   16%
-    Number of Slices containing only related logic:   1,442 out of   1,442 100%
-    Number of Slices containing unrelated logic:          0 out of   1,442   0%
+  Number of occupied Slices:          1,444 out of   8,672   16%
+    Number of Slices containing only related logic:   1,444 out of   1,444 100%
+    Number of Slices containing unrelated logic:          0 out of   1,444   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       2,488 out of  17,344   14%
-    Number used as logic:             2,444
+  Total Number of 4 input LUTs:       2,493 out of  17,344   14%
+    Number used as logic:             2,449
     Number used as a route-thru:         44
 
   The Slice Logic Distribution report is not meaningful if the design is
