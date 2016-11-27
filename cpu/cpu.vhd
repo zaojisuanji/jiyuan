@@ -62,7 +62,18 @@ entity cpu is
 			led : out std_logic_vector(15 downto 0);
 			
 			hs,vs : out std_logic;
-			redOut, greenOut, blueOut : out std_logic_vector(2 downto 0)
+			redOut, greenOut, blueOut : out std_logic_vector(2 downto 0);
+		
+			--Flash
+			flashAddr : out std_logic_vector(22 downto 0);		--flash地址线
+			flashData : inout std_logic_vector(15 downto 0);	--flash数据线
+			
+			flashByte : out std_logic;	--flash操作模式，常置'1'
+			flashVpen : out std_logic;	--flash写保护，常置'1'
+			flashRp : out std_logic;	--'1'表示flash工作，常置'1'
+			flashCe : out std_logic;	--flash使能
+			flashOe : out std_logic;	--flash读使能，'0'有效，每次读操作后置'1'
+			flashWe : out std_logic		--flash写使能
 	);
 			
 end cpu;
@@ -140,6 +151,8 @@ architecture Behavioral of cpu is
 		ram1_data : inout std_logic_vector(15 downto 0);--RAM1数据总线
 		ram2_data : inout std_logic_vector(15 downto 0);--RAM2数据总线
 		
+		ram2AddrOutput : out std_logic_vector(17 downto 0);
+		
 		ram1_en : out std_logic;		--RAM1使能，='1'禁止
 		ram1_oe : out std_logic;		--RAM1读使能，='1'禁止；
 		ram1_we : out std_logic;		--RAM1写使能，='1'禁止
@@ -147,7 +160,18 @@ architecture Behavioral of cpu is
 		ram2_oe : out std_logic;		--RAM2读使能，='1'禁止
 		ram2_we : out std_logic;		--RAM2写使能，='1'禁止
 		
-		MemoryState : out std_logic_vector(1 downto 0)
+		MemoryState : out std_logic_vector(1 downto 0);
+		
+		--Flash
+		flash_addr : out std_logic_vector(22 downto 0);		--flash地址线
+		flash_data : inout std_logic_vector(15 downto 0);	--flash数据线
+		
+		flash_byte : out std_logic;	--flash操作模式，常置'1'
+		flash_vpen : out std_logic;	--flash写保护，常置'1'
+		flash_rp : out std_logic;		--'1'表示flash工作，常置'1'
+		flash_ce : out std_logic;		--flash使能
+		flash_oe : out std_logic;		--flash读使能，'0'有效，每次读操作后置'1'
+		flash_we : out std_logic		--flash写使能
 	);
 	end component;
 	
@@ -625,6 +649,8 @@ architecture Behavioral of cpu is
 	--WriteDataMux
 	signal WriteDataOut : std_logic_vector(15 downto 0);
 	
+	signal ram2AddrOutput : std_logic_vector(17 downto 0);
+	
 begin
 	u1 : PCRegister
 	port map(	
@@ -911,12 +937,25 @@ begin
 			ram1_data => ram1Data,
 			ram2_data => ram2Data,
 			
+			ram2AddrOutput => ram2AddrOutput,
+			
 			ram1_en => ram1En,
 			ram1_oe => ram1Oe,
 			ram1_we => ram1We,
 			ram2_en => ram2En,
 			ram2_oe => ram2Oe,
-			ram2_we => ram2We
+			ram2_we => ram2We,
+			
+			
+			flash_addr => flashAddr,
+			flash_data => flashData,
+			
+			flash_byte => flashByte,
+			flash_vpen => flashVpen,
+			flash_rp => flashRp,
+			flash_ce => flashCe,
+			flash_oe => flashOe,
+			flash_we => flashWe
 		);
 
 	u18 : Clock
@@ -1029,22 +1068,23 @@ begin
 		);
 
 	
-	
-	process(dataToWB, ForwardA, ForwardSW, rdToWB)
+	process(flashData)
+	--process(dataToWB, ForwardA, ForwardSW, rdToWB)
 	--process(dataToWB, rdToWB, MemoryState, RegisterState)
 	begin
 		--led(15 downto 14) <= RegisterState;
 		--led(13 downto 12) <= MemoryState;
-		led(15 downto 14) <= ForwardA;
-		led(13 downto 12) <= ForwardSW;
-		led(11 downto 8) <= rdToWB;
-		led(7 downto 0) <= dataToWB(7 downto 0);
+		--led(15 downto 14) <= ForwardA;
+		--led(13 downto 12) <= ForwardSW;
+		--led(11 downto 8) <= rdToWB;
+		--led(7 downto 0) <= dataToWB(7 downto 0);
+		led <= flashData;
 	end process;
 	
 	--jing <= PCOut;
-	process(ReadReg1MuxOut, ReadReg2MuxOut)
+	process(ram2AddrOutput)
 		begin
-		case ReadReg1MuxOut is
+		case ram2AddrOutput(7 downto 4) is
 			when "0000" => digit1 <= "0111111";--0
 			when "0001" => digit1 <= "0000110";--1
 			when "0010" => digit1 <= "1011011";--2
@@ -1064,7 +1104,7 @@ begin
 			when others => digit1 <= "0000000";
 		end case;
 		
-		case ReadReg2MuxOut is
+		case ram2AddrOutput(3 downto 0) is
 			when "0000" => digit2 <= "0111111";--0
 			when "0001" => digit2 <= "0000110";--1
 			when "0010" => digit2 <= "1011011";--2

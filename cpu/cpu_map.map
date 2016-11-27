@@ -9,7 +9,7 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sat Nov 26 21:13:37 2016
+Mapped Date    : Sun Nov 27 18:38:07 2016
 
 Mapping design into LUTs...
 WARNING:MapLib:701 - Signal ram1Data<15> connected to top level port
@@ -29,66 +29,46 @@ WARNING:MapLib:701 - Signal ram1Data<9> connected to top level port ram1Data<9>
 WARNING:MapLib:701 - Signal ram1Data<8> connected to top level port ram1Data<8>
    has been removed.
 Running directed packing...
-WARNING:Pack:266 - The function generator u9/Mmux_AsrcOut_mux000014 failed to
-   merge with F5 multiplexer u12/ALUresult_mux0003<13>107_f5.  There is a
-   conflict for the FXMUX.  The design will exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator u12/Sh8_SW0 failed to merge with F5
-   multiplexer u12/Sh10_f5.  There is a conflict for the FXMUX.  The design will
-   exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator u12/Sh9_SW0 failed to merge with F5
-   multiplexer u12/Sh11_f5.  There is a conflict for the FXMUX.  The design will
-   exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator u12/Sh38_SW0 failed to merge with F5
-   multiplexer u12/Sh36_f5.  There is a conflict for the FXMUX.  The design will
-   exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator u12/Sh39_SW0 failed to merge with F5
-   multiplexer u12/Sh37_f5.  There is a conflict for the FXMUX.  The design will
-   exhibit suboptimal timing.
 Running delay-based LUT packing...
 Running related packing...
 Updating timing models...
-WARNING:PhysDesignRules:372 - Gated clock. Clock net u12/branchJudge_not0001 is
-   sourced by a combinatorial pin. This is not good design practice. Use the CE
-   pin to control the loading of data into the flip-flop.
-WARNING:PhysDesignRules:372 - Gated clock. Clock net u12/ALUresult_not0001 is
-   sourced by a combinatorial pin. This is not good design practice. Use the CE
-   pin to control the loading of data into the flip-flop.
-WARNING:PhysDesignRules:372 - Gated clock. Clock net u7/sign_or0000 is sourced
-   by a combinatorial pin. This is not good design practice. Use the CE pin to
-   control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:367 - The signal <dataReady_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <tbre_IBUF> is incomplete. The signal
+   does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <tsre_IBUF> is incomplete. The signal
+   does not drive any load pins in the design.
 
 Design Summary
 --------------
 
 Design Summary:
 Number of errors:      0
-Number of warnings:   16
+Number of warnings:   11
 Logic Utilization:
-  Total Number Slice Registers:         598 out of  17,344    3%
-    Number used as Flip Flops:          532
-    Number used as Latches:              66
-  Number of 4 input LUTs:             2,451 out of  17,344   14%
+  Number of Slice Flip Flops:           177 out of  17,344    1%
+  Number of 4 input LUTs:               494 out of  17,344    2%
 Logic Distribution:
-  Number of occupied Slices:          1,451 out of   8,672   16%
-    Number of Slices containing only related logic:   1,451 out of   1,451 100%
-    Number of Slices containing unrelated logic:          0 out of   1,451   0%
+  Number of occupied Slices:            341 out of   8,672    3%
+    Number of Slices containing only related logic:     341 out of     341 100%
+    Number of Slices containing unrelated logic:          0 out of     341   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       2,511 out of  17,344   14%
-    Number used as logic:             2,451
-    Number used as a route-thru:         60
+  Total Number of 4 input LUTs:         578 out of  17,344    3%
+    Number used as logic:               494
+    Number used as a route-thru:         84
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
 
-  Number of bonded IOBs:                114 out of     250   45%
+  Number of bonded IOBs:                159 out of     250   63%
   Number of RAMB16s:                      1 out of      28    3%
-  Number of BUFGMUXs:                     5 out of      24   20%
+  Number of BUFGMUXs:                     3 out of      24   12%
 
-Average Fanout of Non-Clock Nets:                4.03
+Average Fanout of Non-Clock Nets:                3.29
 
-Peak Memory Usage:  288 MB
-Total REAL time to MAP completion:  4 secs 
-Total CPU time to MAP completion:   3 secs 
+Peak Memory Usage:  276 MB
+Total REAL time to MAP completion:  2 secs 
+Total CPU time to MAP completion:   2 secs 
 
 NOTES:
 
