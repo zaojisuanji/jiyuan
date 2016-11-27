@@ -34,6 +34,7 @@ entity IfIdRegisters is
 	port(
 		rst : in std_logic;
 		clk : in std_logic;
+		flashFinished : in std_logic;
 		commandIn : in std_logic_vector(15 downto 0);
 		PCIn : in std_logic_vector(15 downto 0); 
 		IfIdKeep : in std_logic;		--LW数据冲突用
@@ -75,23 +76,25 @@ begin
 			tmpCommand 	<= (others => '0');
 			tmpPC 		<= (others => '0');
 		elsif (clk'event and clk = '1') then 
-			if (IfIdKeep = '1') then 
-				null;
-			elsif (SW_IfIdFlush = '1' or Branch_IfIdFlush = '1' or Jump_IfIdFlush = '1') then --IfIdFlush该不该放在时钟上升沿？？该不该放在IfIdKeep之后？？
-				tmpRx 		<= (others => '0');
-				tmpRy 		<= (others => '0');
-				tmpRz 		<= (others => '0');
-				tmpImme 		<= (others => '0');
-				tmpCommand 	<= (others => '0');
-				tmpPC 		<= (others => '0');
-			else
-				tmpRx 		<= commandIn(10 downto 8);
-				tmpRy 		<= commandIn(7 downto 5);
-				tmpRz 		<= commandIn(4 downto 2);
-				tmpImme 		<= commandIn(10 downto 0);
-				tmpCommand	<= commandIn;
-				tmpPC 		<= PCIn;
-			
+			if flashFinished = '1' then
+				if (IfIdKeep = '1') then 
+					null;
+				elsif (SW_IfIdFlush = '1' or Branch_IfIdFlush = '1' or Jump_IfIdFlush = '1') then --IfIdFlush该不该放在时钟上升沿？？该不该放在IfIdKeep之后？？
+					tmpRx 		<= (others => '0');
+					tmpRy 		<= (others => '0');
+					tmpRz 		<= (others => '0');
+					tmpImme 		<= (others => '0');
+					tmpCommand 	<= (others => '0');
+					tmpPC 		<= (others => '0');
+				else
+					tmpRx 		<= commandIn(10 downto 8);
+					tmpRy 		<= commandIn(7 downto 5);
+					tmpRz 		<= commandIn(4 downto 2);
+					tmpImme 		<= commandIn(10 downto 0);
+					tmpCommand	<= commandIn;
+					tmpPC 		<= PCIn;
+				
+				end if;
 			end if;
 		end if;
 	end process;

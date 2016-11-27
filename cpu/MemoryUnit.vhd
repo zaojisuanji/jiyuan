@@ -73,6 +73,8 @@ entity MemoryUnit is
 		
 		MemoryState : out std_logic_vector(1 downto 0);
 		
+		flashFinished : out std_logic := '0';
+		
 		--Flash
 		flash_addr : out std_logic_vector(22 downto 0);		--flash地址线
 		flash_data : inout std_logic_vector(15 downto 0);	--flash数据线
@@ -94,7 +96,7 @@ architecture Behavioral of MemoryUnit is
 	signal state : std_logic_vector(1 downto 0) := "00";	--访存、串口操作的状态
 	signal rflag : std_logic := '0';		--rflag='1'代表把串口数据线（ram1_data）置高阻，用于节省状态的控制
 	
-	signal flash_finished : std_logic_vector(1 downto 0) := "00";
+	signal flash_finished : std_logic := '0';
 	type FLASH_STATE is (STATE1, STATE2, STATE3, STATE4, STATE5, STATE6);
 	signal flashstate : FLASH_STATE := STATE1;	--从flash载入指令到ram2的状态
 	signal current_addr : std_logic_vector(15 downto 0) := (others => '0');	--flash当前要读的地址
@@ -103,18 +105,18 @@ architecture Behavioral of MemoryUnit is
 begin
 	
 	--ram1专门作串口
-	ram1_en <= '1';
-	ram1_oe <= '1';
-	ram1_we <= '1';
-	ram1_addr(17 downto 0) <= (others => '0');
+	--ram1_en <= '1';
+	--ram1_oe <= '1';
+	--ram1_we <= '1';
+	--ram1_addr(17 downto 0) <= (others => '0');
 	--ram2读写内存
-	ram2_en <= '0';
-	ram2_addr(17 downto 16) <= "00";
+	--ram2_en <= '0';
+	--ram2_addr(17 downto 16) <= "00";
 	--flash常置
-	flash_byte <= '1';
-	flash_vpen <= '1';
-	flash_rp <= '1';
-	flash_ce <= '0';
+	--flash_byte <= '1';
+	--flash_vpen <= '1';
+	--flash_rp <= '1';
+	--flash_ce <= '0';
 	
 	process(clk, rst)
 	begin
@@ -132,13 +134,28 @@ begin
 			dataOut <= (others => '0');
 			insOut <= (others => '0');
 			
-			state <= "11";			--rst之谜……
+			state <= "00";			--rst之谜……
 			flashstate <= STATE1;
-			flash_finished <= "00";
+			flash_finished <= '0';
 			current_addr <= (others => '0');
 			
 		elsif (clk'event and clk = '1') then 
-			if (flash_finished = "10") then			--从flash载入kernel指令到ram2已完成
+			if (flash_finished = '1') then			--从flash载入kernel指令到ram2已完成
+				flash_byte <= '1';
+				flash_vpen <= '1';
+				flash_rp <= '1';
+				flash_ce <= '1';	--禁止flash
+				ram1_en <= '1';
+				ram1_oe <= '1';
+				ram1_we <= '1';
+				ram1_addr(17 downto 0) <= (others => '0');
+				ram2_en <= '0';
+				ram2_addr(17 downto 16) <= "00";
+				ram2_oe <= '1';
+				ram2_we <= '1';
+				wrn <= '1';
+				rdn <= '1';
+				
 				case state is 
 					when "00" =>
 						state <= "01";
@@ -211,8 +228,9 @@ begin
 				end case;
 				
 			else				--从flash载入kernel指令到ram2尚未完成，则继续载入
-				if (cnt = 1000000) then
+				if (cnt = 1000) then
 					cnt := 0;
+					
 					case flashstate is
 						when STATE1 =>		--WE置0
 							ram2_en <= '0';
@@ -259,11 +277,11 @@ begin
 							
 					end case;
 					
-					if (current_addr > x"0005") then
-						flash_finished <= "01";
+					if (current_addr > x"0250") then
+						flash_finished <= '1';
 					end if;
 				else 
-					if (cnt < 1000000) then
+					if (cnt < 1000) then
 						cnt := cnt + 1;
 					end if;
 				end if;	--cnt = 50
@@ -275,6 +293,7 @@ begin
 	end process;
 	
 	MemoryState <= state;
+	flashFinished <= flash_finished;
 	
 end Behavioral;
 

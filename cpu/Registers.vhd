@@ -41,6 +41,8 @@ entity Registers is
 			WriteData : in std_logic_vector(15 downto 0);  --由WB阶段传回：写目的寄存器的值
 			RegWrite : in std_logic;					--由WB阶段传回：RegWrite（写目的寄存器）控制信号
 			
+			flashFinished : in std_logic;
+			
 			r0Out, r1Out, r2Out,r3Out,r4Out,r5Out,r6Out,r7Out : out std_logic_vector(15 downto 0);
 			
 			ReadData1 : out std_logic_vector(15 downto 0); --读出的寄存器1的值
@@ -89,66 +91,70 @@ begin
 			
 		elsif (clk'event and clk = '1') then
 			
-			case state is
-				when "00" =>
-					state <= "01";
-						
-				when "01" =>
-					state <= "10";
+			if flashFinished = '1' then
+			
+				case state is
+					when "00" =>
+						state <= "01";
+							
+					when "01" =>
+						state <= "10";
+					
+					when "10" =>						--写回
+						if (RegWrite = '1') then 
+							case WriteReg is 
+								when "0000" => r0 <= WriteData;
+								when "0001" => r1 <= WriteData;
+								when "0010" => r2 <= WriteData;
+								when "0011" => r3 <= WriteData;
+								when "0100" => r4 <= WriteData;
+								when "0101" => r5 <= WriteData;
+								when "0110" => r6 <= WriteData;
+								when "0111" => r7 <= WriteData;
+								when "1000" => SP <= WriteData;
+								when "1001" => IH <= WriteData;
+								when "1010" => T <= WriteData;
+								when others =>
+							end case;
+						end if;
+						state <= "11";
 				
-				when "10" =>						--写回
-					if (RegWrite = '1') then 
-						case WriteReg is 
-							when "0000" => r0 <= WriteData;
-							when "0001" => r1 <= WriteData;
-							when "0010" => r2 <= WriteData;
-							when "0011" => r3 <= WriteData;
-							when "0100" => r4 <= WriteData;
-							when "0101" => r5 <= WriteData;
-							when "0110" => r6 <= WriteData;
-							when "0111" => r7 <= WriteData;
-							when "1000" => SP <= WriteData;
-							when "1001" => IH <= WriteData;
-							when "1010" => T <= WriteData;
+					when "11" =>						--读寄存器
+						case ReadReg1In is 
+							when "0000" => ReadData1 <= r0;
+							when "0001" => ReadData1 <= r1;
+							when "0010" => ReadData1 <= r2;
+							when "0011" => ReadData1 <= r3;
+							when "0100" => ReadData1 <= r4;
+							when "0101" => ReadData1 <= r5;
+							when "0110" => ReadData1 <= r6;
+							when "0111" => ReadData1 <= r7;
+							when "1000" => ReadData1 <= SP;
+							when "1001" => ReadData1 <= IH;
+							when "1010" => ReadData1 <= T;
 							when others =>
 						end case;
-					end if;
-					state <= "11";
-			
-				when "11" =>						--读寄存器
-					case ReadReg1In is 
-						when "0000" => ReadData1 <= r0;
-						when "0001" => ReadData1 <= r1;
-						when "0010" => ReadData1 <= r2;
-						when "0011" => ReadData1 <= r3;
-						when "0100" => ReadData1 <= r4;
-						when "0101" => ReadData1 <= r5;
-						when "0110" => ReadData1 <= r6;
-						when "0111" => ReadData1 <= r7;
-						when "1000" => ReadData1 <= SP;
-						when "1001" => ReadData1 <= IH;
-						when "1010" => ReadData1 <= T;
-						when others =>
-					end case;
-					
-					case ReadReg2In is
-						when "0000" => ReadData2 <= r0;
-						when "0001" => ReadData2 <= r1;
-						when "0010" => ReadData2 <= r2;
-						when "0011" => ReadData2 <= r3;
-						when "0100" => ReadData2 <= r4;
-						when "0101" => ReadData2 <= r5;
-						when "0110" => ReadData2 <= r6;
-						when "0111" => ReadData2 <= r7;
-						when others =>
-					end case;
-					state <= "00";
+						
+						case ReadReg2In is
+							when "0000" => ReadData2 <= r0;
+							when "0001" => ReadData2 <= r1;
+							when "0010" => ReadData2 <= r2;
+							when "0011" => ReadData2 <= r3;
+							when "0100" => ReadData2 <= r4;
+							when "0101" => ReadData2 <= r5;
+							when "0110" => ReadData2 <= r6;
+							when "0111" => ReadData2 <= r7;
+							when others =>
+						end case;
+						state <= "00";
 
+					
+					when others =>
+						state <= "00";
+					
+				end case;
 				
-				when others =>
-					state <= "00";
-				
-			end case;
+			end if;
 		end if;
 	end process;
 	

@@ -161,6 +161,7 @@ architecture Behavioral of cpu is
 		ram2_we : out std_logic;		--RAM2写使能，='1'禁止
 		
 		MemoryState : out std_logic_vector(1 downto 0);
+		flashFinished : out std_logic;
 		
 		--Flash
 		flash_addr : out std_logic_vector(22 downto 0);		--flash地址线
@@ -278,6 +279,7 @@ architecture Behavioral of cpu is
 	port(
 		clk : in std_logic;
 		rst : in std_logic;
+		flashFinished : in std_logic;
 		--数据输入
 		rdIn : in std_logic_vector(3 downto 0);
 		MFPCMuxIn : in std_logic_vector(15 downto 0);
@@ -343,7 +345,7 @@ architecture Behavioral of cpu is
 	port(
 		clk : in std_logic;
 		rst : in std_logic;
-		
+		flashFinished : in std_logic;
 		LW_IdExFlush : in std_logic;		--LW数据冲突用
 		Branch_IdExFlush : in std_logic;	--跳转时用
 		Jump_IdExFlush : in std_logic;	--JR跳转时用
@@ -391,6 +393,8 @@ architecture Behavioral of cpu is
 	port(
 		rst : in std_logic;
 		clk : in std_logic;
+		flashFinished : in std_logic;
+		
 		commandIn : in std_logic_vector(15 downto 0);
 		PCIn : in std_logic_vector(15 downto 0); 
 		IfIdKeep : in std_logic;				--LW数据冲突用
@@ -422,6 +426,7 @@ architecture Behavioral of cpu is
 		port(
 			clk : in std_logic;
 			rst : in std_logic;
+			flashFinished : in std_logic;
 			--数据
 			readMemDataIn : in std_logic_vector(15 downto 0);	--DataMemory读出的数据
 			ALUResultIn : in std_logic_vector(15 downto 0);		--ALU的计算结果
@@ -448,6 +453,7 @@ architecture Behavioral of cpu is
 	component PCRegister
 		port(	
 			rst,clk : in std_logic;
+			flashFinished : in std_logic;
 			PCKeep : in std_logic;		--由HazardDetectionUnit产生的控制信号
 			PCIn : in std_logic_vector(15 downto 0);		--取PCMux的输出值（选出来的PC值）
 			PCOut : out std_logic_vector(15 downto 0)		--送给IM去取指的PC
@@ -496,6 +502,7 @@ architecture Behavioral of cpu is
 		port(
 			clk : in std_logic;
 			rst : in std_logic;
+			flashFinished : in std_logic;
 			
 			ReadReg1In : in std_logic_vector(3 downto 0);  --"0XXX"代表R0~R7，"1000"=SP,"1001"=IH, "1010"=T
 			ReadReg2In : in std_logic_vector(3 downto 0);  --"0XXX"代表R0~R7
@@ -650,12 +657,14 @@ architecture Behavioral of cpu is
 	signal WriteDataOut : std_logic_vector(15 downto 0);
 	
 	signal ram2AddrOutput : std_logic_vector(17 downto 0);
+	signal flashFinished : std_logic;
 	
 begin
 	u1 : PCRegister
 	port map(	
 			rst => rst,
 			clk => clk_4,
+			flashFinished => flashFinished,
 			PCKeep => PCKeep,
 			PCIn => PCMuxOut,
 			PCOut => PCOut
@@ -671,6 +680,7 @@ begin
 	port map(
 			rst => rst,
 			clk => clk_4,
+			flashFinished => flashFinished,
 			commandIn => IMInsOut,
 			PCIn => PCAddOne,
 			IfIdKeep => IfIdKeep,
@@ -719,6 +729,8 @@ begin
 			WriteData => dataToWB,
 			RegWrite => MemWbRegWrite,
 			
+			flashFinished => flashFinished,
+			
 			r0Out => r0,
 			r1Out => r1,
 			r2Out => r2,
@@ -746,6 +758,7 @@ begin
 	port map(
 			clk => clk_4,
 			rst => rst,
+			flashFinished => flashFinished,
 			
 			LW_IdExFlush => LW_IdExFlush,
 			Branch_IdExFlush => BranchJudge,
@@ -845,6 +858,7 @@ begin
 	port map(
 			clk => clk_4,
 			rst => rst,
+			flashFinished => flashFinished,
 			
 			rdIn => IdExRd,
 			MFPCMuxIn => MFPCMuxOut,
@@ -869,6 +883,7 @@ begin
 	port map(
 			clk => clk_4,
 			rst => rst,
+			flashFinished => flashFinished,
 			
 			readMemDataIn => DMDataOut,
 			ALUResultIn => ExMemALUResult,
@@ -931,6 +946,7 @@ begin
 			insOut => IMInsOut,
 			
 			MemoryState => MemoryState,
+			flashFinished => flashFinished,
 			
 			ram1_addr => ram1Addr,
 			ram2_addr => ram2Addr,
@@ -1068,17 +1084,21 @@ begin
 		);
 
 	
-	process(flashData)
+	process(flashData, MemoryState, RegisterState, ExMemWrite, ExMemRead)
 	--process(dataToWB, ForwardA, ForwardSW, rdToWB)
 	--process(dataToWB, rdToWB, MemoryState, RegisterState)
 	begin
-		--led(15 downto 14) <= RegisterState;
-		--led(13 downto 12) <= MemoryState;
+		led(15 downto 14) <= RegisterState;
+		led(13 downto 12) <= MemoryState;
 		--led(15 downto 14) <= ForwardA;
 		--led(13 downto 12) <= ForwardSW;
 		--led(11 downto 8) <= rdToWB;
 		--led(7 downto 0) <= dataToWB(7 downto 0);
-		led <= flashData;
+		
+		led(11 downto 2) <= (others => '0');
+		led(1) <= ExMemWrite;
+		led(0) <= ExMemRead;
+		--led <= flashData;
 	end process;
 	
 	--jing <= PCOut;

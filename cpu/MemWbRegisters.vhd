@@ -34,6 +34,7 @@ entity MemWbRegisters is
 	port(
 		clk : in std_logic;
 		rst : in std_logic;
+		flashFinished : in std_logic;
 		--数据
 		readMemDataIn : in std_logic_vector(15 downto 0);	--DataMemory读出的数据
 		ALUResultIn : in std_logic_vector(15 downto 0);		--ALU的计算结果
@@ -58,6 +59,7 @@ begin
 			rdOut <= "1110";
 			regWriteOut <= '0';
 		elsif (clk'event and clk = '1') then
+		if(flashFinished = '1') then
 			rdOut <= rdIn;
 			regWriteOut <= regWriteIn;
 			if (memToRegIn = '0') then
@@ -65,6 +67,7 @@ begin
 			elsif (memToRegIn = '1') then
 				dataToWB <= readMemDataIn;
 			end if;
+		end if;
 		end if;
 	end process;
 end Behavioral;

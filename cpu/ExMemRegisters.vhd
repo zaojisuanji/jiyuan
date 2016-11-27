@@ -34,6 +34,9 @@ entity ExMemRegisters is
 	port(
 		clk : in std_logic;
 		rst : in std_logic;
+		
+		flashFinished : in std_logic;
+
 		-- ˝æ› ‰»Î
 		rdIn : in std_logic_vector(3 downto 0);
 		MFPCMuxIn : in std_logic_vector(15 downto 0);
@@ -72,6 +75,7 @@ begin
 			memToRegOut <= '0';
 
 		elsif (clk'event and clk = '1') then
+		if(flashFinished = '1') then
 			rdOut <= rdIn;
 			ALUResultOut <= MFPCMuxIn;
 			readData2Out <= readData2In;
@@ -80,7 +84,7 @@ begin
 			memReadOut <= memReadIn;
 			memWriteOut <= memWriteIn;
 			memToRegOut <= memToRegIn;
-			
+		end if;
 		end if;
 	end process;
 end Behavioral;

@@ -34,7 +34,8 @@ entity IdExRegisters is
 	port(
 		clk : in std_logic;
 		rst : in std_logic;
-		
+		flashFinished : in std_logic;
+
 		LW_IdExFlush : in std_logic;		--LW数据冲突用
 		Branch_IdExFlush : in std_logic;	--跳转时用
 		Jump_IdExFlush : in std_logic;	--JR跳转时用
@@ -101,6 +102,7 @@ begin
 			ALUOpOut <= "0000";
 			
 		elsif (clk'event and clk = '1') then
+		if(flashFinished = '1') then
 			if (LW_IdExFlush = '1' or Branch_IdExFlush = '1' or Jump_IdExFlush = '1' or SW_IdExFlush = '1') then
 				
 				PCOut <= (others => '0');
@@ -139,6 +141,7 @@ begin
 				jumpOut <= jumpIn;
 				ALUOpOut <= ALUOpIn;
 			end if;
+		end if;
 		end if;
 	end process;
 end Behavioral;
