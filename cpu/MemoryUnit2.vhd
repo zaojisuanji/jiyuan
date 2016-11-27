@@ -65,15 +65,15 @@ entity MemoryUnit is
 		
 		ram2_en : out std_logic;		--RAM2使能，='1'禁止，永远等于'0'
 		ram2_oe : out std_logic;		--RAM2读使能，='1'禁止
-		ram2_we : out std_logic			--RAM2写使能，='1'禁止
+		ram2_we : out std_logic;		--RAM2写使能，='1'禁止
 		
-		
+		MemoryState : out std_logic_vector(1 downto 0)
 	);
 end MemoryUnit;
 
 architecture Behavioral of MemoryUnit is
 	signal state : std_logic_vector(1 downto 0) := "00";
-	signal rflag : std_logic := '0';		--是什么？黑科技般的存在
+	signal rflag : std_logic := '0';		--rflag='1'代表把串口数据线（ram1_data）置高阻，用于节省状态的控制
 begin
 	
 	--ram1专门作串口
@@ -101,10 +101,11 @@ begin
 			dataOut <= (others => '0');
 			insOut <= (others => '0');
 			
-			state <= "00";
+			state <= "11";
 			
 		elsif clk'event and clk = '1' then 
-			
+		--elsif (clk'event and clk = '1') or (clk'event and clk = '0') then
+		
 			case state is 
 				when "00" =>
 					state <= "01";
@@ -135,10 +136,10 @@ begin
 							dataOut(15 downto 2) <= (others => '0');
 							dataOut(1) <= data_ready;
 							dataOut(0) <= tsre and tbre;
-							if (rflag = '0') then
-								ram1_data <= (others => 'Z');
-								rflag <= '1';
-							end if;
+							if (rflag = '0') then	--读串口状态时意味着接下来可能要读/写串口数据
+								ram1_data <= (others => 'Z');	--故预先把ram1_data置为高阻
+								rflag <= '1';	--如果接下来要读，则可直接把rdn置'0'，省一个状态；要写，则rflag='0'，正常走写串口的流程
+							end if;	
 						elsif (ramAddr = x"BF00") then	--准备读串口数据
 							rflag <= '0';
 							rdn <= '0';
@@ -177,5 +178,8 @@ begin
 			end case;
 		end if;
 	end process;
+	
+	MemoryState <= state;
+	
 end Behavioral;
 

@@ -72,8 +72,12 @@ entity MemoryUnit is
 end MemoryUnit;
 
 architecture Behavioral of MemoryUnit is
-	signal state : std_logic_vector(1 downto 0) := "00";
-	signal rflag : std_logic := '0';		--是什么？黑科技般的存在
+	--signal state : std_logic_vector(1 downto 0) := "00";
+	shared variable state : std_logic_vector(1 downto 0) := "01";
+	signal stateHigh : std_logic := '0';
+	signal stateLow : std_logic := '1';
+	
+	signal rflag : std_logic := '0';		--rflag='1'代表把串口数据线（ram1_data）置高阻，用于节省状态的控制
 begin
 	
 	--ram1专门作串口
@@ -87,7 +91,34 @@ begin
 	
 	process(clk, rst)
 	begin
-		if rst = '0' then
+		if (rst = '0') then
+			stateHigh <= '0';
+		elsif (clk'event and clk = '1') then
+			if (stateHigh = '1') then
+				stateHigh <= '0';
+			else
+				stateHigh <= '1';
+			end if;
+		end if;
+	end process;
+	
+	
+	process(clk, rst)
+	begin
+		if (rst = '0') then
+			stateLow <= '1';
+		elsif (clk'event and clk = '0') then
+			if (stateLow = '1') then
+				stateLow <= '0';
+			else
+				stateLow <= '1';
+			end if;
+		end if;
+	end process;
+	
+	process(rst, stateHigh, stateLow)
+	begin
+		if (rst = '0') then
 			
 			ram2_oe <= '1';
 			ram2_we <= '1';
@@ -101,23 +132,24 @@ begin
 			dataOut <= (others => '0');
 			insOut <= (others => '0');
 			
-			state <= "11";
+			--state <= "11";
 			
-		elsif clk'event and clk = '1' then 
-			
+		--elsif clk'event and clk = '1' then 
+		else
+			state := stateHigh & stateLow;
 			case state is 
 				when "00" =>
-					state <= "01";
+					null;
 					
-				when "01" =>		--准备读指令
+				when "10" =>		--准备读指令
 					ram2_data <= (others => 'Z');
 					ram2_addr(15 downto 0) <= PC;
 					wrn <= '1';
 					rdn <= '1';
 					ram2_oe <= '0';
-					state <= "10";
 					
-				when "10" =>		--读出指令，准备读/写 串口/内存
+					
+				when "11" =>		--读出指令，准备读/写 串口/内存
 					ram2_oe <= '1';
 					insOut <= ram2_data;
 					if (MemWrite = '1') then	--如果要写
@@ -135,10 +167,10 @@ begin
 							dataOut(15 downto 2) <= (others => '0');
 							dataOut(1) <= data_ready;
 							dataOut(0) <= tsre and tbre;
-							if (rflag = '0') then
-								ram1_data <= (others => 'Z');
-								rflag <= '1';
-							end if;
+							if (rflag = '0') then	--读串口状态时意味着接下来可能要读/写串口数据
+								ram1_data <= (others => 'Z');	--故预先把ram1_data置为高阻
+								rflag <= '1';	--如果接下来要读，则可直接把rdn置'0'，省一个状态；要写，则rflag='0'，正常走写串口的流程
+							end if;	
 						elsif (ramAddr = x"BF00") then	--准备读串口数据
 							rflag <= '0';
 							rdn <= '0';
@@ -148,9 +180,9 @@ begin
 							ram2_oe <= '0';
 						end if;
 					end if;	
-					state <= "11";
 					
-				when "11" =>		--读/写 串口/内存
+					
+				when "01" =>		--读/写 串口/内存
 					if(MemWrite = '1') then		--写
 						if (ramAddr = x"BF00") then		--写串口
 							wrn <= '1';
@@ -169,10 +201,10 @@ begin
 							dataOut <= ram2_data;
 						end if;
 					end if;
-					state <= "00";
+					
 					
 				when others =>
-					state <= "00";
+					
 					
 			end case;
 		end if;

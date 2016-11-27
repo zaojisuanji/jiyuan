@@ -33,7 +33,7 @@ entity cpu is
 	port(
 			rst : in std_logic; --reset
 			clkIn : in std_logic; --时钟源  默认为50M  可以通过修改绑定管脚来改变
-			--clk_50 : in std_logic;
+			clk_50 : in std_logic;
 			
 			--串口
 			dataReady : in std_logic;   
@@ -567,7 +567,9 @@ architecture Behavioral of cpu is
 	signal ExMemALUResult : std_logic_vector(15 downto 0);	--这是MFPCMux选择后的结果
 	
 	signal ExMemRegWrite : std_logic;
-	signal ExMemRead, ExMemWrite, ExMemToReg: std_logic;
+	signal ExMemRead: std_logic := '0';
+	signal ExMemWrite: std_logic := '0';
+	signal ExMemToReg: std_logic := '0';
 	
 	--ForwardController
 	signal ForwardA, ForwardB, ForwardSW : std_logic_vector(1 downto 0);
@@ -999,20 +1001,20 @@ begin
 		tdata => dataT1(3 downto 0),
 	--Control Signals
 		reset	=> rst,
-		CLK_in => clkIn
+		CLK_in => clk_50
 	);		
 	--r0 <= "0110101010010111";
 	--r1 <= "1011100010100110";
 	u24 : digit
 	port map(
-			clkA => clkIn,
+			clkA => clk_50,
 			addra => digitRomAddr,
 			douta => digitRomData
 	);
 	
 	u25 : fontRom
 	port map(
-		clka => clkIn,
+		clka => clk_50,
 		addra => fontRomAddr,
 		douta => fontRomData
 		);
@@ -1030,13 +1032,13 @@ begin
 
 	
 	
-	process(dataToWB, ForwardA, ForwardSW, rdToWB)
-	--process(dataToWB, rdToWB, MemoryState, RegisterState)
+	--process(dataToWB, ForwardA, ForwardSW, rdToWB)
+	process(dataToWB, rdToWB, MemoryState, RegisterState)
 	begin
-		--led(15 downto 14) <= RegisterState;
-		--led(13 downto 12) <= MemoryState;
-		led(15 downto 14) <= ForwardA;
-		led(13 downto 12) <= ForwardSW;
+		led(15 downto 14) <= RegisterState;
+		led(13 downto 12) <= MemoryState;
+		--led(15 downto 14) <= ForwardA;
+		--led(13 downto 12) <= ForwardSW;
 		led(11 downto 8) <= rdToWB;
 		led(7 downto 0) <= dataToWB(7 downto 0);
 	end process;

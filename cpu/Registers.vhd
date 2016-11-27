@@ -66,11 +66,43 @@ architecture Behavioral of Registers is
 	signal IH : std_logic_vector(15 downto 0);
 	signal SP : std_logic_vector(15 downto 0);
 	
-	signal state : std_logic_vector(1 downto 0) := "00";
+	--signal state : std_logic_vector(1 downto 0) := "00";
+	signal stateHigh : std_logic := '0';
+	signal stateLow : std_logic := '1';
+	shared variable state : std_logic_vector(1 downto 0) := "01";
 
 begin
 	process(clk, rst)
 	begin
+		if (rst = '0') then
+			stateHigh <= '0';
+		elsif (clk'event and clk = '1') then
+			if (stateHigh = '1') then
+				stateHigh <= '0';
+			else
+				stateHigh <= '1';
+			end if;
+		end if;
+	end process;
+	
+	
+	process(clk, rst)
+	begin
+		if (rst = '0') then
+			stateLow <= '1';
+		elsif (clk'event and clk = '0') then
+			if (stateLow = '1') then
+				stateLow <= '0';
+			else
+				stateLow <= '1';
+			end if;
+		end if;
+	end process;
+	
+	process(rst, stateHigh, stateLow)	--×´Ì¬»ú1£º 00 --raise-> 10 --fall-> 11 --raise-> 01 --fall-> 00
+													--×´Ì¬»ú2£º 00 --fall-> 01 --raise-> 11 --fall-> 10 --raise-> 00
+	begin
+		
 		if (rst = '0') then
 			r0 <= (others => '0');
 			r1 <= (others => '0');
@@ -85,18 +117,18 @@ begin
 			SP <= (others => '0');
 			ReadData1 <= (others => '0');
 			ReadData2 <= (others => '0');
-			state <= "00";
+			--state <= "00";
 			
-		elsif (clk'event and clk = '1') then
-			
+		else
+			state := stateHigh & stateLow;
 			case state is
 				when "00" =>
-					state <= "01";
-						
-				when "01" =>
-					state <= "10";
+					null;
+					
+				when "10" =>
+					null;
 				
-				when "10" =>						--Ð´»Ø
+				when "11" =>						--Ð´»Ø
 					if (RegWrite = '1') then 
 						case WriteReg is 
 							when "0000" => r0 <= WriteData;
@@ -113,9 +145,8 @@ begin
 							when others =>
 						end case;
 					end if;
-					state <= "11";
 			
-				when "11" =>						--¶Á¼Ä´æÆ÷
+				when "01" =>						--¶Á¼Ä´æÆ÷
 					case ReadReg1In is 
 						when "0000" => ReadData1 <= r0;
 						when "0001" => ReadData1 <= r1;
@@ -142,13 +173,12 @@ begin
 						when "0111" => ReadData2 <= r7;
 						when others =>
 					end case;
-					state <= "00";
-
 				
 				when others =>
-					state <= "00";
+					
 				
 			end case;
+		
 		end if;
 	end process;
 	
@@ -166,6 +196,7 @@ begin
 	r6Out <= r6;
 	r7Out <= r7;
 	
+	--RegisterState <= state;
 	RegisterState <= state;
 	
 end Behavioral;

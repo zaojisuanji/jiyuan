@@ -24,14 +24,14 @@ entity VGA_Controller is
 		tdata : in std_logic_vector(3 downto 0);
 	--Control Signals
 		reset	: in  std_logic;
-		CLK_in	: in  std_logic			--100M时钟输入
+		CLK_in	: in  std_logic			--50M时钟输入
 	);		
 end entity VGA_Controller;
 
 architecture behave of VGA_Controller is
 
 --VGA
-	signal CLK,CLK_2,CLK_4	: std_logic;
+	signal CLK,CLK_2	: std_logic;
 	signal rt,gt,bt	: std_logic_vector (2 downto 0);
 	signal hst,vst	: std_logic;
 	signal x		: std_logic_vector (9 downto 0);		--X坐标
@@ -51,13 +51,7 @@ CLK<=CLK_2;
 			CLK_2 <= not CLK_2;
 		end if;
 	end process;
-	
-	process (CLK_2)
-	begin
-		if CLK_2'event and CLK_2 = '1' then
-			CLK_4 <= not CLK_4;
-		end if;
-	end process;	
+		
 
  -----------------------------------------------------------------------
 	process (CLK, reset)	--行区间像素数（含消隐区）
@@ -738,6 +732,16 @@ CLK<=CLK_2;
 						gt <= (others => romData(dx));
 						bt <= (others => romData(dx));
 					end if;
+				elsif( y>= 112 and y <= 119) then -- S
+					if (x = 149) then
+						inty := conv_integer(y);
+						romAddr <= conv_std_logic_vector( 83 * 8 + inty mod 8, 11);
+					else
+						dx := 7 - (conv_integer(x) - 150);
+						rt <= (others => romData(dx));
+						gt <= (others => romData(dx));
+						bt <= (others => romData(dx));
+					end if;
 				else 
 					rt <= (others => '0');
 					gt <= (others => '0');
@@ -768,6 +772,16 @@ CLK<=CLK_2;
 					if (x = 159) then
 						inty := conv_integer(y);
 						romAddr <= conv_std_logic_vector( 84 * 8 + inty mod 8, 11);
+					else
+						dx := 7 - (conv_integer(x) - 160);
+						rt <= (others => romData(dx));
+						gt <= (others => romData(dx));
+						bt <= (others => romData(dx));
+					end if;
+				elsif ( y >= 112 and y <= 119) then --P
+					if (x = 159) then
+						inty := conv_integer(y);
+						romAddr <= conv_std_logic_vector( 80 * 8 + inty mod 8, 11);
 					else
 						dx := 7 - (conv_integer(x) - 160);
 						rt <= (others => romData(dx));
