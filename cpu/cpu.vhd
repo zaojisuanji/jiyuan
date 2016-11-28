@@ -114,13 +114,15 @@ architecture Behavioral of cpu is
 		romAddr : out std_logic_vector(10 downto 0);
 		romData : in std_logic_vector(7 downto 0);
 	-- pc
-		pc : in std_logic_vector(15 downto 0);
-		cm : in std_logic_vector(15 downto 0);
-		tdata : in std_logic_vector(3 downto 0);
+		PC : in std_logic_vector(15 downto 0);
+		CM : in std_logic_vector(15 downto 0);
+		Tdata : in std_logic_vector(3 downto 0);
+		SPdata : in std_logic_vector(15 downto 0);
+		IHdata : in std_logic_vector(15 downto 0);
 	--Control Signals
 		reset	: in  std_logic;
-		CLK_in	: in  std_logic			--100M时钟输入
-	);		
+		CLK_in : in std_logic			--100M时钟输入
+	);	
 	end component;
 	
 	component MemoryUnit
@@ -519,6 +521,8 @@ architecture Behavioral of cpu is
 			ReadData1 : out std_logic_vector(15 downto 0); --读出的寄存器1的值
 			ReadData2 : out std_logic_vector(15 downto 0); --读出的寄存器2的值
 			dataT : out std_logic_vector(15 downto 0);
+			dataSP : out std_logic_vector(15 downto 0);
+			dataIH : out std_logic_vector(15 downto 0);
 			
 			RegisterState : out std_logic_vector(1 downto 0)
 		);
@@ -578,7 +582,7 @@ architecture Behavioral of cpu is
 	
 	--Registers
 	signal ReadData1, ReadData2 : std_logic_vector(15 downto 0);
-	signal r0,r1,r2,r3,r4,r5,r6,r7,dataT1 : std_logic_vector(15 downto 0);
+	signal r0,r1,r2,r3,r4,r5,r6,r7,dataT,dataSP,dataIH : std_logic_vector(15 downto 0);
 	signal RegisterState : std_logic_vector(1 downto 0);
 	
 	--ImmExtend
@@ -746,7 +750,9 @@ begin
 			r5Out => r5,
 			r6Out => r6,
 			r7Out => r7,
-			dataT => dataT1,
+			dataT => dataT,
+			dataSP => dataSP,
+			dataIH => dataIH,
 			RegisterState => RegisterState,
 			
 			ReadData1 => ReadData1,
@@ -1057,9 +1063,11 @@ begin
 		romAddr => fontRomAddr,
 		romData => fontRomdata,
 	--pc
-		pc => PCOut,
-		cm => IMInsOut,
-		tdata => dataT1(3 downto 0),
+		PC => PCOut,
+		CM => IMInsOut,
+		Tdata => dataT(3 downto 0),
+		IHdata => dataIH,
+		SPdata => dataSP,
 	--Control Signals
 		reset	=> rst,
 		CLK_in => clk_50

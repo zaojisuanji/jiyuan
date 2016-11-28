@@ -48,6 +48,8 @@ entity Registers is
 			ReadData1 : out std_logic_vector(15 downto 0); --读出的寄存器1的值
 			ReadData2 : out std_logic_vector(15 downto 0); --读出的寄存器2的值
 			dataT : out std_logic_vector(15 downto 0);
+			dataSP : out std_logic_vector(15 downto 0);
+			dataIH : out std_logic_vector(15 downto 0);
 			RegisterState : out std_logic_Vector(1 downto 0)
 			--dataSP : out std_logic_vector(15 downto 0);
 			--dataIH : out std_logic_vector(15 downto 0)
@@ -159,8 +161,8 @@ begin
 	end process;
 	
 	
-	--dataSP <= SP;
-	--dataIH <= IH;
+	dataSP <= SP;
+	dataIH <= IH;
 	dataT <= T;
 	
 	r0Out <= r0;
