@@ -32,8 +32,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity cpu is
 	port(
 			rst : in std_logic; --reset
-			clkIn : in std_logic; --时钟源  默认为50M  可以通过修改绑定管脚来改变
-			--clk_50 : in std_logic;
+			clk_hand : in std_logic; --时钟源  默认为50M  可以通过修改绑定管脚来改变
+			clk_50 : in std_logic;
+			opt : in std_logic;	--选择输入时钟（为手动或者50M）
+			
 			
 			--串口
 			dataReady : in std_logic;   
@@ -161,6 +163,7 @@ architecture Behavioral of cpu is
 		ram2_we : out std_logic;		--RAM2写使能，='1'禁止
 		
 		MemoryState : out std_logic_vector(1 downto 0);
+		FlashStateOut : out std_logic_vector(2 downto 0);
 		flashFinished : out std_logic;
 		
 		--Flash
@@ -632,6 +635,7 @@ architecture Behavioral of cpu is
 	signal DMDataOut : std_logic_vector(15 downto 0);
 	signal IMInsOut : std_logic_vector(15 downto 0);
 	signal MemoryState : std_logic_vector(1 downto 0);
+	signal FlashStateOut : std_logic_vector(2 downto 0);
 		
 	--SW写指令内存（结构冲突）
 	signal SW_IfIdflush : std_logic;
@@ -658,6 +662,9 @@ architecture Behavioral of cpu is
 	
 	signal ram2AddrOutput : std_logic_vector(17 downto 0);
 	signal flashFinished : std_logic;
+	
+	
+	signal clkIn_clock : std_logic;	--传给clock.vhd的输入时钟
 	
 begin
 	u1 : PCRegister
@@ -946,6 +953,7 @@ begin
 			insOut => IMInsOut,
 			
 			MemoryState => MemoryState,
+			FlashStateOut => FlashStateOut,
 			flashFinished => flashFinished,
 			
 			ram1_addr => ram1Addr,
@@ -977,7 +985,7 @@ begin
 	u18 : Clock
 	port map(
 		rst => rst,
-		clk => clkIn,
+		clk => clkIn_clock,
 		
 		clkout => clk,
 		clk1 => clk_4,
@@ -1054,20 +1062,20 @@ begin
 		tdata => dataT1(3 downto 0),
 	--Control Signals
 		reset	=> rst,
-		CLK_in => clkIn
+		CLK_in => clk_50
 	);		
 	--r0 <= "0110101010010111";
 	--r1 <= "1011100010100110";
 	u24 : digit
 	port map(
-			clkA => clkIn,
+			clkA => clk_50,
 			addra => digitRomAddr,
 			douta => digitRomData
 	);
 	
 	u25 : fontRom
 	port map(
-		clka => clkIn,
+		clka => clk_50,
 		addra => fontRomAddr,
 		douta => fontRomData
 		);
@@ -1084,26 +1092,43 @@ begin
 		);
 
 	
-	process(flashData, MemoryState, RegisterState, ExMemWrite, ExMemRead)
+	process(flashData, MemoryState, FlashStateOut, RegisterState)
 	--process(dataToWB, ForwardA, ForwardSW, rdToWB)
 	--process(dataToWB, rdToWB, MemoryState, RegisterState)
 	begin
 		led(15 downto 14) <= RegisterState;
 		led(13 downto 12) <= MemoryState;
+		led(11 downto 9) <= FlashStateOut;
 		--led(15 downto 14) <= ForwardA;
 		--led(13 downto 12) <= ForwardSW;
 		--led(11 downto 8) <= rdToWB;
 		--led(7 downto 0) <= dataToWB(7 downto 0);
 		
-		led(11 downto 2) <= (others => '0');
-		led(1) <= ExMemWrite;
-		led(0) <= ExMemRead;
+		led(8 downto 0) <= (others => '0');
 		--led <= flashData;
 	end process;
 	
+	process(clk_50, rst, clk_hand)
+	begin
+		if opt = '1' then
+			if rst = '0' then
+				clkIn_clock <= '0';
+			else
+				clkIn_clock <= clk_hand;
+			end if;
+		else
+			if rst = '0' then
+				clkIn_clock <= '0';
+			else 
+				clkIn_clock <= clk_50;
+			end if;
+		end if;
+	end process;
+	
+	
 	--jing <= PCOut;
 	process(ram2AddrOutput)
-		begin
+	begin
 		case ram2AddrOutput(7 downto 4) is
 			when "0000" => digit1 <= "0111111";--0
 			when "0001" => digit1 <= "0000110";--1

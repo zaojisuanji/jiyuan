@@ -5,16 +5,20 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1061</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">digit</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1069</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">digit</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1068</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">fontRom</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1076</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">fontRom</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="1561" delta="old" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1123</arg>: Mux is complete : default of case is discarded
+<msg type="warning" file="Xst" num="819" delta="new" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1111</arg>: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+<arg fmt="%s" index="3">&lt;opt&gt;</arg>
 </msg>
 
-<msg type="info" file="Xst" num="1561" delta="old" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1143</arg>: Mux is complete : default of case is discarded
+<msg type="info" file="Xst" num="1561" delta="new" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1148</arg>: Mux is complete : default of case is discarded
+</msg>
+
+<msg type="info" file="Xst" num="1561" delta="new" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd</arg>&quot; line <arg fmt="%d" index="2">1168</arg>: Mux is complete : default of case is discarded
 </msg>
 
 <msg type="info" file="Xst" num="1561" delta="old" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/Registers.vhd</arg>&quot; line <arg fmt="%d" index="2">149</arg>: Mux is complete : default of case is discarded
@@ -24,7 +28,10 @@
 <arg fmt="%s" index="3">&lt;IdExPC&gt;, &lt;PCRollback&gt;</arg>
 </msg>
 
-<msg type="info" file="Xst" num="1561" delta="old" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemoryUnit.vhd</arg>&quot; line <arg fmt="%d" index="2">223</arg>: Mux is complete : default of case is discarded
+<msg type="info" file="Xst" num="1561" delta="new" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemoryUnit.vhd</arg>&quot; line <arg fmt="%d" index="2">225</arg>: Mux is complete : default of case is discarded
+</msg>
+
+<msg type="info" file="Xst" num="1561" delta="new" >&quot;<arg fmt="%s" index="1">D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemoryUnit.vhd</arg>&quot; line <arg fmt="%d" index="2">284</arg>: Mux is complete : default of case is discarded
 </msg>
 
 <msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">ram1_addr</arg>&gt; in unit &lt;<arg fmt="%s" index="2">MemoryUnit</arg>&gt; has a constant value of <arg fmt="%s" index="3">000000000000000000</arg> during circuit operation. The register is replaced by logic.
@@ -309,6 +316,10 @@
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">ram2AddrOutput_16</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">u17</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;ram2AddrOutput_17&gt; </arg>
 </msg>
 
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">flash_finished</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">u17</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
+</msg>
+
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">Mtridata_flash_data_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">u17</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
@@ -352,6 +363,10 @@
 </msg>
 
 <msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">Mtridata_flash_data</arg>&lt;<arg fmt="%d" index="2">15</arg>:<arg fmt="%d" index="3">8</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">MemoryUnit</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">flash_finished</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">MemoryUnit</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">Mtridata_flash_data_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">MemoryUnit</arg>&gt;. This FF/Latch will be trimmed during the optimization process.

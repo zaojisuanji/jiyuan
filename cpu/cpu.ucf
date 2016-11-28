@@ -99,7 +99,9 @@ NET "ram2Data[2]" LOC = T15;
 NET "ram2Data[1]" LOC = T16;
 NET "ram2Data[0]" LOC = U13;
 
-NET "clkIn" LOC = B9;
+NET "clk_hand" LOC = U9;
+NET "clk_50" LOC = B9;
+NET "opt" LOC = T7;
 
 NET "dataReady" LOC = A16;
 NET "ram1En" LOC = M15;

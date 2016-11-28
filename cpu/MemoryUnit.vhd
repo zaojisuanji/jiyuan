@@ -72,6 +72,7 @@ entity MemoryUnit is
 		ram2_we : out std_logic;		--RAM2写使能，='1'禁止
 		
 		MemoryState : out std_logic_vector(1 downto 0);
+		FlashStateOut : out std_logic_vector(2 downto 0);
 		
 		flashFinished : out std_logic := '0';
 		
@@ -97,8 +98,9 @@ architecture Behavioral of MemoryUnit is
 	signal rflag : std_logic := '0';		--rflag='1'代表把串口数据线（ram1_data）置高阻，用于节省状态的控制
 	
 	signal flash_finished : std_logic := '0';
-	type FLASH_STATE is (STATE1, STATE2, STATE3, STATE4, STATE5, STATE6);
-	signal flashstate : FLASH_STATE := STATE1;	--从flash载入指令到ram2的状态
+	--type FLASH_STATE is (STATE1, STATE2, STATE3, STATE4, STATE5, STATE6);
+	--signal flashstate : FLASH_STATE := STATE1;	--从flash载入指令到ram2的状态
+	signal flashstate : std_logic_vector(2 downto 0) := "000";
 	signal current_addr : std_logic_vector(15 downto 0) := (others => '0');	--flash当前要读的地址
 	shared variable cnt : integer := 0;	--用于削弱50M时钟频率至1M
 	
@@ -135,8 +137,8 @@ begin
 			insOut <= (others => '0');
 			
 			state <= "00";			--rst之谜……
-			flashstate <= STATE1;
-			flash_finished <= '0';
+			flashstate <= "000";
+			--flash_finished <= '0';
 			current_addr <= (others => '0');
 			
 		elsif (clk'event and clk = '1') then 
@@ -228,11 +230,14 @@ begin
 				end case;
 				
 			else				--从flash载入kernel指令到ram2尚未完成，则继续载入
-				if (cnt = 1000) then
+				if (cnt = 100) then
 					cnt := 0;
 					
 					case flashstate is
-						when STATE1 =>		--WE置0
+						when "000" =>
+							flashstate <= "001";
+						
+						when "001" =>		--WE置0
 							ram2_en <= '0';
 							ram2_we <= '0';
 							ram2_oe <= '1';
@@ -246,45 +251,51 @@ begin
 							flash_rp <= '1';
 							flash_ce <= '0';
 							
-							flashstate <= STATE2;
+							flashstate <= "010";
 							
-						when STATE2 =>
+						when "010" =>
 							flash_data <= x"00FF";
-							flashstate <= STATE3;
+							flashstate <= "011";
 							
-						when STATE3 =>
+						when "011" =>
 							flash_we <= '1';
-							flashstate <= STATE4;
+							flashstate <= "100";
 							
-						when STATE4 =>
+						when "100" =>
 							flash_addr <= "000000" & current_addr & '0';
 							flash_data <= (others => 'Z');
 							flash_oe <= '0';
-							flashstate <= STATE5;
+							flashstate <= "101";
 							
-						when STATE5 =>
+						when "101" =>
 							flash_oe <= '1';
 							ram2_we <= '0';
 							ram2_addr <= "00" & current_addr;
 							ram2AddrOutput <= "00" & current_addr;
 							ram2_data <= flash_data;
-							flashstate <= STATE6;
+							flashstate <= "110";
 						
-						when STATE6 =>
+						when "110" =>
 							ram2_we <= '1';
 							current_addr <= current_addr + '1';
-							flashstate <= STATE1;
+							flashstate <= "111";
+						
+						when "111" =>
+							flashstate <= "000";
 							
+						when others =>
+							flashstate <= "000";
+						
 					end case;
 					
-					if (current_addr > x"0250") then
+					if (current_addr > x"0249") then
 						flash_finished <= '1';
 					end if;
 				else 
-					if (cnt < 1000) then
+					if (cnt < 100) then
 						cnt := cnt + 1;
 					end if;
-				end if;	--cnt = 50
+				end if;	--cnt 
 				
 			end if;	--flash finished or not
 			
@@ -292,8 +303,11 @@ begin
 		
 	end process;
 	
+	
 	MemoryState <= state;
 	flashFinished <= flash_finished;
+	FlashStateOut <= flashstate;
+	
 	
 end Behavioral;
 
