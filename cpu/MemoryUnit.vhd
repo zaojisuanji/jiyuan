@@ -230,7 +230,7 @@ begin
 				end case;
 				
 			else				--从flash载入kernel指令到ram2尚未完成，则继续载入
-				if (cnt = 100) then
+				if (cnt = 1000) then
 					cnt := 0;
 					
 					case flashstate is
@@ -292,7 +292,7 @@ begin
 						flash_finished <= '1';
 					end if;
 				else 
-					if (cnt < 100) then
+					if (cnt < 1000) then
 						cnt := cnt + 1;
 					end if;
 				end if;	--cnt 

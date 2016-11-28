@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: cpu.prj
 
@@ -149,14 +149,16 @@ Architecture behavioral of Entity readreg1mux is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg2Mux.vhd" in Library work.
 Architecture behavioral of Entity readreg2mux is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/VGA_Controller.vhd" in Library work.
-Entity <vga_controller> compiled.
-Entity <vga_controller> (Architecture <behave>) compiled.
+Architecture behave of Entity vga_controller is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/digit.vhd" in Library work.
 Architecture digit_a of Entity digit is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/fontRom.vhd" in Library work.
 Architecture fontrom_a of Entity fontrom is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/WriteDataMux.vhd" in Library work.
 Architecture behavioral of Entity writedatamux is up to date.
+Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/dcm.vhd" in Library work.
+Entity <dcm> compiled.
+Entity <dcm> (Architecture <behavioral>) compiled.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" in Library work.
 Architecture behavioral of Entity cpu is up to date.
 
@@ -213,17 +215,19 @@ Analyzing hierarchy for entity <VGA_Controller> in library <work> (architecture 
 
 Analyzing hierarchy for entity <WriteDataMux> in library <work> (architecture <behavioral>).
 
+Analyzing hierarchy for entity <dcm> in library <work> (architecture <behavioral>).
+
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <cpu> in library <work> (Architecture <behavioral>).
-WARNING:Xst:2211 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1077: Instantiating black box module <digit>.
-WARNING:Xst:2211 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1084: Instantiating black box module <fontRom>.
-WARNING:Xst:819 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1119: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:2211 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1092: Instantiating black box module <digit>.
+WARNING:Xst:2211 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1099: Instantiating black box module <fontRom>.
+WARNING:Xst:819 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1145: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <opt>
-INFO:Xst:1561 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1156: Mux is complete : default of case is discarded
-INFO:Xst:1561 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1176: Mux is complete : default of case is discarded
+INFO:Xst:1561 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1182: Mux is complete : default of case is discarded
+INFO:Xst:1561 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1202: Mux is complete : default of case is discarded
 Entity <cpu> analyzed. Unit <cpu> generated.
 
 Analyzing Entity <PCRegister> in library <work> (Architecture <behavioral>).
@@ -321,6 +325,24 @@ Entity <VGA_Controller> analyzed. Unit <VGA_Controller> generated.
 
 Analyzing Entity <WriteDataMux> in library <work> (Architecture <behavioral>).
 Entity <WriteDataMux> analyzed. Unit <WriteDataMux> generated.
+
+Analyzing Entity <dcm> in library <work> (Architecture <behavioral>).
+    Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "CLKFX_DIVIDE =  8" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "CLKFX_MULTIPLY =  9" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "CLKIN_PERIOD =  20.0000000000000000" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "CLK_FEEDBACK =  2X" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "DSS_MODE =  NONE" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "FACTORY_JF =  C080" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <DCM_SP_INST> in unit <dcm>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <DCM_SP_INST> in unit <dcm>.
+Entity <dcm> analyzed. Unit <dcm> generated.
 
 
 =========================================================================
@@ -1110,6 +1132,11 @@ INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and 
 Unit <WriteDataMux> synthesized.
 
 
+Synthesizing Unit <dcm>.
+    Related source file is "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/dcm.vhd".
+Unit <dcm> synthesized.
+
+
 Synthesizing Unit <cpu>.
     Related source file is "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd".
 WARNING:Xst:646 - Signal <ram2AddrOutput<17:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -1117,6 +1144,10 @@ WARNING:Xst:646 - Signal <digitRomData> is assigned but never used. This unconne
 WARNING:Xst:653 - Signal <digitRomAddr> is used but never assigned. This sourceless signal will be automatically connected to value 000000000000000.
 WARNING:Xst:646 - Signal <dataT<15:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <clk_registers> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <always_zero> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:646 - Signal <LOCKED_OUT> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <CLK2X_OUT> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <CLK0_OUT> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 16x7-bit ROM for signal <digit1>.
     Found 16x7-bit ROM for signal <digit2>.
     Summary:
@@ -1225,6 +1256,8 @@ Optimizing FSM <u6/state/FSM> on signal <state[1:4]> with one-hot encoding.
  10    | 0100
  11    | 1000
 -------------------
+WARNING:Xst:79 - Model 'dcm' has different characteristics in destination library
+WARNING:Xst:80 - Model name has been changed to 'dcm1'
 INFO:Xst:2261 - The FF/Latch <tmpRy_0> in Unit <u3> is equivalent to the following 2 FFs/Latches, which will be removed : <tmpCommand_5> <tmpImme_5> 
 INFO:Xst:2261 - The FF/Latch <tmpCommand_4> in Unit <u3> is equivalent to the following 2 FFs/Latches, which will be removed : <tmpRz_2> <tmpImme_4> 
 INFO:Xst:2261 - The FF/Latch <tmpCommand_3> in Unit <u3> is equivalent to the following 2 FFs/Latches, which will be removed : <tmpRz_1> <tmpImme_3> 
@@ -1480,21 +1513,21 @@ Design Statistics
 # IOs                              : 169
 
 Cell Usage :
-# BELS                             : 3449
+# BELS                             : 3445
 #      GND                         : 1
-#      INV                         : 36
-#      LUT1                        : 85
-#      LUT2                        : 226
-#      LUT2_D                      : 6
-#      LUT2_L                      : 6
-#      LUT3                        : 561
-#      LUT3_D                      : 36
-#      LUT3_L                      : 38
-#      LUT4                        : 1641
-#      LUT4_D                      : 58
-#      LUT4_L                      : 120
-#      MUXCY                       : 165
-#      MUXF5                       : 316
+#      INV                         : 35
+#      LUT1                        : 86
+#      LUT2                        : 227
+#      LUT2_D                      : 4
+#      LUT2_L                      : 5
+#      LUT3                        : 559
+#      LUT3_D                      : 37
+#      LUT3_L                      : 36
+#      LUT4                        : 1640
+#      LUT4_D                      : 54
+#      LUT4_L                      : 121
+#      MUXCY                       : 166
+#      MUXF5                       : 320
 #      MUXF6                       : 16
 #      MUXF7                       : 1
 #      VCC                         : 1
@@ -1509,13 +1542,16 @@ Cell Usage :
 #      LD                          : 50
 #      LD_1                        : 32
 #      LDCPE_1                     : 16
-# Clock Buffers                    : 5
-#      BUFG                        : 5
+# Clock Buffers                    : 7
+#      BUFG                        : 7
 # IO Buffers                       : 169
-#      IBUF                        : 7
+#      IBUF                        : 6
+#      IBUFG                       : 1
 #      IOBUF                       : 40
 #      OBUF                        : 114
 #      OBUFT                       : 8
+# DCMs                             : 1
+#      DCM_SP                      : 1
 # Others                           : 2
 #      digit                       : 1
 #      fontRom                     : 1
@@ -1526,12 +1562,13 @@ Device utilization summary:
 
 Selected Device : 3s1200efg320-4 
 
- Number of Slices:                     1529  out of   8672    17%  
+ Number of Slices:                     1526  out of   8672    17%  
  Number of Slice Flip Flops:            718  out of  17344     4%  
- Number of 4 input LUTs:               2813  out of  17344    16%  
+ Number of 4 input LUTs:               2804  out of  17344    16%  
  Number of IOs:                         169
  Number of bonded IOBs:                 169  out of    250    67%  
- Number of GCLKs:                         5  out of     24    20%  
+ Number of GCLKs:                         7  out of     24    29%  
+ Number of DCMs:                          1  out of      8    12%  
 
 ---------------------------
 Partition Resource Summary:
@@ -1558,7 +1595,7 @@ led_0_OBUF                                              | NONE(u26/WriteDataOut_
 clk1(clkIn_clock1:O)                                    | BUFG(*)(u17/flashstate_FSM_FFd1)| 390   |
 u18/clk11                                               | BUFG                            | 190   |
 u23/CLK_21                                              | BUFG                            | 39    |
-clk_50                                                  | IBUF+BUFG                       | 1     |
+clk_50                                                  | IBUFG                           | 1     |
 u5/controllerOut_not00011(u5/controllerOut_not0001235:O)| BUFG(*)(u5/controllerOut_20)    | 20    |
 u7/sign_or0000(u7/sign_or00001:O)                       | NONE(*)(u7/immeOut_15)          | 13    |
 u12/ALUresult_not0001(u12/ALUresult_not00011:O)         | NONE(*)(u12/ALUresult_15)       | 16    |
@@ -1614,10 +1651,10 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 13.459ns (Maximum Frequency: 74.300MHz)
+   Minimum period: 13.510ns (Maximum Frequency: 74.019MHz)
    Minimum input arrival time before clock: 11.761ns
    Maximum output required time after clock: 6.422ns
-   Maximum combinational path delay: 3.542ns
+   Maximum combinational path delay: 3.095ns
 
 Timing Detail:
 --------------
@@ -1626,7 +1663,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk1'
   Clock period: 7.526ns (frequency: 132.867MHz)
-  Total number of paths / destination ports: 8105 / 568
+  Total number of paths / destination ports: 8073 / 568
 -------------------------------------------------------------------------
 Delay:               7.526ns (Levels of Logic = 11)
   Source:            u17/cnt_8 (FF)
@@ -1648,7 +1685,7 @@ Delay:               7.526ns (Levels of Logic = 11)
      MUXCY:CI->O           1   0.059   0.000  u17/cnt_cmp_eq0000_wg_cy<5> (u17/cnt_cmp_eq0000_wg_cy<5>)
      MUXCY:CI->O           1   0.059   0.000  u17/cnt_cmp_eq0000_wg_cy<6> (u17/cnt_cmp_eq0000_wg_cy<6>)
      MUXCY:CI->O          45   0.459   1.441  u17/cnt_cmp_eq0000_wg_cy<7> (u17/cnt_cmp_eq0000)
-     LUT4:I0->O            1   0.704   0.424  u17/Mtridata_flash_data_and0000_SW1 (N1413)
+     LUT4:I0->O            1   0.704   0.424  u17/Mtridata_flash_data_and0000_SW1 (N1417)
      LUT4:I3->O            1   0.704   0.420  u17/Mtridata_flash_data_and0000 (u17/Mtridata_flash_data_and0000)
      FDE:CE                    0.555          u17/Mtrien_flash_data
     ----------------------------------------
@@ -1684,10 +1721,10 @@ Delay:               10.052ns (Levels of Logic = 6)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'u23/CLK_21'
-  Clock period: 13.459ns (frequency: 74.300MHz)
-  Total number of paths / destination ports: 9852 / 64
+  Clock period: 13.510ns (frequency: 74.019MHz)
+  Total number of paths / destination ports: 9744 / 64
 -------------------------------------------------------------------------
-Delay:               13.459ns (Levels of Logic = 13)
+Delay:               13.510ns (Levels of Logic = 13)
   Source:            u23/y_4_2 (FF)
   Destination:       u23/romAddr_3 (FF)
   Source Clock:      u23/CLK_21 rising
@@ -1697,24 +1734,24 @@ Delay:               13.459ns (Levels of Logic = 13)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            16   0.591   1.034  u23/y_4_2 (u23/y_4_2)
+     FDCE:C->Q            19   0.591   1.085  u23/y_4_2 (u23/y_4_2)
      MUXF5:S->O            1   0.739   0.455  u23/romAddr_mux0050<3>6359_SW0 (N575)
-     LUT3_D:I2->LO         1   0.704   0.104  u23/romAddr_mux0050<3>6359 (N1994)
+     LUT3_D:I2->LO         1   0.704   0.104  u23/romAddr_mux0050<3>6359 (N2005)
      LUT4:I3->O           17   0.704   1.086  u23/romAddr_mux0050<3>6393 (u23/romAddr_mux0050<3>_bdd10)
-     LUT4:I2->O            1   0.704   0.000  u23/romAddr_mux0050<3>12616_F (N1743)
+     LUT4:I2->O            1   0.704   0.000  u23/romAddr_mux0050<3>12616_F (N1755)
      MUXF5:I0->O           1   0.321   0.424  u23/romAddr_mux0050<3>12616 (u23/romAddr_mux0050<3>12616)
      LUT4:I3->O            1   0.704   0.499  u23/romAddr_mux0050<3>12645 (u23/romAddr_mux0050<3>12645)
-     LUT3:I1->O            1   0.704   0.000  u23/romAddr_mux0050<3>12693_G (N1780)
+     LUT3:I1->O            1   0.704   0.000  u23/romAddr_mux0050<3>12693_G (N1794)
      MUXF5:I1->O           1   0.321   0.455  u23/romAddr_mux0050<3>12693 (u23/romAddr_mux0050<3>12693)
      LUT4:I2->O            1   0.704   0.424  u23/romAddr_mux0050<3>13073 (u23/romAddr_mux0050<3>13073)
-     LUT4:I3->O            1   0.704   0.000  u23/romAddr_mux0050<3>134931_SW0_F (N1051)
-     MUXF5:I0->O           1   0.321   0.424  u23/romAddr_mux0050<3>134931_SW0 (N849)
-     LUT4:I3->O            1   0.704   0.000  u23/romAddr_mux0050<3>13566_G (N1078)
+     LUT4:I3->O            1   0.704   0.000  u23/romAddr_mux0050<3>134931_SW0_F (N1047)
+     MUXF5:I0->O           1   0.321   0.424  u23/romAddr_mux0050<3>134931_SW0 (N847)
+     LUT4:I3->O            1   0.704   0.000  u23/romAddr_mux0050<3>13566_G (N1074)
      MUXF5:I1->O           1   0.321   0.000  u23/romAddr_mux0050<3>13566 (u23/romAddr_mux0050<3>)
      FDE:D                     0.308          u23/romAddr_3
     ----------------------------------------
-    Total                     13.459ns (8.554ns logic, 4.905ns route)
-                                       (63.6% logic, 36.4% route)
+    Total                     13.510ns (8.554ns logic, 4.956ns route)
+                                       (63.3% logic, 36.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_50'
@@ -1803,7 +1840,7 @@ Offset:              11.761ns (Levels of Logic = 11)
      LUT4_L:I3->LO         1   0.704   0.104  u23/bt_mux0000<1>1793 (u23/bt_mux0000<1>1793)
      LUT4:I3->O            1   0.704   0.424  u23/bt_mux0000<1>1821 (u23/bt_mux0000<1>1821)
      LUT4:I3->O            1   0.704   0.424  u23/bt_mux0000<1>1864 (u23/bt_mux0000<1>1864)
-     LUT4:I3->O            1   0.704   0.000  u23/bt_mux0000<1>11485_F (N1905)
+     LUT4:I3->O            1   0.704   0.000  u23/bt_mux0000<1>11485_F (N1915)
      MUXF5:I0->O           1   0.321   0.424  u23/bt_mux0000<1>11485 (u23/bt_mux0000<1>11485)
      LUT4:I3->O            1   0.704   0.000  u23/bt_mux0000<1>11634 (u23/bt_mux0000<1>)
      FDCE:D                    0.308          u23/bt_0
@@ -1876,7 +1913,7 @@ Offset:              6.009ns (Levels of Logic = 2)
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 2 / 2
 -------------------------------------------------------------------------
-Delay:               3.542ns (Levels of Logic = 2)
+Delay:               3.095ns (Levels of Logic = 1)
   Source:            clk_50 (PAD)
   Destination:       u24:clka (PAD)
 
@@ -1884,24 +1921,23 @@ Delay:               3.542ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             2   1.218   0.447  clk_50_IBUF (clk_50_IBUF1)
-     BUFG:I->O             1   1.457   0.420  clk_50_IBUF_BUFG (clk_50_IBUF)
+     IBUFG:I->O            1   2.675   0.420  clk_50_IBUFG (clk_50_IBUFG)
     digit:clka                 0.000          u24
     ----------------------------------------
-    Total                      3.542ns (2.675ns logic, 0.867ns route)
-                                       (75.5% logic, 24.5% route)
+    Total                      3.095ns (2.675ns logic, 0.420ns route)
+                                       (86.4% logic, 13.6% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 38.00 secs
-Total CPU time to Xst completion: 38.86 secs
+Total REAL time to Xst completion: 39.00 secs
+Total CPU time to Xst completion: 38.60 secs
  
 --> 
 
-Total memory usage is 438152 kilobytes
+Total memory usage is 449096 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  122 (   0 filtered)
+Number of warnings :  128 (   0 filtered)
 Number of infos    :   75 (   0 filtered)
 

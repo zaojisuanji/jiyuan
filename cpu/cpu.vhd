@@ -553,10 +553,24 @@ architecture Behavioral of cpu is
 	);
 	end component;
 
+	component dcm 
+		port ( CLKIN_IN   : in    std_logic; 
+				 RST_IN     : in    std_logic; 
+				 CLKFX_OUT  : out   std_logic; 
+				 CLK0_OUT   : out   std_logic; 
+				 CLK2X_OUT  : out   std_logic; 
+				 LOCKED_OUT : out   std_logic
+		);
+	end component; 
 	
 	
 	--以下的signal都是“全局变量”，来自所有component的out
 	
+	--dcm
+	signal CLKFX_OUT : std_logic;
+	signal CLK0_OUT : std_logic;
+	signal CLK2X_OUT : std_logic;
+	signal LOCKED_OUT : std_logic;
 	
 	--clock
 	signal clk : std_logic;
@@ -669,6 +683,7 @@ architecture Behavioral of cpu is
 	
 	
 	signal clkIn_clock : std_logic;	--传给clock.vhd的输入时钟
+	signal always_zero : std_logic := '0';	--恒为零的信号
 	
 begin
 	u1 : PCRegister
@@ -1098,7 +1113,18 @@ begin
 			
 			WriteDataOut => WriteDataOut
 		);
-
+	
+	u27 : dcm
+	port map( 
+				 CLKIN_IN   => clk_50,
+				 RST_IN     => always_zero,
+				 CLKFX_OUT  => CLKFX_OUT,
+				 CLK0_OUT   => CLK0_OUT,
+				 CLK2X_OUT  => CLK2X_OUT,
+				 LOCKED_OUT => LOCKED_OUT
+		);
+	
+	
 	
 	process(flashData, MemoryState, FlashStateOut, RegisterState)
 	--process(dataToWB, ForwardA, ForwardSW, rdToWB)
@@ -1116,7 +1142,7 @@ begin
 		--led <= flashData;
 	end process;
 	
-	process(clk_50, rst, clk_hand)
+	process(CLKFX_OUT, rst, clk_hand)
 	begin
 		if opt = '1' then
 			if rst = '0' then
@@ -1128,7 +1154,7 @@ begin
 			if rst = '0' then
 				clkIn_clock <= '0';
 			else 
-				clkIn_clock <= clk_50;
+				clkIn_clock <= CLKFX_OUT;
 			end if;
 		end if;
 	end process;
