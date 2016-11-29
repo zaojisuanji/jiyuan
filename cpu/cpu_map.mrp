@@ -9,25 +9,25 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Tue Nov 29 17:11:13 2016
+Mapped Date    : Tue Nov 29 23:26:37 2016
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:   17
 Logic Utilization:
-  Total Number Slice Registers:         686 out of  17,344    3%
-    Number used as Flip Flops:          620
-    Number used as Latches:              66
-  Number of 4 input LUTs:             2,719 out of  17,344   15%
+  Total Number Slice Registers:         668 out of  17,344    3%
+    Number used as Flip Flops:          586
+    Number used as Latches:              82
+  Number of 4 input LUTs:             2,661 out of  17,344   15%
 Logic Distribution:
-  Number of occupied Slices:          1,634 out of   8,672   18%
-    Number of Slices containing only related logic:   1,634 out of   1,634 100%
-    Number of Slices containing unrelated logic:          0 out of   1,634   0%
+  Number of occupied Slices:          1,611 out of   8,672   18%
+    Number of Slices containing only related logic:   1,611 out of   1,611 100%
+    Number of Slices containing unrelated logic:          0 out of   1,611   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       2,840 out of  17,344   16%
-    Number used as logic:             2,719
-    Number used as a route-thru:        121
+  Total Number of 4 input LUTs:       2,798 out of  17,344   16%
+    Number used as logic:             2,661
+    Number used as a route-thru:        137
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
@@ -37,7 +37,7 @@ Logic Distribution:
   Number of BUFGMUXs:                     6 out of      24   25%
   Number of DCMs:                         1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                4.02
+Average Fanout of Non-Clock Nets:                4.07
 
 Peak Memory Usage:  291 MB
 Total REAL time to MAP completion:  4 secs 
@@ -116,13 +116,13 @@ WARNING:Pack:266 - The function generator u12/Sh38_SW0 failed to merge with F5
 WARNING:Pack:266 - The function generator u12/Sh39_SW0 failed to merge with F5
    multiplexer u12/Sh37_f5.  There is a conflict for the FXMUX.  The design will
    exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator u23/romAddr_mux0050<7>31 failed to
-   merge with F5 multiplexer u23/romAddr_mux0050<7>791.  There is a conflict for
-   the FXMUX.  The design will exhibit suboptimal timing.
 WARNING:PhysDesignRules:372 - Gated clock. Clock net u7/sign_or0000 is sourced
    by a combinatorial pin. This is not good design practice. Use the CE pin to
    control the loading of data into the flip-flop.
 WARNING:PhysDesignRules:372 - Gated clock. Clock net u12/ALUresult_not0001 is
+   sourced by a combinatorial pin. This is not good design practice. Use the CE
+   pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net u6/ReadData1_or0000 is
    sourced by a combinatorial pin. This is not good design practice. Use the CE
    pin to control the loading of data into the flip-flop.
 WARNING:PhysDesignRules:372 - Gated clock. Clock net u12/branchJudge_not0001 is

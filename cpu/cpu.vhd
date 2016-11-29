@@ -146,7 +146,9 @@ architecture Behavioral of cpu is
 		dataIn : in std_logic_vector(15 downto 0);		--写内存时，要写入DM或IM的数据
 		
 		ramAddr : in std_logic_vector(15 downto 0);		--读DM/写DM/写IM时，地址输入
-		PC : in std_logic_vector(15 downto 0);				--读IM时，地址输入
+		PCOut : in std_logic_vector(15 downto 0);			--读IM时，地址输入
+		PCMuxOut : in std_logic_vector(15 downto 0);	
+		PCKeep : in std_logic;
 		dataOut : out std_logic_vector(15 downto 0);		--读DM时，读出来的数据/读出的串口状态
 		insOut : out std_logic_vector(15 downto 0);		--读IM时，出来的指令
 		
@@ -970,7 +972,9 @@ begin
 			dataIn => ExMemReadData2,
 			
 			ramAddr => ExMemALUResult,
-			PC => PCOut,
+			PCOut => PCOut,
+			PCMuxOut => PCMuxOut,
+			PCKeep => PCKeep,
 			dataOut => DMDataOut,
 			insOut => IMInsOut,
 			

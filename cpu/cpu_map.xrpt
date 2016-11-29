@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Tue Nov 29 17:11:18 2016">
+  <application stringID="Map" timeStamp="Tue Nov 29 23:26:41 2016">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -74,14 +74,14 @@
         <item stringID="MAP_TOTAL_CPU_TIME" value="4 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
-        <item AVAILABLE="17344" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="686">
-          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="620"/>
-          <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="66"/>
+        <item AVAILABLE="17344" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="668">
+          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="586"/>
+          <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="82"/>
         </item>
-        <item AVAILABLE="17344" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="2840">
-          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="121"/>
+        <item AVAILABLE="17344" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="2798">
+          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="137"/>
         </item>
-        <item AVAILABLE="8672" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="1634">
+        <item AVAILABLE="8672" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="1611">
           <item dataType="int" label="Number of Slices containing unrelated logic" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
         </item>
       </section>
@@ -1550,7 +1550,7 @@
       </section>
       <section stringID="MAP_RPM_MACROS">
         <section stringID="MAP_SHAPE_SECTION">
-          <item dataType="int" stringID="MAP_NUM_SHAPE" value="28"/>
+          <item dataType="int" stringID="MAP_NUM_SHAPE" value="44"/>
         </section>
       </section>
       <section stringID="MAP_GUIDE_REPORT"/>
@@ -1644,8 +1644,8 @@
         <item stringID="MAP_DUTY_CYCLE_CORRECTION" value="TRUE"/>
         <item stringID="MAP_FACTORY_JF1" value="0XC0"/>
         <item stringID="MAP_FACTORY_JF2" value="0X80"/>
-        <item stringID="MAP_CLKFX_DIVIDE" value="6"/>
-        <item stringID="MAP_CLKFX_MULTIPLY" value="7"/>
+        <item stringID="MAP_CLKFX_DIVIDE" value="2"/>
+        <item stringID="MAP_CLKFX_MULTIPLY" value="2"/>
         <item stringID="MAP_PHASE_SHIFT" value="0"/>
         <item stringID="MAP_X_CLKIN_PERIOD" value="20.0000000000000000"/>
       </section>

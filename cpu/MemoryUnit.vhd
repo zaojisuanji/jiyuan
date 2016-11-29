@@ -52,7 +52,10 @@ entity MemoryUnit is
 		dataIn : in std_logic_vector(15 downto 0);		--写内存时，要写入DM或IM的数据
 		
 		ramAddr : in std_logic_vector(15 downto 0);		--读DM/写DM/写IM时，地址输入
-		PC : in std_logic_vector(15 downto 0);			--读IM时，地址输入
+		PCOut : in std_logic_vector(15 downto 0);		--读IM时，地址输入
+		PCMuxOut : in std_logic_vector(15 downto 0);	
+		PCKeep : in std_logic;
+		
 		dataOut : out std_logic_vector(15 downto 0);	--读DM时，读出来的数据/读出的串口状态
 		insOut : out std_logic_vector(15 downto 0);		--读IM时，出来的指令
 		
@@ -100,7 +103,7 @@ architecture Behavioral of MemoryUnit is
 	signal flash_finished : std_logic := '0';
 	--type FLASH_STATE is (STATE1, STATE2, STATE3, STATE4, STATE5, STATE6);
 	--signal flashstate : FLASH_STATE := STATE1;	--从flash载入指令到ram2的状态
-	signal flashstate : std_logic_vector(2 downto 0) := "000";
+	signal flashstate : std_logic_vector(2 downto 0) := "001";
 	signal current_addr : std_logic_vector(15 downto 0) := (others => '0');	--flash当前要读的地址
 	shared variable cnt : integer := 0;	--用于削弱50M时钟频率至1M
 	
@@ -137,7 +140,7 @@ begin
 			insOut <= (others => '0');
 			
 			state <= "00";			--rst之谜……
-			flashstate <= "000";
+			flashstate <= "001";
 			--flash_finished <= '0';
 			current_addr <= (others => '0');
 			
@@ -159,18 +162,23 @@ begin
 				rdn <= '1';
 				
 				case state is 
-					when "00" =>
-						state <= "01";
+					--when "00" =>
+					--	state <= "01";
 						
-					when "01" =>		--准备读指令
+					when "00" =>		--准备读指令
+						if PCKeep = '0' then
+							ram2_addr(15 downto 0) <= PCMuxOut;
+						elsif PCKeep = '1' then
+							ram2_addr(15 downto 0) <= PCOut;
+						end if;
 						ram2_data <= (others => 'Z');
-						ram2_addr(15 downto 0) <= PC;
+						--ram2_addr(15 downto 0) <= PC;
 						wrn <= '1';
 						rdn <= '1';
 						ram2_oe <= '0';
-						state <= "10";
+						state <= "01";
 						
-					when "10" =>		--读出指令，准备读/写 串口/内存
+					when "01" =>		--读出指令，准备读/写 串口/内存
 						ram2_oe <= '1';
 						insOut <= ram2_data;
 						if (MemWrite = '1') then	--如果要写
@@ -201,9 +209,9 @@ begin
 								ram2_oe <= '0';
 							end if;
 						end if;	
-						state <= "11";
+						state <= "10";
 						
-					when "11" =>		--读/写 串口/内存
+					when "10" =>		--读/写 串口/内存
 						if(MemWrite = '1') then		--写
 							if (ramAddr = x"BF00") then		--写串口
 								wrn <= '1';
@@ -234,8 +242,7 @@ begin
 					cnt := 0;
 					
 					case flashstate is
-						when "000" =>
-							flashstate <= "001";
+						
 						
 						when "001" =>		--WE置0
 							ram2_en <= '0';
@@ -278,13 +285,11 @@ begin
 						when "110" =>
 							ram2_we <= '1';
 							current_addr <= current_addr + '1';
-							flashstate <= "111";
+							flashstate <= "001";
 						
-						when "111" =>
-							flashstate <= "000";
 							
 						when others =>
-							flashstate <= "000";
+							flashstate <= "001";
 						
 					end case;
 					
