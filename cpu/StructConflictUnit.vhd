@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -34,6 +36,7 @@ entity StructConflictUnit is
 	port(
 		IdExMemWrite : in std_logic;
 		ALUResultAsAddr : in std_logic_vector(15 downto 0);
+		PC : in std_logic_vector(15 downto 0);
 		
 		IfIdFlush : out std_logic;		--IF/ID段在下个时钟到来时清零
 		IdExFlush : out std_logic;		--ID/EX段在下个时钟到来时清零
@@ -47,7 +50,7 @@ begin
 	process(IdExMemWrite, ALUResultAsAddr)
 	begin
 		if (IdExMemWrite = '1' and 
-			 ALUResultAsAddr <= x"7FFF" and ALUResultAsAddr >= x"4000") then	--如果SW需要写IM
+			 ALUResultAsAddr <= x"7FFF" and ALUResultAsAddr >= x"4000") then	--如果SW需要写IM，且IM没有
 			IfIdFlush <= '1';
 			IdExFlush <= '1';
 			PCRollback <= '1';

@@ -533,6 +533,7 @@ architecture Behavioral of cpu is
 	port(
 		IdExMemWrite : in std_logic;
 		ALUResultAsAddr : in std_logic_vector(15 downto 0);
+		PC : in std_logic_vector(15 downto 0);
 		
 		IfIdFlush : out std_logic;		--IF/ID段在下个时钟到来时清零
 		IdExFlush : out std_logic;		--ID/EX段在下个时钟到来时清零
@@ -1018,6 +1019,7 @@ begin
 	port map(
 			IdExMemWrite => IdExMemWrite,
 			ALUResultAsAddr => ALUResult, ----还是给MFPCMuxOut？？
+			PC => PCOut,
 			
 			IfIdFlush => SW_IfIdflush,
 			IdExFlush => SW_IdExFlush,
