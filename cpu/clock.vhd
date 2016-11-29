@@ -35,8 +35,7 @@ entity clock is
 			clk : in  STD_LOGIC;
 		   
 			clkout :out STD_LOGIC;
-         clk1 : out  STD_LOGIC;
-			clk2 : out STD_LOGIC
+         clk1 : out  STD_LOGIC
 			 );
 end clock;
 
@@ -50,22 +49,18 @@ begin
 			if (rst = '0') then
 				clkout <= '0';
 				clk1 <= '0';
-				clk2 <= '0';
 				count <= 0;
 			elsif (clk'event and clk='1') then			
 				case count is
 					when 0 =>
 						clk1 <= '1';
-						clk2 <= '0';
 					when 1 =>
 						clk1 <= '0';
-						clk2 <= '1';
 					when others =>
 						clk1 <= '0';
-						clk2 <= '0';
 				end case;
 				
-				if(count = 1) then
+				if(count = 2) then
 					count <= 0;
 				else 
 					count <= count + 1;

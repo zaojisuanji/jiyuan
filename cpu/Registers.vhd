@@ -97,8 +97,11 @@ begin
 					
 					when "00" =>						--Ğ´»Ø
 						state <= "01";
+						
+					when "01" =>
+						state <= "10";
 				
-					when "01" =>						--¶Á¼Ä´æÆ÷
+					when "10" =>						--¶Á¼Ä´æÆ÷
 						if (RegWrite = '1') then 
 							case WriteReg is 
 								when "0000" => r0 <= WriteData;

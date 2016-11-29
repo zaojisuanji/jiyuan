@@ -6,7 +6,6 @@ Command Line: D:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
 xc3s1200e-fg320-4 cpu.ngc cpu.ngd
 
 Reading NGO file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.ngc" ...
-Loading design module "ipcore_dir/digit.ngc"...
 Loading design module "ipcore_dir/fontRom.ngc"...
 Gathering constraint information from source properties...
 Done.
@@ -14,9 +13,977 @@ Done.
 Annotating constraints to design from ucf file "cpu.ucf" ...
 Resolving constraint associations...
 Checking Constraint Associations...
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit1[6]" LOC = F8;> [cpu.ucf(3)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit1[5]" LOC = E8;> [cpu.ucf(4)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit1[4]" LOC = A8;> [cpu.ucf(5)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit1[3]" LOC = F7;> [cpu.ucf(6)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit1[2]" LOC = E7;> [cpu.ucf(7)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit1[1]" LOC = D7;> [cpu.ucf(8)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit1[0]" LOC = C7;> [cpu.ucf(9)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit2[6]" LOC = B10;> [cpu.ucf(10)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit2[5]" LOC = A10;> [cpu.ucf(11)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit2[4]" LOC = G9;> [cpu.ucf(12)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit2[3]" LOC = F9;> [cpu.ucf(13)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit2[2]" LOC = E9;> [cpu.ucf(14)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit2[1]" LOC = D9;> [cpu.ucf(15)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "digit2[0]" LOC = C9;> [cpu.ucf(16)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[15]" LOC = A14;> [cpu.ucf(17)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[14]" LOC = E13;> [cpu.ucf(18)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[13]" LOC = D13;> [cpu.ucf(19)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[12]" LOC = B13;> [cpu.ucf(20)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[11]" LOC = A13;> [cpu.ucf(21)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[10]" LOC = F12;> [cpu.ucf(22)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[9]" LOC = E12;> [cpu.ucf(23)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[8]" LOC = A12;> [cpu.ucf(24)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[7]" LOC = F11;> [cpu.ucf(25)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[6]" LOC = E11;> [cpu.ucf(26)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[5]" LOC = D11;> [cpu.ucf(27)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[4]" LOC = C11;> [cpu.ucf(28)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[3]" LOC = B11;> [cpu.ucf(29)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[2]" LOC = A11;> [cpu.ucf(30)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[1]" LOC = E10;> [cpu.ucf(31)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "led[0]" LOC = D10;> [cpu.ucf(32)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[17]" LOC = H17;> [cpu.ucf(33)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[16]" LOC = H16;> [cpu.ucf(34)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[15]" LOC = H15;> [cpu.ucf(35)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[14]" LOC = H14;> [cpu.ucf(36)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[13]" LOC = G16;> [cpu.ucf(37)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[12]" LOC = G15;> [cpu.ucf(38)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[11]" LOC = G14;> [cpu.ucf(39)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[10]" LOC = G13;> [cpu.ucf(40)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[9]" LOC = F18;> [cpu.ucf(41)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[8]" LOC = F17;> [cpu.ucf(42)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[7]" LOC = F15;> [cpu.ucf(43)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[6]" LOC = F14;> [cpu.ucf(44)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[5]" LOC = E16;> [cpu.ucf(45)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[4]" LOC = E15;> [cpu.ucf(46)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[3]" LOC = D17;> [cpu.ucf(47)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[2]" LOC = D16;> [cpu.ucf(48)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[1]" LOC = C18;> [cpu.ucf(49)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Addr[0]" LOC = C17;> [cpu.ucf(50)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Data[7]" LOC = K13;> [cpu.ucf(59)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Data[6]" LOC = K12;> [cpu.ucf(60)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Data[5]" LOC = J17;> [cpu.ucf(61)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Data[4]" LOC = J16;> [cpu.ucf(62)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Data[3]" LOC = J15;> [cpu.ucf(63)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Data[2]" LOC = J14;> [cpu.ucf(64)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Data[1]" LOC = J13;> [cpu.ucf(65)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram1Data[0]" LOC = J12;> [cpu.ucf(66)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[17]" LOC = U15;> [cpu.ucf(67)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[16]" LOC = U16;> [cpu.ucf(68)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[15]" LOC = V9;> [cpu.ucf(69)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[14]" LOC = V12;> [cpu.ucf(70)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[13]" LOC = V13;> [cpu.ucf(71)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[12]" LOC = V15;> [cpu.ucf(72)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[11]" LOC = U18;> [cpu.ucf(73)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[10]" LOC = T18;> [cpu.ucf(74)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[9]" LOC = T17;> [cpu.ucf(75)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[8]" LOC = R18;> [cpu.ucf(76)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[7]" LOC = R16;> [cpu.ucf(77)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[6]" LOC = R15;> [cpu.ucf(78)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[5]" LOC = P18;> [cpu.ucf(79)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[4]" LOC = P17;> [cpu.ucf(80)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[3]" LOC = P16;> [cpu.ucf(81)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[2]" LOC = N18;> [cpu.ucf(82)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[1]" LOC = N15;> [cpu.ucf(83)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Addr[0]" LOC = N14;> [cpu.ucf(84)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[15]" LOC = N11;> [cpu.ucf(85)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[14]" LOC = N12;> [cpu.ucf(86)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[13]" LOC = P10;> [cpu.ucf(87)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[12]" LOC = P11;> [cpu.ucf(88)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[11]" LOC = P12;> [cpu.ucf(89)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[10]" LOC = P13;> [cpu.ucf(90)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[9]" LOC = R10;> [cpu.ucf(91)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[8]" LOC = R11;> [cpu.ucf(92)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[7]" LOC = R12;> [cpu.ucf(93)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[6]" LOC = R14;> [cpu.ucf(94)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[5]" LOC = R13;> [cpu.ucf(95)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[4]" LOC = T12;> [cpu.ucf(96)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[3]" LOC = T14;> [cpu.ucf(97)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[2]" LOC = T15;> [cpu.ucf(98)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[1]" LOC = T16;> [cpu.ucf(99)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "ram2Data[0]" LOC = U13;> [cpu.ucf(100)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "blueOut[0]" LOC = D5;> [cpu.ucf(119)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "blueOut[1]" LOC = A6;> [cpu.ucf(120)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "blueOut[2]" LOC = B6;> [cpu.ucf(121)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "greenOut[0]" LOC = B4;> [cpu.ucf(122)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "greenOut[1]" LOC = C4;> [cpu.ucf(123)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "greenOut[2]" LOC = C5;> [cpu.ucf(124)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "redOut[0]" LOC = A7;> [cpu.ucf(126)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "redOut[1]" LOC = C3;> [cpu.ucf(127)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "redOut[2]" LOC = A4;> [cpu.ucf(128)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[22]" LOC = K4;> [cpu.ucf(132)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[21]" LOC = K5;> [cpu.ucf(133)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[20]" LOC = K6;> [cpu.ucf(134)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[19]" LOC = L1;> [cpu.ucf(135)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[18]" LOC = L2;> [cpu.ucf(136)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[17]" LOC = L3;> [cpu.ucf(137)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[16]" LOC = L4;> [cpu.ucf(138)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[15]" LOC = L5;> [cpu.ucf(139)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[14]" LOC = L6;> [cpu.ucf(140)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[13]" LOC = M3;> [cpu.ucf(141)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[12]" LOC = M4;> [cpu.ucf(142)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[11]" LOC = M5;> [cpu.ucf(143)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[10]" LOC = M6;> [cpu.ucf(144)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[9]" LOC = N4;> [cpu.ucf(145)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[8]" LOC = N5;> [cpu.ucf(146)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[7]" LOC = P1;> [cpu.ucf(147)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[6]" LOC = P2;> [cpu.ucf(148)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[5]" LOC = P3;> [cpu.ucf(149)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[4]" LOC = P4;> [cpu.ucf(150)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[3]" LOC = R2;> [cpu.ucf(151)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[2]" LOC = R3;> [cpu.ucf(152)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[1]" LOC = T1;> [cpu.ucf(153)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashAddr[0]" LOC = T2;> [cpu.ucf(154)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[15]" LOC = F1;> [cpu.ucf(155)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[14]" LOC = F2;> [cpu.ucf(156)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[13]" LOC = G3;> [cpu.ucf(157)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[12]" LOC = G4;> [cpu.ucf(158)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[11]" LOC = G5;> [cpu.ucf(159)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[10]" LOC = G6;> [cpu.ucf(160)]' could not be found and so
+   the Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[9]" LOC = H1;> [cpu.ucf(161)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[8]" LOC = H2;> [cpu.ucf(162)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[7]" LOC = H3;> [cpu.ucf(163)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[6]" LOC = H4;> [cpu.ucf(164)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[5]" LOC = H5;> [cpu.ucf(165)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[4]" LOC = H6;> [cpu.ucf(166)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[3]" LOC = J1;> [cpu.ucf(167)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[2]" LOC = J2;> [cpu.ucf(168)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[1]" LOC = J4;> [cpu.ucf(169)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flashData[0]" LOC = J5;> [cpu.ucf(170)]' could not be found and so the
+   Locate constraint will be removed.
+
+WARNING:NgdBuild:1012 - The constraint <NET "digit1[6]" LOC = F8;> [cpu.ucf(3)]
+   is overridden on the design object digit1<6> by the constraint <NET
+   "digit1<6>" LOC = F8;> [cpu.ucf(225)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit1[5]" LOC = E8;> [cpu.ucf(4)]
+   is overridden on the design object digit1<5> by the constraint <NET
+   "digit1<5>" LOC = E8;> [cpu.ucf(215)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit1[4]" LOC = A8;> [cpu.ucf(5)]
+   is overridden on the design object digit1<4> by the constraint <NET
+   "digit1<4>" LOC = A8;> [cpu.ucf(207)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit1[3]" LOC = F7;> [cpu.ucf(6)]
+   is overridden on the design object digit1<3> by the constraint <NET
+   "digit1<3>" LOC = F7;> [cpu.ucf(201)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit1[2]" LOC = E7;> [cpu.ucf(7)]
+   is overridden on the design object digit1<2> by the constraint <NET
+   "digit1<2>" LOC = E7;> [cpu.ucf(197)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit1[1]" LOC = D7;> [cpu.ucf(8)]
+   is overridden on the design object digit1<1> by the constraint <NET
+   "digit1<1>" LOC = D7;> [cpu.ucf(194)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit1[0]" LOC = C7;> [cpu.ucf(9)]
+   is overridden on the design object digit1<0> by the constraint <NET
+   "digit1<0>" LOC = C7;> [cpu.ucf(190)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit2[6]" LOC = B10;>
+   [cpu.ucf(10)] is overridden on the design object digit2<6> by the constraint
+   <NET "digit2<6>" LOC = B10;> [cpu.ucf(316)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit2[5]" LOC = A10;>
+   [cpu.ucf(11)] is overridden on the design object digit2<5> by the constraint
+   <NET "digit2<5>" LOC = A10;> [cpu.ucf(314)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit2[4]" LOC = G9;> [cpu.ucf(12)]
+   is overridden on the design object digit2<4> by the constraint <NET
+   "digit2<4>" LOC = G9;> [cpu.ucf(312)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit2[3]" LOC = F9;> [cpu.ucf(13)]
+   is overridden on the design object digit2<3> by the constraint <NET
+   "digit2<3>" LOC = F9;> [cpu.ucf(310)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit2[2]" LOC = E9;> [cpu.ucf(14)]
+   is overridden on the design object digit2<2> by the constraint <NET
+   "digit2<2>" LOC = E9;> [cpu.ucf(308)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit2[1]" LOC = D9;> [cpu.ucf(15)]
+   is overridden on the design object digit2<1> by the constraint <NET
+   "digit2<1>" LOC = D9;> [cpu.ucf(306)].
+WARNING:NgdBuild:1012 - The constraint <NET "digit2[0]" LOC = C9;> [cpu.ucf(16)]
+   is overridden on the design object digit2<0> by the constraint <NET
+   "digit2<0>" LOC = C9;> [cpu.ucf(305)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[15]" LOC = A14;> [cpu.ucf(17)]
+   is overridden on the design object led<15> by the constraint <NET "led<15>"
+   LOC = A14;> [cpu.ucf(281)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[14]" LOC = E13;> [cpu.ucf(18)]
+   is overridden on the design object led<14> by the constraint <NET "led<14>"
+   LOC = E13;> [cpu.ucf(276)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[13]" LOC = D13;> [cpu.ucf(19)]
+   is overridden on the design object led<13> by the constraint <NET "led<13>"
+   LOC = D13;> [cpu.ucf(271)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[12]" LOC = B13;> [cpu.ucf(20)]
+   is overridden on the design object led<12> by the constraint <NET "led<12>"
+   LOC = B13;> [cpu.ucf(265)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[11]" LOC = A13;> [cpu.ucf(21)]
+   is overridden on the design object led<11> by the constraint <NET "led<11>"
+   LOC = A13;> [cpu.ucf(260)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[10]" LOC = F12;> [cpu.ucf(22)]
+   is overridden on the design object led<10> by the constraint <NET "led<10>"
+   LOC = F12;> [cpu.ucf(256)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[9]" LOC = E12;> [cpu.ucf(23)]
+   is overridden on the design object led<9> by the constraint <NET "led<9>" LOC
+   = E12;> [cpu.ucf(185)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[8]" LOC = A12;> [cpu.ucf(24)]
+   is overridden on the design object led<8> by the constraint <NET "led<8>" LOC
+   = A12;> [cpu.ucf(183)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[7]" LOC = F11;> [cpu.ucf(25)]
+   is overridden on the design object led<7> by the constraint <NET "led<7>" LOC
+   = F11;> [cpu.ucf(181)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[6]" LOC = E11;> [cpu.ucf(26)]
+   is overridden on the design object led<6> by the constraint <NET "led<6>" LOC
+   = E11;> [cpu.ucf(180)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[5]" LOC = D11;> [cpu.ucf(27)]
+   is overridden on the design object led<5> by the constraint <NET "led<5>" LOC
+   = D11;> [cpu.ucf(179)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[4]" LOC = C11;> [cpu.ucf(28)]
+   is overridden on the design object led<4> by the constraint <NET "led<4>" LOC
+   = C11;> [cpu.ucf(315)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[3]" LOC = B11;> [cpu.ucf(29)]
+   is overridden on the design object led<3> by the constraint <NET "led<3>" LOC
+   = B11;> [cpu.ucf(313)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[2]" LOC = A11;> [cpu.ucf(30)]
+   is overridden on the design object led<2> by the constraint <NET "led<2>" LOC
+   = A11;> [cpu.ucf(311)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[1]" LOC = E10;> [cpu.ucf(31)]
+   is overridden on the design object led<1> by the constraint <NET "led<1>" LOC
+   = E10;> [cpu.ucf(309)].
+WARNING:NgdBuild:1012 - The constraint <NET "led[0]" LOC = D10;> [cpu.ucf(32)]
+   is overridden on the design object led<0> by the constraint <NET "led<0>" LOC
+   = D10;> [cpu.ucf(307)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[17]" LOC = H17;>
+   [cpu.ucf(33)] is overridden on the design object ram1Addr<17> by the
+   constraint <NET "ram1Addr<17>" LOC = H17;> [cpu.ucf(301)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[16]" LOC = H16;>
+   [cpu.ucf(34)] is overridden on the design object ram1Addr<16> by the
+   constraint <NET "ram1Addr<16>" LOC = H16;> [cpu.ucf(299)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[15]" LOC = H15;>
+   [cpu.ucf(35)] is overridden on the design object ram1Addr<15> by the
+   constraint <NET "ram1Addr<15>" LOC = H15;> [cpu.ucf(296)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[14]" LOC = H14;>
+   [cpu.ucf(36)] is overridden on the design object ram1Addr<14> by the
+   constraint <NET "ram1Addr<14>" LOC = H14;> [cpu.ucf(293)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[13]" LOC = G16;>
+   [cpu.ucf(37)] is overridden on the design object ram1Addr<13> by the
+   constraint <NET "ram1Addr<13>" LOC = G16;> [cpu.ucf(290)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[12]" LOC = G15;>
+   [cpu.ucf(38)] is overridden on the design object ram1Addr<12> by the
+   constraint <NET "ram1Addr<12>" LOC = G15;> [cpu.ucf(287)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[11]" LOC = G14;>
+   [cpu.ucf(39)] is overridden on the design object ram1Addr<11> by the
+   constraint <NET "ram1Addr<11>" LOC = G14;> [cpu.ucf(283)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[10]" LOC = G13;>
+   [cpu.ucf(40)] is overridden on the design object ram1Addr<10> by the
+   constraint <NET "ram1Addr<10>" LOC = G13;> [cpu.ucf(278)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[9]" LOC = F18;>
+   [cpu.ucf(41)] is overridden on the design object ram1Addr<9> by the
+   constraint <NET "ram1Addr<9>" LOC = F18;> [cpu.ucf(285)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[8]" LOC = F17;>
+   [cpu.ucf(42)] is overridden on the design object ram1Addr<8> by the
+   constraint <NET "ram1Addr<8>" LOC = F17;> [cpu.ucf(280)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[7]" LOC = F15;>
+   [cpu.ucf(43)] is overridden on the design object ram1Addr<7> by the
+   constraint <NET "ram1Addr<7>" LOC = F15;> [cpu.ucf(275)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[6]" LOC = F14;>
+   [cpu.ucf(44)] is overridden on the design object ram1Addr<6> by the
+   constraint <NET "ram1Addr<6>" LOC = F14;> [cpu.ucf(270)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[5]" LOC = E16;>
+   [cpu.ucf(45)] is overridden on the design object ram1Addr<5> by the
+   constraint <NET "ram1Addr<5>" LOC = E16;> [cpu.ucf(264)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[4]" LOC = E15;>
+   [cpu.ucf(46)] is overridden on the design object ram1Addr<4> by the
+   constraint <NET "ram1Addr<4>" LOC = E15;> [cpu.ucf(259)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[3]" LOC = D17;>
+   [cpu.ucf(47)] is overridden on the design object ram1Addr<3> by the
+   constraint <NET "ram1Addr<3>" LOC = D17;> [cpu.ucf(255)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[2]" LOC = D16;>
+   [cpu.ucf(48)] is overridden on the design object ram1Addr<2> by the
+   constraint <NET "ram1Addr<2>" LOC = D16;> [cpu.ucf(251)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[1]" LOC = C18;>
+   [cpu.ucf(49)] is overridden on the design object ram1Addr<1> by the
+   constraint <NET "ram1Addr<1>" LOC = C18;> [cpu.ucf(246)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Addr[0]" LOC = C17;>
+   [cpu.ucf(50)] is overridden on the design object ram1Addr<0> by the
+   constraint <NET "ram1Addr<0>" LOC = C17;> [cpu.ucf(239)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Data[7]" LOC = K13;>
+   [cpu.ucf(59)] is overridden on the design object ram1Data<7> by the
+   constraint <NET "ram1Data<7>" LOC = K13;> [cpu.ucf(292)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Data[6]" LOC = K12;>
+   [cpu.ucf(60)] is overridden on the design object ram1Data<6> by the
+   constraint <NET "ram1Data<6>" LOC = K12;> [cpu.ucf(289)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Data[5]" LOC = J17;>
+   [cpu.ucf(61)] is overridden on the design object ram1Data<5> by the
+   constraint <NET "ram1Data<5>" LOC = J17;> [cpu.ucf(286)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Data[4]" LOC = J16;>
+   [cpu.ucf(62)] is overridden on the design object ram1Data<4> by the
+   constraint <NET "ram1Data<4>" LOC = J16;> [cpu.ucf(282)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Data[3]" LOC = J15;>
+   [cpu.ucf(63)] is overridden on the design object ram1Data<3> by the
+   constraint <NET "ram1Data<3>" LOC = J15;> [cpu.ucf(277)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Data[2]" LOC = J14;>
+   [cpu.ucf(64)] is overridden on the design object ram1Data<2> by the
+   constraint <NET "ram1Data<2>" LOC = J14;> [cpu.ucf(272)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Data[1]" LOC = J13;>
+   [cpu.ucf(65)] is overridden on the design object ram1Data<1> by the
+   constraint <NET "ram1Data<1>" LOC = J13;> [cpu.ucf(267)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram1Data[0]" LOC = J12;>
+   [cpu.ucf(66)] is overridden on the design object ram1Data<0> by the
+   constraint <NET "ram1Data<0>" LOC = J12;> [cpu.ucf(262)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[17]" LOC = U15;>
+   [cpu.ucf(67)] is overridden on the design object ram2Addr<17> by the
+   constraint <NET "ram2Addr<17>" LOC = U15;> [cpu.ucf(298)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[16]" LOC = U16;>
+   [cpu.ucf(68)] is overridden on the design object ram2Addr<16> by the
+   constraint <NET "ram2Addr<16>" LOC = U16;> [cpu.ucf(295)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[15]" LOC = V9;>
+   [cpu.ucf(69)] is overridden on the design object ram2Addr<15> by the
+   constraint <NET "ram2Addr<15>" LOC = V9;> [cpu.ucf(291)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[14]" LOC = V12;>
+   [cpu.ucf(70)] is overridden on the design object ram2Addr<14> by the
+   constraint <NET "ram2Addr<14>" LOC = V12;> [cpu.ucf(288)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[13]" LOC = V13;>
+   [cpu.ucf(71)] is overridden on the design object ram2Addr<13> by the
+   constraint <NET "ram2Addr<13>" LOC = V13;> [cpu.ucf(284)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[12]" LOC = V15;>
+   [cpu.ucf(72)] is overridden on the design object ram2Addr<12> by the
+   constraint <NET "ram2Addr<12>" LOC = V15;> [cpu.ucf(279)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[11]" LOC = U18;>
+   [cpu.ucf(73)] is overridden on the design object ram2Addr<11> by the
+   constraint <NET "ram2Addr<11>" LOC = U18;> [cpu.ucf(274)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[10]" LOC = T18;>
+   [cpu.ucf(74)] is overridden on the design object ram2Addr<10> by the
+   constraint <NET "ram2Addr<10>" LOC = T18;> [cpu.ucf(269)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[9]" LOC = T17;>
+   [cpu.ucf(75)] is overridden on the design object ram2Addr<9> by the
+   constraint <NET "ram2Addr<9>" LOC = T17;> [cpu.ucf(248)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[8]" LOC = R18;>
+   [cpu.ucf(76)] is overridden on the design object ram2Addr<8> by the
+   constraint <NET "ram2Addr<8>" LOC = R18;> [cpu.ucf(241)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[7]" LOC = R16;>
+   [cpu.ucf(77)] is overridden on the design object ram2Addr<7> by the
+   constraint <NET "ram2Addr<7>" LOC = R16;> [cpu.ucf(233)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[6]" LOC = R15;>
+   [cpu.ucf(78)] is overridden on the design object ram2Addr<6> by the
+   constraint <NET "ram2Addr<6>" LOC = R15;> [cpu.ucf(226)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[5]" LOC = P18;>
+   [cpu.ucf(79)] is overridden on the design object ram2Addr<5> by the
+   constraint <NET "ram2Addr<5>" LOC = P18;> [cpu.ucf(218)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[4]" LOC = P17;>
+   [cpu.ucf(80)] is overridden on the design object ram2Addr<4> by the
+   constraint <NET "ram2Addr<4>" LOC = P17;> [cpu.ucf(210)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[3]" LOC = P16;>
+   [cpu.ucf(81)] is overridden on the design object ram2Addr<3> by the
+   constraint <NET "ram2Addr<3>" LOC = P16;> [cpu.ucf(204)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[2]" LOC = N18;>
+   [cpu.ucf(82)] is overridden on the design object ram2Addr<2> by the
+   constraint <NET "ram2Addr<2>" LOC = N18;> [cpu.ucf(199)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[1]" LOC = N15;>
+   [cpu.ucf(83)] is overridden on the design object ram2Addr<1> by the
+   constraint <NET "ram2Addr<1>" LOC = N15;> [cpu.ucf(195)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Addr[0]" LOC = N14;>
+   [cpu.ucf(84)] is overridden on the design object ram2Addr<0> by the
+   constraint <NET "ram2Addr<0>" LOC = N14;> [cpu.ucf(191)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[15]" LOC = N11;>
+   [cpu.ucf(85)] is overridden on the design object ram2Data<15> by the
+   constraint <NET "ram2Data<15>" LOC = N11;> [cpu.ucf(192)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[14]" LOC = N12;>
+   [cpu.ucf(86)] is overridden on the design object ram2Data<14> by the
+   constraint <NET "ram2Data<14>" LOC = N12;> [cpu.ucf(188)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[13]" LOC = P10;>
+   [cpu.ucf(87)] is overridden on the design object ram2Data<13> by the
+   constraint <NET "ram2Data<13>" LOC = P10;> [cpu.ucf(187)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[12]" LOC = P11;>
+   [cpu.ucf(88)] is overridden on the design object ram2Data<12> by the
+   constraint <NET "ram2Data<12>" LOC = P11;> [cpu.ucf(186)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[11]" LOC = P12;>
+   [cpu.ucf(89)] is overridden on the design object ram2Data<11> by the
+   constraint <NET "ram2Data<11>" LOC = P12;> [cpu.ucf(184)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[10]" LOC = P13;>
+   [cpu.ucf(90)] is overridden on the design object ram2Data<10> by the
+   constraint <NET "ram2Data<10>" LOC = P13;> [cpu.ucf(182)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[9]" LOC = R10;>
+   [cpu.ucf(91)] is overridden on the design object ram2Data<9> by the
+   constraint <NET "ram2Data<9>" LOC = R10;> [cpu.ucf(266)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[8]" LOC = R11;>
+   [cpu.ucf(92)] is overridden on the design object ram2Data<8> by the
+   constraint <NET "ram2Data<8>" LOC = R11;> [cpu.ucf(261)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[7]" LOC = R12;>
+   [cpu.ucf(93)] is overridden on the design object ram2Data<7> by the
+   constraint <NET "ram2Data<7>" LOC = R12;> [cpu.ucf(257)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[6]" LOC = R14;>
+   [cpu.ucf(94)] is overridden on the design object ram2Data<6> by the
+   constraint <NET "ram2Data<6>" LOC = R14;> [cpu.ucf(252)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[5]" LOC = R13;>
+   [cpu.ucf(95)] is overridden on the design object ram2Data<5> by the
+   constraint <NET "ram2Data<5>" LOC = R13;> [cpu.ucf(247)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[4]" LOC = T12;>
+   [cpu.ucf(96)] is overridden on the design object ram2Data<4> by the
+   constraint <NET "ram2Data<4>" LOC = T12;> [cpu.ucf(240)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[3]" LOC = T14;>
+   [cpu.ucf(97)] is overridden on the design object ram2Data<3> by the
+   constraint <NET "ram2Data<3>" LOC = T14;> [cpu.ucf(234)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[2]" LOC = T15;>
+   [cpu.ucf(98)] is overridden on the design object ram2Data<2> by the
+   constraint <NET "ram2Data<2>" LOC = T15;> [cpu.ucf(227)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[1]" LOC = T16;>
+   [cpu.ucf(99)] is overridden on the design object ram2Data<1> by the
+   constraint <NET "ram2Data<1>" LOC = T16;> [cpu.ucf(220)].
+WARNING:NgdBuild:1012 - The constraint <NET "ram2Data[0]" LOC = U13;>
+   [cpu.ucf(100)] is overridden on the design object ram2Data<0> by the
+   constraint <NET "ram2Data<0>" LOC = U13;> [cpu.ucf(212)].
+WARNING:NgdBuild:1012 - The constraint <NET "blueOut[0]" LOC = D5;>
+   [cpu.ucf(119)] is overridden on the design object blueOut<0> by the
+   constraint <NET "blueOut<0>" LOC = D5;> [cpu.ucf(231)].
+WARNING:NgdBuild:1012 - The constraint <NET "blueOut[1]" LOC = A6;>
+   [cpu.ucf(120)] is overridden on the design object blueOut<1> by the
+   constraint <NET "blueOut<1>" LOC = A6;> [cpu.ucf(237)].
+WARNING:NgdBuild:1012 - The constraint <NET "blueOut[2]" LOC = B6;>
+   [cpu.ucf(121)] is overridden on the design object blueOut<2> by the
+   constraint <NET "blueOut<2>" LOC = B6;> [cpu.ucf(244)].
+WARNING:NgdBuild:1012 - The constraint <NET "greenOut[0]" LOC = B4;>
+   [cpu.ucf(122)] is overridden on the design object greenOut<0> by the
+   constraint <NET "greenOut<0>" LOC = B4;> [cpu.ucf(203)].
+WARNING:NgdBuild:1012 - The constraint <NET "greenOut[1]" LOC = C4;>
+   [cpu.ucf(123)] is overridden on the design object greenOut<1> by the
+   constraint <NET "greenOut<1>" LOC = C4;> [cpu.ucf(209)].
+WARNING:NgdBuild:1012 - The constraint <NET "greenOut[2]" LOC = C5;>
+   [cpu.ucf(124)] is overridden on the design object greenOut<2> by the
+   constraint <NET "greenOut<2>" LOC = C5;> [cpu.ucf(217)].
+WARNING:NgdBuild:1012 - The constraint <NET "redOut[0]" LOC = A7;>
+   [cpu.ucf(126)] is overridden on the design object redOut<0> by the constraint
+   <NET "redOut<0>" LOC = A7;> [cpu.ucf(205)].
+WARNING:NgdBuild:1012 - The constraint <NET "redOut[1]" LOC = C3;>
+   [cpu.ucf(127)] is overridden on the design object redOut<1> by the constraint
+   <NET "redOut<1>" LOC = C3;> [cpu.ucf(211)].
+WARNING:NgdBuild:1012 - The constraint <NET "redOut[2]" LOC = A4;>
+   [cpu.ucf(128)] is overridden on the design object redOut<2> by the constraint
+   <NET "redOut<2>" LOC = A4;> [cpu.ucf(219)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[22]" LOC = K4;>
+   [cpu.ucf(132)] is overridden on the design object flashAddr<22> by the
+   constraint <NET "flashAddr<22>" LOC = K4;> [cpu.ucf(228)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[21]" LOC = K5;>
+   [cpu.ucf(133)] is overridden on the design object flashAddr<21> by the
+   constraint <NET "flashAddr<21>" LOC = K5;> [cpu.ucf(221)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[20]" LOC = K6;>
+   [cpu.ucf(134)] is overridden on the design object flashAddr<20> by the
+   constraint <NET "flashAddr<20>" LOC = K6;> [cpu.ucf(213)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[19]" LOC = L1;>
+   [cpu.ucf(135)] is overridden on the design object flashAddr<19> by the
+   constraint <NET "flashAddr<19>" LOC = L1;> [cpu.ucf(242)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[18]" LOC = L2;>
+   [cpu.ucf(136)] is overridden on the design object flashAddr<18> by the
+   constraint <NET "flashAddr<18>" LOC = L2;> [cpu.ucf(235)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[17]" LOC = L3;>
+   [cpu.ucf(137)] is overridden on the design object flashAddr<17> by the
+   constraint <NET "flashAddr<17>" LOC = L3;> [cpu.ucf(229)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[16]" LOC = L4;>
+   [cpu.ucf(138)] is overridden on the design object flashAddr<16> by the
+   constraint <NET "flashAddr<16>" LOC = L4;> [cpu.ucf(222)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[15]" LOC = L5;>
+   [cpu.ucf(139)] is overridden on the design object flashAddr<15> by the
+   constraint <NET "flashAddr<15>" LOC = L5;> [cpu.ucf(214)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[14]" LOC = L6;>
+   [cpu.ucf(140)] is overridden on the design object flashAddr<14> by the
+   constraint <NET "flashAddr<14>" LOC = L6;> [cpu.ucf(206)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[13]" LOC = M3;>
+   [cpu.ucf(141)] is overridden on the design object flashAddr<13> by the
+   constraint <NET "flashAddr<13>" LOC = M3;> [cpu.ucf(200)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[12]" LOC = M4;>
+   [cpu.ucf(142)] is overridden on the design object flashAddr<12> by the
+   constraint <NET "flashAddr<12>" LOC = M4;> [cpu.ucf(196)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[11]" LOC = M5;>
+   [cpu.ucf(143)] is overridden on the design object flashAddr<11> by the
+   constraint <NET "flashAddr<11>" LOC = M5;> [cpu.ucf(193)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[10]" LOC = M6;>
+   [cpu.ucf(144)] is overridden on the design object flashAddr<10> by the
+   constraint <NET "flashAddr<10>" LOC = M6;> [cpu.ucf(189)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[9]" LOC = N4;>
+   [cpu.ucf(145)] is overridden on the design object flashAddr<9> by the
+   constraint <NET "flashAddr<9>" LOC = N4;> [cpu.ucf(253)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[8]" LOC = N5;>
+   [cpu.ucf(146)] is overridden on the design object flashAddr<8> by the
+   constraint <NET "flashAddr<8>" LOC = N5;> [cpu.ucf(249)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[7]" LOC = P1;>
+   [cpu.ucf(147)] is overridden on the design object flashAddr<7> by the
+   constraint <NET "flashAddr<7>" LOC = P1;> [cpu.ucf(243)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[6]" LOC = P2;>
+   [cpu.ucf(148)] is overridden on the design object flashAddr<6> by the
+   constraint <NET "flashAddr<6>" LOC = P2;> [cpu.ucf(236)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[5]" LOC = P3;>
+   [cpu.ucf(149)] is overridden on the design object flashAddr<5> by the
+   constraint <NET "flashAddr<5>" LOC = P3;> [cpu.ucf(230)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[4]" LOC = P4;>
+   [cpu.ucf(150)] is overridden on the design object flashAddr<4> by the
+   constraint <NET "flashAddr<4>" LOC = P4;> [cpu.ucf(224)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[3]" LOC = R2;>
+   [cpu.ucf(151)] is overridden on the design object flashAddr<3> by the
+   constraint <NET "flashAddr<3>" LOC = R2;> [cpu.ucf(216)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[2]" LOC = R3;>
+   [cpu.ucf(152)] is overridden on the design object flashAddr<2> by the
+   constraint <NET "flashAddr<2>" LOC = R3;> [cpu.ucf(208)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[1]" LOC = T1;>
+   [cpu.ucf(153)] is overridden on the design object flashAddr<1> by the
+   constraint <NET "flashAddr<1>" LOC = T1;> [cpu.ucf(202)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashAddr[0]" LOC = T2;>
+   [cpu.ucf(154)] is overridden on the design object flashAddr<0> by the
+   constraint <NET "flashAddr<0>" LOC = T2;> [cpu.ucf(198)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[15]" LOC = F1;>
+   [cpu.ucf(155)] is overridden on the design object flashData<15> by the
+   constraint <NET "flashData<15>" LOC = F1;> [cpu.ucf(304)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[14]" LOC = F2;>
+   [cpu.ucf(156)] is overridden on the design object flashData<14> by the
+   constraint <NET "flashData<14>" LOC = F2;> [cpu.ucf(303)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[13]" LOC = G3;>
+   [cpu.ucf(157)] is overridden on the design object flashData<13> by the
+   constraint <NET "flashData<13>" LOC = G3;> [cpu.ucf(302)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[12]" LOC = G4;>
+   [cpu.ucf(158)] is overridden on the design object flashData<12> by the
+   constraint <NET "flashData<12>" LOC = G4;> [cpu.ucf(300)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[11]" LOC = G5;>
+   [cpu.ucf(159)] is overridden on the design object flashData<11> by the
+   constraint <NET "flashData<11>" LOC = G5;> [cpu.ucf(297)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[10]" LOC = G6;>
+   [cpu.ucf(160)] is overridden on the design object flashData<10> by the
+   constraint <NET "flashData<10>" LOC = G6;> [cpu.ucf(294)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[9]" LOC = H1;>
+   [cpu.ucf(161)] is overridden on the design object flashData<9> by the
+   constraint <NET "flashData<9>" LOC = H1;> [cpu.ucf(273)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[8]" LOC = H2;>
+   [cpu.ucf(162)] is overridden on the design object flashData<8> by the
+   constraint <NET "flashData<8>" LOC = H2;> [cpu.ucf(268)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[7]" LOC = H3;>
+   [cpu.ucf(163)] is overridden on the design object flashData<7> by the
+   constraint <NET "flashData<7>" LOC = H3;> [cpu.ucf(263)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[6]" LOC = H4;>
+   [cpu.ucf(164)] is overridden on the design object flashData<6> by the
+   constraint <NET "flashData<6>" LOC = H4;> [cpu.ucf(258)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[5]" LOC = H5;>
+   [cpu.ucf(165)] is overridden on the design object flashData<5> by the
+   constraint <NET "flashData<5>" LOC = H5;> [cpu.ucf(254)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[4]" LOC = H6;>
+   [cpu.ucf(166)] is overridden on the design object flashData<4> by the
+   constraint <NET "flashData<4>" LOC = H6;> [cpu.ucf(250)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[3]" LOC = J1;>
+   [cpu.ucf(167)] is overridden on the design object flashData<3> by the
+   constraint <NET "flashData<3>" LOC = J1;> [cpu.ucf(245)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[2]" LOC = J2;>
+   [cpu.ucf(168)] is overridden on the design object flashData<2> by the
+   constraint <NET "flashData<2>" LOC = J2;> [cpu.ucf(238)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[1]" LOC = J4;>
+   [cpu.ucf(169)] is overridden on the design object flashData<1> by the
+   constraint <NET "flashData<1>" LOC = J4;> [cpu.ucf(232)].
+WARNING:NgdBuild:1012 - The constraint <NET "flashData[0]" LOC = J5;>
+   [cpu.ucf(170)] is overridden on the design object flashData<0> by the
+   constraint <NET "flashData<0>" LOC = J5;> [cpu.ucf(223)].
 Done...
 
 Checking expanded design ...
+WARNING:NgdBuild:478 - clock net CLKFX_OUT with clock driver u27/CLKFX_BUFG_INST
+   drives no clock pins
 
 Partition Implementation Status
 -------------------------------
@@ -27,12 +994,12 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings:   0
+  Number of warnings: 277
 
 Total memory usage is 166440 kilobytes
 
 Writing NGD file "cpu.ngd" ...
-Total REAL time to NGDBUILD completion:  4 sec
+Total REAL time to NGDBUILD completion:  6 sec
 Total CPU time to NGDBUILD completion:   4 sec
 
 Writing NGDBUILD log file "cpu.bld"...

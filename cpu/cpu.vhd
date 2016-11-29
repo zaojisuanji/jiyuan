@@ -90,13 +90,13 @@ architecture Behavioral of cpu is
 		);
 	end component;
 	
-	component digit
-		port (
-				clka : in std_logic;
-				addra : in std_logic_vector(14 downto 0);
-				douta : out std_logic_vector(23 downto 0)
-			);
-	end component;
+--	component digit
+--		port (
+--				clka : in std_logic;
+--				addra : in std_logic_vector(14 downto 0);
+--				douta : out std_logic_vector(23 downto 0)
+--			);
+--	end component;
 	
 	component VGA_Controller
 		port (
@@ -140,15 +140,15 @@ architecture Behavioral of cpu is
 												--若data_ready='1'，则把rdn置为'0'即可读串口（读出数据在RAM1data上）
 		
 		--RAM1（DM）和RAM2（IM）
-		IdExMemRead : in std_logic;
-		IdExMemWrite : in std_logic;
-		ExMemRead : in std_logic;			--控制读DM的信号，='1'代表需要读
-		ExMemWrite : in std_logic;		--控制写DM的信号，='1'代表需要写
+		MemRead : in std_logic;			--控制读DM的信号，='1'代表需要读
+		MemWrite : in std_logic;		--控制写DM的信号，='1'代表需要写
 		
 		dataIn : in std_logic_vector(15 downto 0);		--写内存时，要写入DM或IM的数据
 		
 		ramAddr : in std_logic_vector(15 downto 0);		--读DM/写DM/写IM时，地址输入
-		PC : in std_logic_vector(15 downto 0);				--读IM时，地址输入
+		PCOut : in std_logic_vector(15 downto 0);			--读IM时，地址输入
+		PCMuxOut : in std_logic_vector(15 downto 0);	
+		PCKeep : in std_logic;
 		dataOut : out std_logic_vector(15 downto 0);		--读DM时，读出来的数据/读出的串口状态
 		insOut : out std_logic_vector(15 downto 0);		--读IM时，出来的指令
 		
@@ -191,8 +191,7 @@ architecture Behavioral of cpu is
 		clk : in  STD_LOGIC;
 		
 		clkout :out STD_LOGIC;
-		clk1 : out  STD_LOGIC;
-		clk2 : out STD_LOGIC
+		clk1 : out  STD_LOGIC
 	);
 	end component;
 	
@@ -269,7 +268,7 @@ architecture Behavioral of cpu is
 	);
 	end component;
 	
-	--（MFPC指令）从PC+1和ALUResult中选择一个作为“真正的ALUResult”
+	--（MFPC指令）从PC+1和ALUResult中选择一个作为"真正的ALUResult"
 	component MFPCMux
 	port(
 		PCAddOne  : in std_logic_vector(15 downto 0);	
@@ -567,7 +566,7 @@ architecture Behavioral of cpu is
 	end component; 
 	
 	
-	--以下的signal都是“全局变量”，来自所有component的out
+	--以下的signal都是"全局变量"，来自所有component的out
 	
 	--dcm
 	signal CLKFX_OUT : std_logic;
@@ -578,7 +577,6 @@ architecture Behavioral of cpu is
 	--clock
 	signal clk : std_logic;
 	signal clk_4 : std_logic;
-	signal clk_registers : std_logic;
 	
 	--PCRegister
 	signal PCOut : std_logic_vector(15 downto 0); 
@@ -671,8 +669,8 @@ architecture Behavioral of cpu is
 	signal MFPCMuxOut : std_logic_vector(15 downto 0);
 	
 	--digit rom
-	signal digitRomAddr : std_logic_vector(14 downto 0);
-	signal digitRomData : std_logic_vector(23 downto 0);
+--	signal digitRomAddr : std_logic_vector(14 downto 0);
+--	signal digitRomData : std_logic_vector(23 downto 0);
 	
 	--font rom
 	signal fontRomAddr : std_logic_vector(10 downto 0);
@@ -966,15 +964,15 @@ begin
          wrn => wrn,
 			rdn => rdn,
 			  
-			ExMemRead => ExMemRead,
-			ExMemWrite => ExMemWrite,
-			IdExMemRead => IdExMemRead,
-			IdExMemWrite => IdExMemWrite,
+			MemRead => ExMemRead,
+			MemWrite => ExMemWrite,
 			
-			dataIn => WriteDataOut,
-			ramAddr => MFPCMuxOut,
+			dataIn => ExMemReadData2,
 			
-			PC => PCOut,
+			ramAddr => ExMemALUResult,
+			PCOut => PCOut,
+			PCMuxOut => PCMuxOut,
+			PCKeep => PCKeep,
 			dataOut => DMDataOut,
 			insOut => IMInsOut,
 			
@@ -1014,8 +1012,7 @@ begin
 		clk => clkIn_clock,
 		
 		clkout => clk,
-		clk1 => clk_4,
-		clk2 => clk_registers
+		clk1 => clk_4
 	);
 	
 	
@@ -1095,12 +1092,12 @@ begin
 	);		
 	--r0 <= "0110101010010111";
 	--r1 <= "1011100010100110";
-	u24 : digit
-	port map(
-			clkA => clk_50,
-			addra => digitRomAddr,
-			douta => digitRomData
-	);
+--	u24 : digit
+--	port map(
+--			clkA => clk_50,
+--			addra => digitRomAddr,
+--			douta => digitRomData
+--	);
 	
 	u25 : fontRom
 	port map(
@@ -1148,7 +1145,7 @@ begin
 		--led <= flashData;
 	end process;
 	
-	process(clk_50, rst, clk_hand)
+	process(CLKFX_OUT, rst, clk_hand)
 	begin
 		if opt = '1' then
 			if rst = '0' then
@@ -1160,7 +1157,7 @@ begin
 			if rst = '0' then
 				clkIn_clock <= '0';
 			else 
-				clkIn_clock <= clk_50;
+				clkIn_clock <= CLKFX_OUT;
 			end if;
 		end if;
 	end process;
@@ -1211,4 +1208,3 @@ begin
 	end process;
 	--ram1Addr <= (others => '0');
 end Behavioral;
-
