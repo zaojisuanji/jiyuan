@@ -140,8 +140,10 @@ architecture Behavioral of cpu is
 												--若data_ready='1'，则把rdn置为'0'即可读串口（读出数据在RAM1data上）
 		
 		--RAM1（DM）和RAM2（IM）
-		MemRead : in std_logic;			--控制读DM的信号，='1'代表需要读
-		MemWrite : in std_logic;		--控制写DM的信号，='1'代表需要写
+		IdExMemRead : in std_logic;
+		IdExMemWrite : in std_logic;
+		ExMemRead : in std_logic;			--控制读DM的信号，='1'代表需要读
+		ExMemWrite : in std_logic;		--控制写DM的信号，='1'代表需要写
 		
 		dataIn : in std_logic_vector(15 downto 0);		--写内存时，要写入DM或IM的数据
 		
@@ -964,12 +966,14 @@ begin
          wrn => wrn,
 			rdn => rdn,
 			  
-			MemRead => ExMemRead,
-			MemWrite => ExMemWrite,
+			ExMemRead => ExMemRead,
+			ExMemWrite => ExMemWrite,
+			IdExMemRead => IdExMemRead,
+			IdExMemWrite => IdExMemWrite,
 			
-			dataIn => ExMemReadData2,
+			dataIn => WriteDataOut,
+			ramAddr => MFPCMuxOut,
 			
-			ramAddr => ExMemALUResult,
 			PC => PCOut,
 			dataOut => DMDataOut,
 			insOut => IMInsOut,
@@ -1144,7 +1148,7 @@ begin
 		--led <= flashData;
 	end process;
 	
-	process(CLKFX_OUT, rst, clk_hand)
+	process(clk_50, rst, clk_hand)
 	begin
 		if opt = '1' then
 			if rst = '0' then
@@ -1156,7 +1160,7 @@ begin
 			if rst = '0' then
 				clkIn_clock <= '0';
 			else 
-				clkIn_clock <= CLKFX_OUT;
+				clkIn_clock <= clk_50;
 			end if;
 		end if;
 	end process;

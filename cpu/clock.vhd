@@ -65,7 +65,7 @@ begin
 						clk2 <= '0';
 				end case;
 				
-				if(count = 3) then
+				if(count = 1) then
 					count <= 0;
 				else 
 					count <= count + 1;

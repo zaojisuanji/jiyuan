@@ -46,10 +46,8 @@ entity MemoryUnit is
 												--若data_ready='1'，则把rdn置为'0'即可读串口（读出数据在RAM1data上）
 		
 		--RAM2（IM+DM）
-		IdExMemRead : in std_logic;
-		IdExMemWrite : in std_logic;
-		ExMemRead : in std_logic;						--控制读DM的信号，='1'代表需要读
-		ExMemWrite : in std_logic;						--控制写DM的信号，='1'代表需要写
+		MemRead : in std_logic;							--控制读DM的信号，='1'代表需要读
+		MemWrite : in std_logic;						--控制写DM的信号，='1'代表需要写
 		
 		dataIn : in std_logic_vector(15 downto 0);		--写内存时，要写入DM或IM的数据
 		
@@ -108,10 +106,10 @@ architecture Behavioral of MemoryUnit is
 	
 begin
 	
-	process(clk, state, IdExMemWrite, flashstate, flash_finished)
+	process(clk, state, MemWrite, flashstate, flash_finished)
 	begin
 		if (flash_finished = '1') then
-			if (state = '0' and IdExMemWrite = '1') then
+			if (state = '0' and MemWrite = '1') then
 				ram2_we <= clk;
 			else
 				ram2_we <= '1';
@@ -125,20 +123,25 @@ begin
 		end if;
 	end process;
 	
-	process(state, IdExMemRead, ExMemRead, ram2_data, ramAddr)
+	process(state, MemRead, ram2_data, ramAddr)
 	begin
-		--if (MemRead = '1') then
-		if (state = '0' and IdExMemRead = '1') then
-			if (ramAddr = x"BF01") then
-				dataOut(15 downto 2) <= (others => '0');
-				dataOut(1) <= data_ready;
-				dataOut(0) <= tsre and tbre;
+		if (MemRead = '1') then
+			if (state = '0') then
+				if (ramAddr = x"BF01") then
+					dataOut(15 downto 2) <= (others => '0');
+					dataOut(1) <= data_ready;
+					dataOut(0) <= tsre and tbre;
+				else
+					dataOut <= ram2_data;
+				end if;
+			elsif (state = '1' and ramAddr = x"BF00") then
+				dataOut(15 downto 8) <= (others => '0');
+				dataOut(7 downto 0) <= ram1_data(7 downto 0);
 			else
- 			end if;
-		elsif (state = '1' and  ExMemRead = '1' and ramAddr = x"BF00") then
-			dataOut(15 downto 8) <= (others => '0');
-			dataOut(7 downto 0) <= ram1_data(7 downto 0);
-		else
+				dataOut <= (others => '0');
+			end if;
+		
+		else 
 			dataOut <= (others => '0');
 		end if;
 		
@@ -189,7 +192,7 @@ begin
 						
 					when '0' =>		--读/写 内存；准备读写串口
 						
-						if (IdExMemWrite = '1') then	--如果要写
+						if (MemWrite = '1') then	--如果要写
 							
 							ram2_oe <= '1';		--读收尾，写内存
 							
@@ -201,7 +204,7 @@ begin
 								ram2_addr(15 downto 0) <= ramAddr;
 								ram2_data <= dataIn;
 							end if;
-						elsif (IdExMemRead = '1') then	--如果要读
+						elsif (MemRead = '1') then	--如果要读
 							if (ramAddr = x"BF01") then 	--准备读串口状态
 								
 								if (rflag = '0') then	--读串口状态时意味着接下来可能要读/写串口数据
@@ -226,10 +229,11 @@ begin
 						ram2_addr(15 downto 0) <= PC;
 						ram2_oe <= '0';
 						if (ramAddr = x"BF00") then
-							if (ExMemWrite = '1') then	--写串口
+							if (MemWrite = '1') then	--写串口
 								wrn <= '1';
-							elsif (ExMemRead = '1') then	--读串口数据
+							elsif (MemRead = '1') then	--读串口数据
 								rdn <= '1';
+								
 							end if;
 						end if;
 						

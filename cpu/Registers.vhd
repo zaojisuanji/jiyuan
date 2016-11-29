@@ -87,8 +87,6 @@ begin
 			T <= (others => '0');
 			IH <= (others => '0');			
 			SP <= (others => '0');
-			ReadData1 <= (others => '0');
-			ReadData2 <= (others => '0');
 			state <= "00";
 			
 		elsif (clk'event and clk = '1') then
@@ -96,13 +94,11 @@ begin
 			if flashFinished = '1' then
 			
 				case state is
-					when "00" =>
-						state <= "01";
-							
-					when "01" =>
-						state <= "10";
 					
-					when "10" =>						--Ð´»Ø
+					when "00" =>						--Ð´»Ø
+						state <= "01";
+				
+					when "01" =>						--¶Á¼Ä´æÆ÷
 						if (RegWrite = '1') then 
 							case WriteReg is 
 								when "0000" => r0 <= WriteData;
@@ -119,35 +115,7 @@ begin
 								when others =>
 							end case;
 						end if;
-						state <= "11";
-				
-					when "11" =>						--¶Á¼Ä´æÆ÷
-						case ReadReg1In is 
-							when "0000" => ReadData1 <= r0;
-							when "0001" => ReadData1 <= r1;
-							when "0010" => ReadData1 <= r2;
-							when "0011" => ReadData1 <= r3;
-							when "0100" => ReadData1 <= r4;
-							when "0101" => ReadData1 <= r5;
-							when "0110" => ReadData1 <= r6;
-							when "0111" => ReadData1 <= r7;
-							when "1000" => ReadData1 <= SP;
-							when "1001" => ReadData1 <= IH;
-							when "1010" => ReadData1 <= T;
-							when others =>
-						end case;
 						
-						case ReadReg2In is
-							when "0000" => ReadData2 <= r0;
-							when "0001" => ReadData2 <= r1;
-							when "0010" => ReadData2 <= r2;
-							when "0011" => ReadData2 <= r3;
-							when "0100" => ReadData2 <= r4;
-							when "0101" => ReadData2 <= r5;
-							when "0110" => ReadData2 <= r6;
-							when "0111" => ReadData2 <= r7;
-							when others =>
-						end case;
 						state <= "00";
 
 					
@@ -159,6 +127,39 @@ begin
 			end if;
 		end if;
 	end process;
+	
+	
+	process(ReadReg1In, ReadReg2In, r0, r1, r2, r3,r4,r5,r6,r7,SP,IH,T)
+	begin
+		case ReadReg1In is 
+			when "0000" => ReadData1 <= r0;
+			when "0001" => ReadData1 <= r1;
+			when "0010" => ReadData1 <= r2;
+			when "0011" => ReadData1 <= r3;
+			when "0100" => ReadData1 <= r4;
+			when "0101" => ReadData1 <= r5;
+			when "0110" => ReadData1 <= r6;
+			when "0111" => ReadData1 <= r7;
+			when "1000" => ReadData1 <= SP;
+			when "1001" => ReadData1 <= IH;
+			when "1010" => ReadData1 <= T;
+			when others =>
+		end case;
+		
+		case ReadReg2In is
+			when "0000" => ReadData2 <= r0;
+			when "0001" => ReadData2 <= r1;
+			when "0010" => ReadData2 <= r2;
+			when "0011" => ReadData2 <= r3;
+			when "0100" => ReadData2 <= r4;
+			when "0101" => ReadData2 <= r5;
+			when "0110" => ReadData2 <= r6;
+			when "0111" => ReadData2 <= r7;
+			when others =>
+		end case;
+		
+	end process;
+	
 	
 	
 	dataSP <= SP;
