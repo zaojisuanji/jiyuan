@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: cpu.prj
 
@@ -137,8 +137,7 @@ Architecture behavioral of Entity hazarddetectionunit is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/PCMux.vhd" in Library work.
 Architecture behavioral of Entity pcmux is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/MemoryUnit.vhd" in Library work.
-Entity <memoryunit> compiled.
-Entity <memoryunit> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity memoryunit is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/clock.vhd" in Library work.
 Architecture behavioral of Entity clock is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/StructConflictUnit.vhd" in Library work.
@@ -151,17 +150,15 @@ Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ReadReg2Mux.v
 Architecture behavioral of Entity readreg2mux is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/VGA_Controller.vhd" in Library work.
 Architecture behave of Entity vga_controller is up to date.
-Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/digit.vhd" in Library work.
-Architecture digit_a of Entity digit is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/ipcore_dir/fontRom.vhd" in Library work.
 Architecture fontrom_a of Entity fontrom is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/WriteDataMux.vhd" in Library work.
 Architecture behavioral of Entity writedatamux is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/dcm.vhd" in Library work.
-Entity <dcm> compiled.
-Entity <dcm> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity dcm is up to date.
 Compiling vhdl file "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" in Library work.
-Architecture behavioral of Entity cpu is up to date.
+Entity <cpu> compiled.
+Entity <cpu> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -223,7 +220,6 @@ Analyzing hierarchy for entity <dcm> in library <work> (architecture <behavioral
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <cpu> in library <work> (Architecture <behavioral>).
-WARNING:Xst:2211 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1098: Instantiating black box module <digit>.
 WARNING:Xst:2211 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1105: Instantiating black box module <fontRom>.
 WARNING:Xst:819 - "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd" line 1151: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <opt>
@@ -751,19 +747,22 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Found 5-bit subtractor for signal <$sub0033> created at line 805.
     Found 5-bit subtractor for signal <$sub0034> created at line 820.
     Found 5-bit subtractor for signal <$sub0035> created at line 835.
-    Found 5-bit subtractor for signal <$sub0036> created at line 856.
+    Found 5-bit subtractor for signal <$sub0036> created at line 850.
     Found 5-bit subtractor for signal <$sub0037> created at line 871.
     Found 5-bit subtractor for signal <$sub0038> created at line 886.
     Found 5-bit subtractor for signal <$sub0039> created at line 901.
-    Found 5-bit subtractor for signal <$sub0040> created at line 922.
-    Found 5-bit subtractor for signal <$sub0041> created at line 937.
+    Found 5-bit subtractor for signal <$sub0040> created at line 916.
+    Found 5-bit subtractor for signal <$sub0041> created at line 931.
     Found 5-bit subtractor for signal <$sub0042> created at line 952.
     Found 5-bit subtractor for signal <$sub0043> created at line 967.
-    Found 5-bit subtractor for signal <$sub0044> created at line 989.
-    Found 5-bit subtractor for signal <$sub0045> created at line 1004.
-    Found 5-bit subtractor for signal <$sub0046> created at line 1019.
+    Found 5-bit subtractor for signal <$sub0044> created at line 982.
+    Found 5-bit subtractor for signal <$sub0045> created at line 997.
+    Found 5-bit subtractor for signal <$sub0046> created at line 1012.
     Found 5-bit subtractor for signal <$sub0047> created at line 1034.
     Found 5-bit subtractor for signal <$sub0048> created at line 1049.
+    Found 5-bit subtractor for signal <$sub0049> created at line 1064.
+    Found 5-bit subtractor for signal <$sub0050> created at line 1079.
+    Found 5-bit subtractor for signal <$sub0051> created at line 1094.
     Found 3-bit register for signal <bt>.
     Found 10-bit comparator greatequal for signal <bt$cmp_ge0000> created at line 141.
     Found 10-bit comparator greatequal for signal <bt$cmp_ge0001> created at line 141.
@@ -782,16 +781,16 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Found 11-bit comparator greatequal for signal <bt$cmp_ge0014> created at line 678.
     Found 11-bit comparator greatequal for signal <bt$cmp_ge0015> created at line 724.
     Found 11-bit comparator greatequal for signal <bt$cmp_ge0016> created at line 780.
-    Found 11-bit comparator greatequal for signal <bt$cmp_ge0017> created at line 846.
-    Found 11-bit comparator greatequal for signal <bt$cmp_ge0018> created at line 912.
-    Found 11-bit comparator greatequal for signal <bt$cmp_ge0019> created at line 979.
+    Found 11-bit comparator greatequal for signal <bt$cmp_ge0017> created at line 861.
+    Found 11-bit comparator greatequal for signal <bt$cmp_ge0018> created at line 942.
+    Found 11-bit comparator greatequal for signal <bt$cmp_ge0019> created at line 1024.
     Found 10-bit comparator greater for signal <bt$cmp_gt0000> created at line 250.
     Found 10-bit comparator greater for signal <bt$cmp_gt0001> created at line 235.
     Found 10-bit comparator greater for signal <bt$cmp_gt0002> created at line 220.
     Found 10-bit comparator greater for signal <bt$cmp_gt0003> created at line 205.
     Found 10-bit comparator greater for signal <bt$cmp_gt0004> created at line 190.
     Found 10-bit comparator greater for signal <bt$cmp_gt0005> created at line 177.
-    Found 11-bit comparator greater for signal <bt$cmp_gt0006> created at line 846.
+    Found 11-bit comparator greater for signal <bt$cmp_gt0006> created at line 861.
     Found 11-bit comparator greater for signal <bt$cmp_gt0007> created at line 780.
     Found 11-bit comparator greater for signal <bt$cmp_gt0008> created at line 724.
     Found 11-bit comparator greater for signal <bt$cmp_gt0009> created at line 678.
@@ -818,16 +817,16 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Found 11-bit comparator lessequal for signal <bt$cmp_le0014> created at line 678.
     Found 11-bit comparator lessequal for signal <bt$cmp_le0015> created at line 724.
     Found 11-bit comparator lessequal for signal <bt$cmp_le0016> created at line 780.
-    Found 11-bit comparator lessequal for signal <bt$cmp_le0017> created at line 846.
-    Found 11-bit comparator lessequal for signal <bt$cmp_le0018> created at line 912.
-    Found 11-bit comparator lessequal for signal <bt$cmp_le0019> created at line 979.
+    Found 11-bit comparator lessequal for signal <bt$cmp_le0017> created at line 861.
+    Found 11-bit comparator lessequal for signal <bt$cmp_le0018> created at line 942.
+    Found 11-bit comparator lessequal for signal <bt$cmp_le0019> created at line 1024.
     Found 10-bit comparator less for signal <bt$cmp_lt0000> created at line 250.
     Found 10-bit comparator less for signal <bt$cmp_lt0001> created at line 235.
     Found 10-bit comparator less for signal <bt$cmp_lt0002> created at line 220.
     Found 10-bit comparator less for signal <bt$cmp_lt0003> created at line 205.
     Found 10-bit comparator less for signal <bt$cmp_lt0004> created at line 190.
     Found 10-bit comparator less for signal <bt$cmp_lt0005> created at line 177.
-    Found 11-bit comparator less for signal <bt$cmp_lt0006> created at line 846.
+    Found 11-bit comparator less for signal <bt$cmp_lt0006> created at line 861.
     Found 11-bit comparator less for signal <bt$cmp_lt0007> created at line 780.
     Found 11-bit comparator less for signal <bt$cmp_lt0008> created at line 724.
     Found 11-bit comparator less for signal <bt$cmp_lt0009> created at line 678.
@@ -995,10 +994,10 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Found 9-bit adder for signal <romAddr$add0151> created at line 833.
     Found 7-bit adder for signal <romAddr$add0152> created at line 835.
     Found 10-bit adder for signal <romAddr$add0153> created at line 835.
-    Found 6-bit adder for signal <romAddr$add0154> created at line 854.
-    Found 9-bit adder for signal <romAddr$add0155> created at line 854.
-    Found 7-bit adder for signal <romAddr$add0156> created at line 856.
-    Found 10-bit adder for signal <romAddr$add0157> created at line 856.
+    Found 6-bit adder for signal <romAddr$add0154> created at line 848.
+    Found 9-bit adder for signal <romAddr$add0155> created at line 848.
+    Found 7-bit adder for signal <romAddr$add0156> created at line 850.
+    Found 10-bit adder for signal <romAddr$add0157> created at line 850.
     Found 6-bit adder for signal <romAddr$add0158> created at line 869.
     Found 9-bit adder for signal <romAddr$add0159> created at line 869.
     Found 7-bit adder for signal <romAddr$add0160> created at line 871.
@@ -1011,14 +1010,14 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Found 9-bit adder for signal <romAddr$add0167> created at line 899.
     Found 7-bit adder for signal <romAddr$add0168> created at line 901.
     Found 10-bit adder for signal <romAddr$add0169> created at line 901.
-    Found 6-bit adder for signal <romAddr$add0170> created at line 920.
-    Found 9-bit adder for signal <romAddr$add0171> created at line 920.
-    Found 7-bit adder for signal <romAddr$add0172> created at line 922.
-    Found 10-bit adder for signal <romAddr$add0173> created at line 922.
-    Found 6-bit adder for signal <romAddr$add0174> created at line 935.
-    Found 9-bit adder for signal <romAddr$add0175> created at line 935.
-    Found 7-bit adder for signal <romAddr$add0176> created at line 937.
-    Found 10-bit adder for signal <romAddr$add0177> created at line 937.
+    Found 6-bit adder for signal <romAddr$add0170> created at line 914.
+    Found 9-bit adder for signal <romAddr$add0171> created at line 914.
+    Found 7-bit adder for signal <romAddr$add0172> created at line 916.
+    Found 10-bit adder for signal <romAddr$add0173> created at line 916.
+    Found 6-bit adder for signal <romAddr$add0174> created at line 929.
+    Found 9-bit adder for signal <romAddr$add0175> created at line 929.
+    Found 7-bit adder for signal <romAddr$add0176> created at line 931.
+    Found 10-bit adder for signal <romAddr$add0177> created at line 931.
     Found 6-bit adder for signal <romAddr$add0178> created at line 950.
     Found 9-bit adder for signal <romAddr$add0179> created at line 950.
     Found 7-bit adder for signal <romAddr$add0180> created at line 952.
@@ -1027,18 +1026,18 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Found 9-bit adder for signal <romAddr$add0183> created at line 965.
     Found 7-bit adder for signal <romAddr$add0184> created at line 967.
     Found 10-bit adder for signal <romAddr$add0185> created at line 967.
-    Found 6-bit adder for signal <romAddr$add0186> created at line 987.
-    Found 9-bit adder for signal <romAddr$add0187> created at line 987.
-    Found 7-bit adder for signal <romAddr$add0188> created at line 989.
-    Found 10-bit adder for signal <romAddr$add0189> created at line 989.
-    Found 6-bit adder for signal <romAddr$add0190> created at line 1002.
-    Found 9-bit adder for signal <romAddr$add0191> created at line 1002.
-    Found 7-bit adder for signal <romAddr$add0192> created at line 1004.
-    Found 10-bit adder for signal <romAddr$add0193> created at line 1004.
-    Found 6-bit adder for signal <romAddr$add0194> created at line 1017.
-    Found 9-bit adder for signal <romAddr$add0195> created at line 1017.
-    Found 7-bit adder for signal <romAddr$add0196> created at line 1019.
-    Found 10-bit adder for signal <romAddr$add0197> created at line 1019.
+    Found 6-bit adder for signal <romAddr$add0186> created at line 980.
+    Found 9-bit adder for signal <romAddr$add0187> created at line 980.
+    Found 7-bit adder for signal <romAddr$add0188> created at line 982.
+    Found 10-bit adder for signal <romAddr$add0189> created at line 982.
+    Found 6-bit adder for signal <romAddr$add0190> created at line 995.
+    Found 9-bit adder for signal <romAddr$add0191> created at line 995.
+    Found 7-bit adder for signal <romAddr$add0192> created at line 997.
+    Found 10-bit adder for signal <romAddr$add0193> created at line 997.
+    Found 6-bit adder for signal <romAddr$add0194> created at line 1010.
+    Found 9-bit adder for signal <romAddr$add0195> created at line 1010.
+    Found 7-bit adder for signal <romAddr$add0196> created at line 1012.
+    Found 10-bit adder for signal <romAddr$add0197> created at line 1012.
     Found 6-bit adder for signal <romAddr$add0198> created at line 1032.
     Found 9-bit adder for signal <romAddr$add0199> created at line 1032.
     Found 7-bit adder for signal <romAddr$add0200> created at line 1034.
@@ -1047,12 +1046,24 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Found 9-bit adder for signal <romAddr$add0203> created at line 1047.
     Found 7-bit adder for signal <romAddr$add0204> created at line 1049.
     Found 10-bit adder for signal <romAddr$add0205> created at line 1049.
+    Found 6-bit adder for signal <romAddr$add0206> created at line 1062.
+    Found 9-bit adder for signal <romAddr$add0207> created at line 1062.
+    Found 7-bit adder for signal <romAddr$add0208> created at line 1064.
+    Found 10-bit adder for signal <romAddr$add0209> created at line 1064.
+    Found 6-bit adder for signal <romAddr$add0210> created at line 1077.
+    Found 9-bit adder for signal <romAddr$add0211> created at line 1077.
+    Found 7-bit adder for signal <romAddr$add0212> created at line 1079.
+    Found 10-bit adder for signal <romAddr$add0213> created at line 1079.
+    Found 6-bit adder for signal <romAddr$add0214> created at line 1092.
+    Found 9-bit adder for signal <romAddr$add0215> created at line 1092.
+    Found 7-bit adder for signal <romAddr$add0216> created at line 1094.
+    Found 10-bit adder for signal <romAddr$add0217> created at line 1094.
     Found 10-bit adder for signal <romAddr$addsub0000>.
     Found 11-bit adder for signal <romAddr$addsub0001> created at line 164.
     Found 10-bit comparator greater for signal <romAddr$cmp_gt0000> created at line 141.
     Found 10-bit comparator greater for signal <romAddr$cmp_gt0001> created at line 141.
-    Found 11-bit comparator greater for signal <romAddr$cmp_gt0002> created at line 979.
-    Found 11-bit comparator greater for signal <romAddr$cmp_gt0003> created at line 912.
+    Found 11-bit comparator greater for signal <romAddr$cmp_gt0002> created at line 1024.
+    Found 11-bit comparator greater for signal <romAddr$cmp_gt0003> created at line 942.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0000> created at line 181.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0001> created at line 196.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0002> created at line 211.
@@ -1089,23 +1100,26 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0033> created at line 802.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0034> created at line 817.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0035> created at line 832.
-    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0036> created at line 853.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0036> created at line 847.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0037> created at line 868.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0038> created at line 883.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0039> created at line 898.
-    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0040> created at line 919.
-    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0041> created at line 934.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0040> created at line 913.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0041> created at line 928.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0042> created at line 949.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0043> created at line 964.
-    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0044> created at line 986.
-    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0045> created at line 1001.
-    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0046> created at line 1016.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0044> created at line 979.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0045> created at line 994.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0046> created at line 1009.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0047> created at line 1031.
     Found 4-bit comparator lessequal for signal <romAddr$cmp_le0048> created at line 1046.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0049> created at line 1061.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0050> created at line 1076.
+    Found 4-bit comparator lessequal for signal <romAddr$cmp_le0051> created at line 1091.
     Found 10-bit comparator less for signal <romAddr$cmp_lt0000> created at line 141.
     Found 10-bit comparator less for signal <romAddr$cmp_lt0001> created at line 141.
-    Found 11-bit comparator less for signal <romAddr$cmp_lt0002> created at line 979.
-    Found 11-bit comparator less for signal <romAddr$cmp_lt0003> created at line 912.
+    Found 11-bit comparator less for signal <romAddr$cmp_lt0002> created at line 1024.
+    Found 11-bit comparator less for signal <romAddr$cmp_lt0003> created at line 942.
     Found 10-bit subtractor for signal <romAddr$sub0000> created at line 164.
     Found 1-bit 8-to-1 multiplexer for signal <romData$mux0000> created at line 149.
     Found 1-bit 8-to-1 multiplexer for signal <romData$mux0001> created at line 167.
@@ -1119,8 +1133,8 @@ WARNING:Xst:646 - Signal <dx> is assigned but never used. This unconnected signa
     Summary:
 	inferred   2 Counter(s).
 	inferred  19 D-type flip-flop(s).
-	inferred 258 Adder/Subtractor(s).
-	inferred 133 Comparator(s).
+	inferred 273 Adder/Subtractor(s).
+	inferred 136 Comparator(s).
 	inferred   4 Multiplexer(s).
 Unit <VGA_Controller> synthesized.
 
@@ -1143,9 +1157,6 @@ Unit <dcm> synthesized.
 Synthesizing Unit <cpu>.
     Related source file is "D:/Junior/ComputerOrganization/CPU/jiyuan/cpu/cpu.vhd".
 WARNING:Xst:646 - Signal <ram2AddrOutput<17:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <digitRomData> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <digitRomAddr> is used but never assigned. This sourceless signal will be automatically connected to value 000000000000000.
-WARNING:Xst:646 - Signal <dataT<15:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <clk_registers> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <always_zero> is used but never assigned. This sourceless signal will be automatically connected to value 0.
 WARNING:Xst:646 - Signal <LOCKED_OUT> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -1165,17 +1176,17 @@ HDL Synthesis Report
 Macro Statistics
 # ROMs                                                 : 2
  16x7-bit ROM                                          : 2
-# Adders/Subtractors                                   : 262
- 10-bit adder                                          : 59
+# Adders/Subtractors                                   : 277
+ 10-bit adder                                          : 62
  10-bit subtractor                                     : 1
  11-bit adder                                          : 2
  16-bit adder                                          : 2
  16-bit addsub                                         : 1
  16-bit subtractor                                     : 1
- 5-bit subtractor                                      : 49
- 6-bit adder                                           : 49
- 7-bit adder                                           : 49
- 9-bit adder                                           : 49
+ 5-bit subtractor                                      : 52
+ 6-bit adder                                           : 52
+ 7-bit adder                                           : 52
+ 9-bit adder                                           : 52
 # Counters                                             : 5
  10-bit up counter                                     : 1
  16-bit up counter                                     : 1
@@ -1194,7 +1205,7 @@ Macro Statistics
  1-bit latch                                           : 2
  16-bit latch                                          : 8
  21-bit latch                                          : 1
-# Comparators                                          : 144
+# Comparators                                          : 147
  10-bit comparator greatequal                          : 9
  10-bit comparator greater                             : 8
  10-bit comparator less                                : 9
@@ -1208,7 +1219,7 @@ Macro Statistics
  16-bit comparator lessequal                           : 2
  32-bit comparator greatequal                          : 1
  4-bit comparator equal                                : 6
- 4-bit comparator lessequal                            : 49
+ 4-bit comparator lessequal                            : 52
 # Multiplexers                                         : 8
  1-bit 8-to-1 multiplexer                              : 4
  16-bit 11-to-1 multiplexer                            : 1
@@ -1328,18 +1339,18 @@ Macro Statistics
 # FSMs                                                 : 3
 # ROMs                                                 : 2
  16x7-bit ROM                                          : 2
-# Adders/Subtractors                                   : 262
- 10-bit adder                                          : 58
+# Adders/Subtractors                                   : 277
+ 10-bit adder                                          : 61
  10-bit subtractor                                     : 1
  11-bit adder                                          : 1
  16-bit adder                                          : 2
  16-bit addsub                                         : 1
  16-bit subtractor                                     : 1
- 5-bit subtractor                                      : 49
- 6-bit adder                                           : 49
- 7-bit adder                                           : 49
+ 5-bit subtractor                                      : 52
+ 6-bit adder                                           : 52
+ 7-bit adder                                           : 52
  8-bit adder                                           : 2
- 9-bit adder                                           : 49
+ 9-bit adder                                           : 52
 # Counters                                             : 5
  10-bit up counter                                     : 1
  16-bit up counter                                     : 1
@@ -1352,7 +1363,7 @@ Macro Statistics
  1-bit latch                                           : 2
  16-bit latch                                          : 8
  21-bit latch                                          : 1
-# Comparators                                          : 144
+# Comparators                                          : 147
  10-bit comparator greatequal                          : 9
  10-bit comparator greater                             : 8
  10-bit comparator less                                : 9
@@ -1366,7 +1377,7 @@ Macro Statistics
  16-bit comparator lessequal                           : 2
  32-bit comparator greatequal                          : 1
  4-bit comparator equal                                : 6
- 4-bit comparator lessequal                            : 49
+ 4-bit comparator lessequal                            : 52
 # Multiplexers                                         : 23
  1-bit 11-to-1 multiplexer                             : 16
  1-bit 8-to-1 multiplexer                              : 4
@@ -1510,11 +1521,16 @@ Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <u8/memReadOut> in Unit <cpu> is equivalent to the following FF/Latch, which will be removed : <u8/memToRegOut> 
 INFO:Xst:2261 - The FF/Latch <u8/immeOut_15> in Unit <cpu> is equivalent to the following 4 FFs/Latches, which will be removed : <u8/immeOut_14> <u8/immeOut_13> <u8/immeOut_12> <u8/immeOut_11> 
 INFO:Xst:2261 - The FF/Latch <u13/memReadOut> in Unit <cpu> is equivalent to the following FF/Latch, which will be removed : <u13/memToRegOut> 
-Found area constraint ratio of 100 (+ 5) on block cpu, actual ratio is 20.
+Found area constraint ratio of 100 (+ 5) on block cpu, actual ratio is 21.
+FlipFlop u23/x_0 has been replicated 1 time(s)
+FlipFlop u23/x_1 has been replicated 1 time(s)
+FlipFlop u23/x_3 has been replicated 1 time(s)
 FlipFlop u23/y_3 has been replicated 2 time(s)
-FlipFlop u23/y_4 has been replicated 3 time(s)
+FlipFlop u23/y_4 has been replicated 2 time(s)
 FlipFlop u23/y_5 has been replicated 1 time(s)
 FlipFlop u23/y_6 has been replicated 1 time(s)
+FlipFlop u23/y_7 has been replicated 1 time(s)
+FlipFlop u23/y_8 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -1522,8 +1538,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 586
- Flip-Flops                                            : 586
+# Registers                                            : 590
+ Flip-Flops                                            : 590
 
 =========================================================================
 
@@ -1552,28 +1568,28 @@ Design Statistics
 # IOs                              : 169
 
 Cell Usage :
-# BELS                             : 3450
+# BELS                             : 3570
 #      GND                         : 1
-#      INV                         : 32
+#      INV                         : 34
 #      LUT1                        : 86
-#      LUT2                        : 176
-#      LUT2_D                      : 5
-#      LUT2_L                      : 8
-#      LUT3                        : 648
-#      LUT3_D                      : 36
-#      LUT3_L                      : 29
-#      LUT4                        : 1520
+#      LUT2                        : 164
+#      LUT2_D                      : 8
+#      LUT2_L                      : 3
+#      LUT3                        : 688
+#      LUT3_D                      : 35
+#      LUT3_L                      : 39
+#      LUT4                        : 1573
 #      LUT4_D                      : 56
-#      LUT4_L                      : 132
+#      LUT4_L                      : 127
 #      MUXCY                       : 166
-#      MUXF5                       : 385
-#      MUXF6                       : 32
+#      MUXF5                       : 419
+#      MUXF6                       : 33
 #      MUXF7                       : 1
 #      VCC                         : 1
 #      XORCY                       : 136
-# FlipFlops/Latches                : 700
-#      FDC                         : 14
-#      FDCE                        : 424
+# FlipFlops/Latches                : 704
+#      FDC                         : 17
+#      FDCE                        : 425
 #      FDE                         : 105
 #      FDP                         : 2
 #      FDPE                        : 40
@@ -1591,8 +1607,7 @@ Cell Usage :
 #      OBUFT                       : 8
 # DCMs                             : 1
 #      DCM_SP                      : 1
-# Others                           : 2
-#      digit                       : 1
+# Others                           : 1
 #      fontRom                     : 1
 =========================================================================
 
@@ -1601,9 +1616,9 @@ Device utilization summary:
 
 Selected Device : 3s1200efg320-4 
 
- Number of Slices:                     1501  out of   8672    17%  
- Number of Slice Flip Flops:            700  out of  17344     4%  
- Number of 4 input LUTs:               2728  out of  17344    15%  
+ Number of Slices:                     1546  out of   8672    17%  
+ Number of Slice Flip Flops:            704  out of  17344     4%  
+ Number of 4 input LUTs:               2813  out of  17344    16%  
  Number of IOs:                         169
  Number of bonded IOBs:                 169  out of    250    67%  
  Number of GCLKs:                         7  out of     24    29%  
@@ -1633,7 +1648,7 @@ Clock Signal                                            | Clock buffer(FF name) 
 led_0_OBUF                                              | NONE(u26/WriteDataOut_0)        | 32    |
 clk1(clkIn_clock1:O)                                    | BUFG(*)(u17/flashstate_FSM_FFd1)| 353   |
 u18/count_01                                            | BUFG                            | 190   |
-u23/CLK_21                                              | BUFG                            | 42    |
+u23/CLK_21                                              | BUFG                            | 46    |
 clk_50                                                  | IBUFG                           | 1     |
 u5/controllerOut_not00011(u5/controllerOut_not0001235:O)| BUFG(*)(u5/controllerOut_20)    | 20    |
 u6/ReadData1_or0000(u6/ReadData1_or00001:O)             | NONE(*)(u6/ReadData1_15)        | 16    |
@@ -1652,7 +1667,7 @@ Asynchronous Control Signals Information:
 -----------------------------------------------+------------------------+-------+
 Control Signal                                 | Buffer(FF name)        | Load  |
 -----------------------------------------------+------------------------+-------+
-u1/rst_inv(u8/rdOut_Acst_inv1_INV_0:O)         | NONE(u1/PCOut_0)       | 480   |
+u1/rst_inv(u8/rdOut_Acst_inv1_INV_0:O)         | NONE(u1/PCOut_0)       | 484   |
 u16/PCOut_0__and0000(u16/PCOut_0__and00001:O)  | NONE(u16/PCOut_0)      | 1     |
 u16/PCOut_0__and0001(u16/PCOut_0__and00011:O)  | NONE(u16/PCOut_0)      | 1     |
 u16/PCOut_10__and0000(u16/PCOut_10__and00001:O)| NONE(u16/PCOut_10)     | 1     |
@@ -1691,8 +1706,8 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 13.741ns (Maximum Frequency: 72.775MHz)
-   Minimum input arrival time before clock: 11.239ns
+   Minimum period: 13.636ns (Maximum Frequency: 73.335MHz)
+   Minimum input arrival time before clock: 11.295ns
    Maximum output required time after clock: 6.009ns
    Maximum combinational path delay: 3.095ns
 
@@ -1702,20 +1717,20 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk1'
-  Clock period: 7.985ns (frequency: 125.235MHz)
+  Clock period: 7.889ns (frequency: 126.759MHz)
   Total number of paths / destination ports: 7526 / 495
 -------------------------------------------------------------------------
-Delay:               7.985ns (Levels of Logic = 11)
-  Source:            u17/cnt_9 (FF)
+Delay:               7.889ns (Levels of Logic = 11)
+  Source:            u17/cnt_8 (FF)
   Destination:       u17/Mtrien_flash_data (FF)
   Source Clock:      clk1 rising
   Destination Clock: clk1 rising
 
-  Data Path: u17/cnt_9 to u17/Mtrien_flash_data
+  Data Path: u17/cnt_8 to u17/Mtrien_flash_data
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              3   0.591   0.706  u17/cnt_9 (u17/cnt_9)
+     FDE:C->Q              3   0.591   0.706  u17/cnt_8 (u17/cnt_8)
      LUT4:I0->O            1   0.704   0.000  u17/cnt_cmp_eq0000_wg_lut<0> (u17/cnt_cmp_eq0000_wg_lut<0>)
      MUXCY:S->O            1   0.464   0.000  u17/cnt_cmp_eq0000_wg_cy<0> (u17/cnt_cmp_eq0000_wg_cy<0>)
      MUXCY:CI->O           1   0.059   0.000  u17/cnt_cmp_eq0000_wg_cy<1> (u17/cnt_cmp_eq0000_wg_cy<1>)
@@ -1725,12 +1740,12 @@ Delay:               7.985ns (Levels of Logic = 11)
      MUXCY:CI->O           1   0.059   0.000  u17/cnt_cmp_eq0000_wg_cy<5> (u17/cnt_cmp_eq0000_wg_cy<5>)
      MUXCY:CI->O           1   0.059   0.000  u17/cnt_cmp_eq0000_wg_cy<6> (u17/cnt_cmp_eq0000_wg_cy<6>)
      MUXCY:CI->O          44   0.459   1.441  u17/cnt_cmp_eq0000_wg_cy<7> (u17/cnt_cmp_eq0000)
-     LUT2:I0->O            7   0.704   0.883  u17/Mtridata_flash_data_and0000111 (u17/flashstate_not0001)
-     LUT4:I0->O            1   0.704   0.420  u17/Mtridata_flash_data_and00001 (u17/Mtridata_flash_data_and0000)
+     LUT2:I0->O            7   0.704   0.787  u17/Mtridata_flash_data_and0000111 (u17/flashstate_not0001)
+     LUT4:I1->O            1   0.704   0.420  u17/Mtridata_flash_data_and00001 (u17/Mtridata_flash_data_and0000)
      FDE:CE                    0.555          u17/Mtrien_flash_data
     ----------------------------------------
-    Total                      7.985ns (4.535ns logic, 3.450ns route)
-                                       (56.8% logic, 43.2% route)
+    Total                      7.889ns (4.535ns logic, 3.354ns route)
+                                       (57.5% logic, 42.5% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'u18/count_01'
@@ -1748,7 +1763,7 @@ Delay:               11.215ns (Levels of Logic = 6)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDCE:C->Q            10   0.591   0.886  u3/tmpRx_1 (u3/tmpRx_1)
-     LUT4_D:I3->O         17   0.704   1.086  u21/ReadReg1Out<1>_SW2 (N1342)
+     LUT4_D:I3->O         17   0.704   1.086  u21/ReadReg1Out<1>_SW2 (N1491)
      LUT3:I2->O           34   0.704   1.267  u21/ReadReg1Out<1> (ReadReg1MuxOut<1>)
      LUT4:I3->O            1   0.704   0.424  u15/IfIdKeep26 (u15/IfIdKeep26)
      LUT4:I3->O           18   0.704   1.072  u15/IfIdKeep139 (IfIdKeep)
@@ -1761,36 +1776,43 @@ Delay:               11.215ns (Levels of Logic = 6)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'u23/CLK_21'
-  Clock period: 13.741ns (frequency: 72.775MHz)
-  Total number of paths / destination ports: 10367 / 70
+  Clock period: 13.636ns (frequency: 73.335MHz)
+  Total number of paths / destination ports: 11101 / 75
 -------------------------------------------------------------------------
-Delay:               13.741ns (Levels of Logic = 12)
-  Source:            u23/y_4_2 (FF)
-  Destination:       u23/romAddr_4 (FF)
+Delay:               13.636ns (Levels of Logic = 19)
+  Source:            u23/y_0 (FF)
+  Destination:       u23/romAddr_8 (FF)
   Source Clock:      u23/CLK_21 rising
   Destination Clock: u23/CLK_21 rising
 
-  Data Path: u23/y_4_2 to u23/romAddr_4
+  Data Path: u23/y_0 to u23/romAddr_8
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            15   0.591   1.192  u23/y_4_2 (u23/y_4_2)
-     LUT3:I0->O            1   0.704   0.000  u23/romAddr_mux0050<4>5387_F (N1744)
-     MUXF5:I0->O           4   0.321   0.591  u23/romAddr_mux0050<4>5387 (u23/romAddr_mux0050<4>5387)
-     LUT4_D:I3->O         15   0.704   1.096  u23/romAddr_mux0050<4>5421 (u23/romAddr_mux0050<4>_bdd8)
-     LUT4:I1->O            1   0.704   0.000  u23/romAddr_mux0050<4>1793_F (N1848)
-     MUXF5:I0->O           1   0.321   0.424  u23/romAddr_mux0050<4>1793 (u23/romAddr_mux0050<4>1793)
-     LUT4:I3->O            1   0.704   0.424  u23/romAddr_mux0050<4>1822 (u23/romAddr_mux0050<4>1822)
-     LUT4:I3->O            1   0.704   0.455  u23/romAddr_mux0050<4>1872 (u23/romAddr_mux0050<4>1872)
-     LUT4:I2->O            1   0.704   0.424  u23/romAddr_mux0050<4>1897 (u23/romAddr_mux0050<4>1897)
-     LUT4:I3->O            1   0.704   0.000  u23/romAddr_mux0050<4>19841_SW0_F (N1004)
-     MUXF5:I0->O           2   0.321   0.447  u23/romAddr_mux0050<4>19841_SW0 (N700)
-     MUXF5:S->O            1   0.739   0.455  u23/romAddr_mux0050<4>13219_SW1 (N868)
-     LUT4:I2->O            1   0.704   0.000  u23/romAddr_mux0050<4>13265 (u23/romAddr_mux0050<4>)
-     FDE:D                     0.308          u23/romAddr_4
+     FDCE:C->Q             3   0.591   0.706  u23/y_0 (u23/y_0)
+     LUT1:I0->O            1   0.704   0.000  u23/Madd_romAddr_add0001_cy<0>_rt (u23/Madd_romAddr_add0001_cy<0>_rt)
+     MUXCY:S->O            1   0.464   0.000  u23/Madd_romAddr_add0001_cy<0> (u23/Madd_romAddr_add0001_cy<0>)
+     MUXCY:CI->O           1   0.059   0.000  u23/Madd_romAddr_add0001_cy<1> (u23/Madd_romAddr_add0001_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  u23/Madd_romAddr_add0001_cy<2> (u23/Madd_romAddr_add0001_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  u23/Madd_romAddr_add0001_cy<3> (u23/Madd_romAddr_add0001_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  u23/Madd_romAddr_add0001_cy<4> (u23/Madd_romAddr_add0001_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  u23/Madd_romAddr_add0001_cy<5> (u23/Madd_romAddr_add0001_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  u23/Madd_romAddr_add0001_cy<6> (u23/Madd_romAddr_add0001_cy<6>)
+     MUXCY:CI->O           1   0.059   0.000  u23/Madd_romAddr_add0001_cy<7> (u23/Madd_romAddr_add0001_cy<7>)
+     XORCY:CI->O          13   0.804   0.987  u23/Madd_romAddr_add0001_xor<8> (u23/romAddr_add0001<8>)
+     LUT4:I3->O            1   0.704   0.000  u23/romAddr_mux0053<8>141_SW5_F (N1145)
+     MUXF5:I0->O           2   0.321   0.451  u23/romAddr_mux0053<8>141_SW5 (N517)
+     LUT4:I3->O            1   0.704   0.424  u23/romAddr_mux0053<8>173 (u23/romAddr_mux0053<8>1148)
+     LUT4:I3->O            1   0.704   0.424  u23/romAddr_mux0053<8>189 (u23/romAddr_mux0053<8>189)
+     LUT4:I3->O            1   0.704   0.424  u23/romAddr_mux0053<8>1209 (u23/romAddr_mux0053<8>1209)
+     LUT4_L:I3->LO         1   0.704   0.104  u23/romAddr_mux0053<8>1304 (u23/romAddr_mux0053<8>1304)
+     LUT4:I3->O            1   0.704   0.424  u23/romAddr_mux0053<8>1350 (u23/romAddr_mux0053<8>1350)
+     LUT4:I3->O            1   0.704   0.420  u23/romAddr_mux0053<8>1395 (u23/romAddr_mux0053<8>1395)
+     MUXF5:S->O            1   0.739   0.000  u23/romAddr_mux0053<8>1473 (u23/romAddr_mux0053<8>)
+     FDE:D                     0.308          u23/romAddr_8
     ----------------------------------------
-    Total                     13.741ns (8.233ns logic, 5.508ns route)
-                                       (59.9% logic, 40.1% route)
+    Total                     13.636ns (9.272ns logic, 4.364ns route)
+                                       (68.0% logic, 32.0% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_50'
@@ -1829,9 +1851,9 @@ Delay:               3.766ns (Levels of Logic = 2)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      LD:G->Q               5   0.676   0.808  u7/sign_mux0000 (u7/sign_mux0000)
-     LUT4:I0->O            3   0.704   0.566  u7/immeOut_mux0000<10>211 (u7/N4)
-     LUT3:I2->O            1   0.704   0.000  u7/immeOut_mux0000<7>1 (u7/immeOut_mux0000<7>)
-     LD:D                      0.308          u7/immeOut_7
+     LUT4:I0->O            3   0.704   0.566  u7/immeOut_mux0000<10>21 (u7/N2)
+     LUT3:I2->O            1   0.704   0.000  u7/immeOut_mux0000<9>1 (u7/immeOut_mux0000<9>)
+     LD:D                      0.308          u7/immeOut_9
     ----------------------------------------
     Total                      3.766ns (2.392ns logic, 1.374ns route)
                                        (63.5% logic, 36.5% route)
@@ -1840,60 +1862,60 @@ Delay:               3.766ns (Levels of Logic = 2)
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk1'
   Total number of paths / destination ports: 171 / 142
 -------------------------------------------------------------------------
-Offset:              5.395ns (Levels of Logic = 5)
-  Source:            ram1Data<1> (PAD)
-  Destination:       u17/dataOut_1 (FF)
+Offset:              5.464ns (Levels of Logic = 5)
+  Source:            ram1Data<0> (PAD)
+  Destination:       u17/dataOut_0 (FF)
   Destination Clock: clk1 rising
 
-  Data Path: ram1Data<1> to u17/dataOut_1
+  Data Path: ram1Data<0> to u17/dataOut_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IOBUF:IO->O           2   1.218   0.526  ram1Data_1_IOBUF (N374)
-     LUT4:I1->O            1   0.704   0.000  u17/dataOut_1_mux0001101 (u17/dataOut_1_mux0001101)
-     MUXF5:I1->O           1   0.321   0.455  u17/dataOut_1_mux000110_f5 (u17/dataOut_1_mux000110)
-     LUT4:I2->O            1   0.704   0.455  u17/dataOut_1_mux000130 (u17/dataOut_1_mux000130)
-     LUT3:I2->O            1   0.704   0.000  u17/dataOut_1_mux000140 (u17/dataOut_1_mux0001)
-     FDCE:D                    0.308          u17/dataOut_1
+     IOBUF:IO->O           1   1.218   0.595  ram1Data_0_IOBUF (N381)
+     LUT2:I0->O            1   0.704   0.000  u17/dataOut_0_mux0001132 (u17/dataOut_0_mux0001132)
+     MUXF5:I0->O           1   0.321   0.455  u17/dataOut_0_mux000113_f5 (u17/dataOut_0_mux000113)
+     LUT4:I2->O            1   0.704   0.455  u17/dataOut_0_mux000135 (u17/dataOut_0_mux000135)
+     LUT3:I2->O            1   0.704   0.000  u17/dataOut_0_mux000146 (u17/dataOut_0_mux0001)
+     FDCE:D                    0.308          u17/dataOut_0
     ----------------------------------------
-    Total                      5.395ns (3.959ns logic, 1.436ns route)
-                                       (73.4% logic, 26.6% route)
+    Total                      5.464ns (3.959ns logic, 1.505ns route)
+                                       (72.5% logic, 27.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'u23/CLK_21'
-  Total number of paths / destination ports: 563 / 12
+  Total number of paths / destination ports: 552 / 12
 -------------------------------------------------------------------------
-Offset:              11.239ns (Levels of Logic = 11)
-  Source:            u25:douta<2> (PAD)
+Offset:              11.295ns (Levels of Logic = 11)
+  Source:            u25:douta<0> (PAD)
   Destination:       u23/bt_0 (FF)
   Destination Clock: u23/CLK_21 rising
 
-  Data Path: u25:douta<2> to u23/bt_0
+  Data Path: u25:douta<0> to u23/bt_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-    fontRom:douta<2>       4   0.000   0.762  u25 (fontRomData<2>)
-     LUT3:I0->O            1   0.704   0.000  u23/Mmux_romData_mux0003_4_f51 (u23/Mmux_romData_mux0003_4_f51)
-     MUXF5:I0->O           2   0.321   0.482  u23/Mmux_romData_mux0003_4_f5 (u23/Mmux_romData_mux0003_4_f5)
-     LUT4_D:I2->O          5   0.704   0.668  u23/bt_mux0000<1>291 (u23/bt_mux0000<1>_bdd60)
-     LUT3_D:I2->O          1   0.704   0.499  u23/bt_mux0000<1>281 (u23/bt_mux0000<1>_bdd56)
-     LUT4_L:I1->LO         1   0.704   0.104  u23/bt_mux0000<1>1535 (u23/bt_mux0000<1>1535)
-     LUT4:I3->O            1   0.704   0.424  u23/bt_mux0000<1>1536 (u23/bt_mux0000<1>1536)
-     LUT4:I3->O            1   0.704   0.000  u23/bt_mux0000<1>1681_G (N1113)
-     MUXF5:I1->O           1   0.321   0.455  u23/bt_mux0000<1>1681 (u23/bt_mux0000<1>1681)
-     LUT4:I2->O            1   0.704   0.455  u23/bt_mux0000<1>1883 (u23/bt_mux0000<1>1883)
-     LUT4_L:I2->LO         1   0.704   0.104  u23/bt_mux0000<1>11486 (u23/bt_mux0000<1>11486)
-     LUT4:I3->O            1   0.704   0.000  u23/bt_mux0000<1>11634 (u23/bt_mux0000<1>)
+    fontRom:douta<0>       4   0.000   0.762  u25 (fontRomData<0>)
+     LUT3:I0->O            1   0.704   0.000  u23/Mmux_romData_mux0003_51 (u23/Mmux_romData_mux0000_4)
+     MUXF5:I0->O           4   0.321   0.591  u23/Mmux_romData_mux0002_3_f5 (u23/Mmux_romData_mux0002_3_f5)
+     LUT4_D:I3->O          6   0.704   0.673  u23/bt_mux0000<1>211 (u23/bt_mux0000<1>_bdd45)
+     LUT4:I3->O            1   0.704   0.000  u23/bt_mux0000<1>1995_F (N1273)
+     MUXF5:I0->O           1   0.321   0.424  u23/bt_mux0000<1>1995 (u23/bt_mux0000<1>1995)
+     LUT4:I3->O            1   0.704   0.595  u23/bt_mux0000<1>11035_SW0 (N1096)
+     LUT3:I0->O            1   0.704   0.424  u23/bt_mux0000<1>11061_SW0 (N1114)
+     LUT4:I3->O            1   0.704   0.499  u23/bt_mux0000<1>11216 (u23/bt_mux0000<1>11216)
+     LUT2:I1->O            1   0.704   0.000  u23/bt_mux0000<1>11463_G (N1278)
+     MUXF5:I1->O           1   0.321   0.424  u23/bt_mux0000<1>11463 (u23/bt_mux0000<1>11463)
+     LUT4:I3->O            1   0.704   0.000  u23/bt_mux0000<1>11737 (u23/bt_mux0000<1>)
      FDCE:D                    0.308          u23/bt_0
     ----------------------------------------
-    Total                     11.239ns (7.286ns logic, 3.953ns route)
-                                       (64.8% logic, 35.2% route)
+    Total                     11.295ns (6.903ns logic, 4.392ns route)
+                                       (61.1% logic, 38.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'u5/controllerOut_not00011'
   Total number of paths / destination ports: 26 / 20
 -------------------------------------------------------------------------
-Offset:              4.998ns (Levels of Logic = 3)
+Offset:              4.999ns (Levels of Logic = 3)
   Source:            rst (PAD)
   Destination:       u5/controllerOut_20 (LATCH)
   Destination Clock: u5/controllerOut_not00011 falling
@@ -1902,12 +1924,12 @@ Offset:              4.998ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            48   1.218   1.442  rst_IBUF (rst_IBUF)
+     IBUF:I->O            50   1.218   1.443  rst_IBUF (rst_IBUF)
      LUT4:I0->O            2   0.704   0.622  u5/controllerOut_mux0013<20>2 (u5/N9)
      LUT4:I0->O            1   0.704   0.000  u5/controllerOut_mux0013<7> (u5/controllerOut_mux0013<7>)
      LD:D                      0.308          u5/controllerOut_7
     ----------------------------------------
-    Total                      4.998ns (2.934ns logic, 2.064ns route)
+    Total                      4.999ns (2.934ns logic, 2.065ns route)
                                        (58.7% logic, 41.3% route)
 
 =========================================================================
@@ -1952,18 +1974,18 @@ Offset:              6.009ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 2 / 2
+  Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
 Delay:               3.095ns (Levels of Logic = 1)
   Source:            clk_50 (PAD)
-  Destination:       u24:clka (PAD)
+  Destination:       u25:clka (PAD)
 
-  Data Path: clk_50 to u24:clka
+  Data Path: clk_50 to u25:clka
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUFG:I->O            1   2.675   0.420  clk_50_IBUFG (clk_50_IBUFG)
-    digit:clka                 0.000          u24
+    fontRom:clka               0.000          u25
     ----------------------------------------
     Total                      3.095ns (2.675ns logic, 0.420ns route)
                                        (86.4% logic, 13.6% route)
@@ -1971,14 +1993,14 @@ Delay:               3.095ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 42.00 secs
-Total CPU time to Xst completion: 42.28 secs
+Total REAL time to Xst completion: 41.00 secs
+Total CPU time to Xst completion: 40.70 secs
  
 --> 
 
-Total memory usage is 448456 kilobytes
+Total memory usage is 453192 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  162 (   0 filtered)
+Number of warnings :  158 (   0 filtered)
 Number of infos    :   80 (   0 filtered)
 

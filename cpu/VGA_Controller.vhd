@@ -13,7 +13,7 @@ entity VGA_Controller is
 
 		PC : in std_logic_vector(15 downto 0);
 		CM : in std_logic_vector(15 downto 0);
-		Tdata : in std_logic_vector(3 downto 0);
+		Tdata : in std_logic_vector(15 downto 0);
 		SPdata : in std_logic_vector(15 downto 0);
 		IHdata : in std_logic_vector(15 downto 0);
 		
@@ -810,6 +810,21 @@ CLK<=CLK_2;
 						gt <= (others => romData(dx));
 						bt <= (others => romData(dx));
 					end if;
+				elsif (y >= 96 and y <= 103) then -- T 3
+					if (x = 179) then
+						inty := conv_integer(y);
+						tmp := conv_integer(Tdata(15 downto 12));
+						if (tmp <= 9) then
+							romAddr <= conv_std_logic_vector( (tmp + 48) * 8 + inty mod 8, 11);
+						else 
+							romAddr <= conv_std_logic_vector( (tmp - 10 + 65) * 8 + inty mod 8, 11);
+						end if;
+					else
+						dx := 7 - (conv_integer(x) - 180);
+						rt <= (others => romData(dx));
+						gt <= (others => romData(dx));
+						bt <= (others => romData(dx));
+					end if;
 				elsif (y >= 112 and y <= 119) then -- SP 3
 					if (x = 179) then
 						inty := conv_integer(y);
@@ -876,6 +891,21 @@ CLK<=CLK_2;
 						gt <= (others => romData(dx));
 						bt <= (others => romData(dx));
 					end if;
+				elsif (y >= 96 and y <= 103) then --T 2
+					if (x = 189) then
+						inty := conv_integer(y);
+						tmp := conv_integer(Tdata(11 downto 8));
+						if (tmp <= 9) then
+							romAddr <= conv_std_logic_vector( (tmp + 48) * 8 + inty mod 8, 11);
+						else 
+							romAddr <= conv_std_logic_vector( (tmp - 10 + 65) * 8 + inty mod 8, 11);
+						end if;
+					else
+						dx := 7 - (conv_integer(x) - 190);
+						rt <= (others => romData(dx));
+						gt <= (others => romData(dx));
+						bt <= (others => romData(dx));
+					end if;
 				elsif (y >= 112 and y <= 119) then --SP 2
 					if (x = 189) then
 						inty := conv_integer(y);
@@ -931,6 +961,21 @@ CLK<=CLK_2;
 					if (x = 199) then
 						inty := conv_integer(y);
 						tmp := conv_integer(CM(7 downto 4));
+						if (tmp <= 9) then
+							romAddr <= conv_std_logic_vector( (tmp + 48) * 8 + inty mod 8, 11);
+						else 
+							romAddr <= conv_std_logic_vector( (tmp - 10 + 65) * 8 + inty mod 8, 11);
+						end if;
+					else
+						dx := 7 - (conv_integer(x) - 200);
+						rt <= (others => romData(dx));
+						gt <= (others => romData(dx));
+						bt <= (others => romData(dx));
+					end if;
+				elsif ( y >= 96 and y <= 103) then -- T 1
+					if (x = 199) then
+						inty := conv_integer(y);
+						tmp := conv_integer(Tdata(7 downto 4));
 						if (tmp <= 9) then
 							romAddr <= conv_std_logic_vector( (tmp + 48) * 8 + inty mod 8, 11);
 						else 

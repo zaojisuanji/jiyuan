@@ -90,13 +90,13 @@ architecture Behavioral of cpu is
 		);
 	end component;
 	
-	component digit
-		port (
-				clka : in std_logic;
-				addra : in std_logic_vector(14 downto 0);
-				douta : out std_logic_vector(23 downto 0)
-			);
-	end component;
+--	component digit
+--		port (
+--				clka : in std_logic;
+--				addra : in std_logic_vector(14 downto 0);
+--				douta : out std_logic_vector(23 downto 0)
+--			);
+--	end component;
 	
 	component VGA_Controller
 		port (
@@ -116,7 +116,7 @@ architecture Behavioral of cpu is
 	-- pc
 		PC : in std_logic_vector(15 downto 0);
 		CM : in std_logic_vector(15 downto 0);
-		Tdata : in std_logic_vector(3 downto 0);
+		Tdata : in std_logic_vector(15 downto 0);
 		SPdata : in std_logic_vector(15 downto 0);
 		IHdata : in std_logic_vector(15 downto 0);
 	--Control Signals
@@ -671,8 +671,8 @@ architecture Behavioral of cpu is
 	signal MFPCMuxOut : std_logic_vector(15 downto 0);
 	
 	--digit rom
-	signal digitRomAddr : std_logic_vector(14 downto 0);
-	signal digitRomData : std_logic_vector(23 downto 0);
+--	signal digitRomAddr : std_logic_vector(14 downto 0);
+--	signal digitRomData : std_logic_vector(23 downto 0);
 	
 	--font rom
 	signal fontRomAddr : std_logic_vector(10 downto 0);
@@ -1086,7 +1086,7 @@ begin
 	--pc
 		PC => PCOut,
 		CM => IMInsOut,
-		Tdata => dataT(3 downto 0),
+		Tdata => dataT,
 		IHdata => dataIH,
 		SPdata => dataSP,
 	--Control Signals
@@ -1095,12 +1095,12 @@ begin
 	);		
 	--r0 <= "0110101010010111";
 	--r1 <= "1011100010100110";
-	u24 : digit
-	port map(
-			clkA => clk_50,
-			addra => digitRomAddr,
-			douta => digitRomData
-	);
+--	u24 : digit
+--	port map(
+--			clkA => clk_50,
+--			addra => digitRomAddr,
+--			douta => digitRomData
+--	);
 	
 	u25 : fontRom
 	port map(
